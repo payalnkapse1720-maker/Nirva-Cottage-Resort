@@ -18,7 +18,7 @@ const montserrat = Montserrat({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#121411",
+  themeColor: "#F7F3EA",
   width: "device-width",
   initialScale: 1,
 };
@@ -65,9 +65,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair.variable} ${montserrat.variable} scroll-smooth dark`}
+      className={`${playfair.variable} ${montserrat.variable} scroll-smooth`}
     >
-      <body className="min-h-screen bg-black text-[#E5E4E2] antialiased selection:bg-[#f2ca50]/30 selection:text-[#f2ca50]">
+      <body className="min-h-screen bg-[#F7F3EA] text-[#3E2F24] antialiased selection:bg-[#C99A4A]/25 selection:text-[#3E2F24]">
         {children}
       </body>
     </html>

@@ -4,13 +4,13 @@ import { MessageSquare, Phone, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#090a08] border-t border-[#d4af37]/20 pt-20 pb-12 relative">
+    <footer className="w-full bg-[#F7F3EA] border-t border-[#D8C6A8] pt-20 pb-12 relative">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Col 1: Brand & Bio */}
           <div className="space-y-4">
             <div className="flex items-center gap-3.5">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#d4af37]/60 bg-[#121411] shadow-[0_0_15px_rgba(212,175,55,0.2)] flex items-center justify-center p-1 shrink-0">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#C99A4A]/80 bg-[#FBF8F1] shadow-[0_0_15px_rgba(201,154,74,0.2)] flex items-center justify-center p-1 shrink-0">
                 <Image
                   src="/nirva-emblem.png"
                   alt="Nirva The Cottage & Resort Emblem"
@@ -20,15 +20,15 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="font-serif text-2xl font-bold text-[#f2ca50] leading-none">
+                <span className="font-serif text-2xl font-bold text-[#3E2F24] leading-none">
                   Nirva
                 </span>
-                <span className="text-[9px] uppercase tracking-[0.22em] text-[#d0c5af] font-sans font-medium mt-1">
+                <span className="text-[9px] uppercase tracking-[0.22em] text-[#6B5540] font-sans font-medium mt-1">
                   THE COTTAGE & RESORT
                 </span>
               </div>
             </div>
-            <p className="font-sans text-xs text-[#E5E4E2]/70 leading-relaxed font-light">
+            <p className="font-sans text-xs text-[#6B5540] leading-relaxed font-light">
               An intimate sanctuary nestled amidst the rolling foothills of Badlapur East. Where quiet
               luxury, infinity pool vistas, and boutique warmth create lifelong memories.
             </p>
@@ -37,7 +37,7 @@ export default function Footer() {
                 href={RESORT_INFO.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-[#d4af37]/30 flex items-center justify-center text-[#f2ca50] hover:bg-[#f2ca50] hover:text-black transition-all"
+                className="w-9 h-9 rounded-full bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] hover:bg-[#C99A4A] hover:text-[#2F241C] transition-all shadow-sm"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -48,7 +48,7 @@ export default function Footer() {
                 href={RESORT_INFO.facebookUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-[#d4af37]/30 flex items-center justify-center text-[#f2ca50] hover:bg-[#f2ca50] hover:text-black transition-all"
+                className="w-9 h-9 rounded-full bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] hover:bg-[#C99A4A] hover:text-[#2F241C] transition-all shadow-sm"
                 aria-label="Facebook"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@ export default function Footer() {
                 href={`https://wa.me/${RESORT_INFO.whatsappRaw}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-full bg-white/5 border border-[#d4af37]/30 flex items-center justify-center text-[#f2ca50] hover:bg-[#f2ca50] hover:text-black transition-all"
+                className="w-9 h-9 rounded-full bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] hover:bg-[#C99A4A] hover:text-[#2F241C] transition-all shadow-sm"
                 aria-label="WhatsApp"
               >
                 <MessageSquare className="w-4 h-4" />
@@ -69,37 +69,37 @@ export default function Footer() {
 
           {/* Col 2: Navigation */}
           <div className="space-y-4">
-            <h4 className="font-serif text-base text-white font-semibold tracking-wide">
+            <h4 className="font-serif text-base text-[#3E2F24] font-semibold tracking-wide">
               Quick Navigation
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#E5E4E2]/70 font-sans">
+            <ul className="space-y-2.5 text-xs text-[#6B5540] font-sans">
               <li>
-                <a href="#about" className="hover:text-[#f2ca50] transition-colors">
+                <a href="#about" className="hover:text-[#C99A4A] transition-colors">
                   About the Resort
                 </a>
               </li>
               <li>
-                <a href="#stay" className="hover:text-[#f2ca50] transition-colors">
+                <a href="#stay" className="hover:text-[#C99A4A] transition-colors">
                   Rooms, Cottages & Villas
                 </a>
               </li>
               <li>
-                <a href="#bliss-cafe" className="hover:text-[#f2ca50] transition-colors">
+                <a href="#bliss-cafe" className="hover:text-[#C99A4A] transition-colors">
                   Bliss Cafe Dining
                 </a>
               </li>
               <li>
-                <a href="#experiences" className="hover:text-[#f2ca50] transition-colors">
+                <a href="#experiences" className="hover:text-[#C99A4A] transition-colors">
                   Weddings & Events
                 </a>
               </li>
               <li>
-                <a href="#trails" className="hover:text-[#f2ca50] transition-colors">
+                <a href="#trails" className="hover:text-[#C99A4A] transition-colors">
                   Adventures & Trails
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-[#f2ca50] transition-colors">
+                <a href="#gallery" className="hover:text-[#C99A4A] transition-colors">
                   Visual Gallery
                 </a>
               </li>
@@ -108,46 +108,46 @@ export default function Footer() {
 
           {/* Col 3: Accommodation Types */}
           <div className="space-y-4">
-            <h4 className="font-serif text-base text-white font-semibold tracking-wide">
+            <h4 className="font-serif text-base text-[#3E2F24] font-semibold tracking-wide">
               Stay Categories
             </h4>
-            <ul className="space-y-2 text-xs text-[#E5E4E2]/70 font-sans">
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Single Cottage</a></li>
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Duplex Cottage</a></li>
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Suite Cottage</a></li>
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Bunk Bed Cottage</a></li>
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Villa</a></li>
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Sunset Suite</a></li>
-              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Dormitory Rooms</a></li>
+            <ul className="space-y-2 text-xs text-[#6B5540] font-sans">
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Single Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Duplex Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Suite Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Bunk Bed Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Villa</a></li>
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Sunset Suite</a></li>
+              <li><a href="#stay" className="hover:text-[#C99A4A] transition-colors">Dormitory Rooms</a></li>
             </ul>
           </div>
 
           {/* Col 4: Contact Recap */}
           <div className="space-y-4">
-            <h4 className="font-serif text-base text-white font-semibold tracking-wide">
+            <h4 className="font-serif text-base text-[#3E2F24] font-semibold tracking-wide">
               Concierge Desk
             </h4>
-            <div className="space-y-3 text-xs text-[#E5E4E2]/75 font-sans">
+            <div className="space-y-3 text-xs text-[#6B5540] font-sans">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#f2ca50] shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#C99A4A] shrink-0 mt-0.5" />
                 <a
                   href={RESORT_INFO.mapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#f2ca50] transition-colors"
+                  className="hover:text-[#C99A4A] transition-colors"
                 >
                   Near Dahiwali Gaon Bridge, Kondeshwar Road, Badlapur East
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#f2ca50] shrink-0" />
-                <a href={`tel:${RESORT_INFO.phonePrimaryRaw}`} className="hover:text-[#f2ca50]">
+                <Phone className="w-4 h-4 text-[#C99A4A] shrink-0" />
+                <a href={`tel:${RESORT_INFO.phonePrimaryRaw}`} className="hover:text-[#C99A4A] transition-colors">
                   {RESORT_INFO.phonePrimary} / {RESORT_INFO.phoneSecondary}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-[#f2ca50] shrink-0" />
-                <a href={`mailto:${RESORT_INFO.email}`} className="hover:text-[#f2ca50]">
+                <Mail className="w-4 h-4 text-[#C99A4A] shrink-0" />
+                <a href={`mailto:${RESORT_INFO.email}`} className="hover:text-[#C99A4A] transition-colors">
                   {RESORT_INFO.email}
                 </a>
               </div>
@@ -156,16 +156,16 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#E5E4E2]/50 font-sans text-center sm:text-left">
+        <div className="pt-8 border-t border-[#D8C6A8] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#6B5540] font-sans text-center sm:text-left">
           <p>© {new Date().getFullYear()} Nirva The Cottage & Resort. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <a href="#about" className="hover:text-[#f2ca50] transition-colors">
+            <a href="#about" className="hover:text-[#C99A4A] transition-colors">
               Privacy Policy
             </a>
-            <a href="#stay" className="hover:text-[#f2ca50] transition-colors">
+            <a href="#stay" className="hover:text-[#C99A4A] transition-colors">
               Terms & Conditions
             </a>
-            <a href="#contact" className="hover:text-[#f2ca50] transition-colors">
+            <a href="#contact" className="hover:text-[#C99A4A] transition-colors">
               Enquire
             </a>
           </div>
