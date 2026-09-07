@@ -53,11 +53,12 @@ export default function Navbar() {
             aria-label="Nirva The Cottage & Resort Home"
           >
             {/* Circular Gold Badge Logo */}
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#d4af37] p-0.5 bg-black/60 overflow-hidden shrink-0 shadow-inner flex items-center justify-center">
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#d4af37]/80 p-0.5 bg-[#121411] overflow-hidden shrink-0 shadow-[0_0_15px_rgba(212,175,55,0.25)] flex items-center justify-center">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt5mI_5NjwB85kPAZk7Rt124ayWp0RWp8-JSAAm1XsYXvG0fN-0uLUp0szxvQC6jxWLH_tkOpKEyGGMS_DR9QFFb3cgNiW__RMSLw9kAxRKVtXDro6T8z35jVZ2fzXmkrXr3MR0FMUYhqlPL0_ajz3cZHwYTnXO26SLA59O6xPUHs9pLvXoA4XPKv4oj21PuMNgHcOxwudjkKK8t6rn6lY4NCwe-p6-g67Q7USJhNAkUdLefMByl3D_g"
-                alt="Nirva Emblem Logo"
+                src="/nirva-emblem.png"
+                alt="Nirva The Cottage & Resort Emblem"
                 fill
+                sizes="44px"
                 className="object-contain p-1"
                 priority
               />
@@ -145,7 +146,20 @@ export default function Navbar() {
             className="w-full max-w-md mx-auto flex flex-col h-full justify-between"
             onClick={(e) => e.stopPropagation()}
           >
-            <nav className="flex flex-col space-y-4 my-auto">
+            {/* Mobile Brand Header */}
+            <div className="flex flex-col items-center justify-center text-center pt-2 pb-2">
+              <div className="relative w-20 h-20 mb-2">
+                <Image
+                  src="/nirva-logo-tight.png"
+                  alt="Nirva The Cottage & Resort"
+                  fill
+                  sizes="80px"
+                  className="object-contain drop-shadow-[0_0_20px_rgba(242,202,80,0.35)]"
+                />
+              </div>
+            </div>
+
+            <nav className="flex flex-col space-y-3 my-auto">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
