@@ -13,7 +13,7 @@ import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-black text-[#E5E4E2] selection:bg-[#f2ca50]/30 selection:text-[#f2ca50] overflow-x-hidden">
+    <main className="relative min-h-screen bg-[#F7F3EA] text-[#3E2F24] selection:bg-[#C99A4A]/25 selection:text-[#3E2F24] overflow-x-hidden">
       {/* Global Navigation */}
       <Navbar />
 

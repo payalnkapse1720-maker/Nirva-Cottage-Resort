@@ -12,7 +12,7 @@ export default function FloatingWhatsApp() {
         )}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-all duration-300 border-2 border-[#d4af37]/60"
+        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-all duration-300 border-2 border-[#C99A4A]/60"
         aria-label="Direct WhatsApp Reservation"
       >
         {/* Pulsing Aura */}
@@ -21,7 +21,7 @@ export default function FloatingWhatsApp() {
       </a>
 
       {/* Hover Tooltip */}
-      <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-[#121411]/95 border border-[#d4af37]/30 text-xs font-sans text-white opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
+      <div className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-lg bg-[#FBF8F1] border border-[#D8C6A8] text-xs font-sans text-[#3E2F24] font-medium opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-xl">
         Book on WhatsApp
       </div>
     </div>
