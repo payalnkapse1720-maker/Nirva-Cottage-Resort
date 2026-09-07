@@ -1,3 +1,10 @@
+export interface RoomAddOn {
+  name: string;
+  price: number;
+  priceDisplay: string;
+  description: string;
+}
+
 export interface Room {
   id: string;
   name: string;
@@ -6,10 +13,31 @@ export interface Room {
   description: string;
   image: string;
   capacity: string;
-  view: string;
-  bed: string;
+  capacityNumber: number;
+  dayPrice: number;
+  nightPrice: number;
+  dayPriceDisplay: string;
+  nightPriceDisplay: string;
+  weekdayDiscount: string;
+  foodIncluded: boolean;
   amenities: string[];
+  optionalAddOns?: RoomAddOn[];
   featured?: boolean;
+}
+
+export interface BuffetMeal {
+  id: string;
+  name: string;
+  time: string;
+  items: string[];
+}
+
+export interface FoodPackage {
+  title: string;
+  pricePerPerson: number;
+  priceDisplay: string;
+  period: string;
+  includes: string[];
 }
 
 export interface Experience {
@@ -56,182 +84,333 @@ export const RESORT_INFO = {
   whatsapp: "7770041011",
   whatsappRaw: "917770041011",
   email: "nirva.thecottageresort@gmail.com",
-  mapsUrl: "https://maps.app.goo.gl/b2uxNp2NcHsWmQvR9?g_st=ic",
+  mapsUrl: "https://maps.app.goo.gl/yz8dgavP9kBHSr7RA?g_st=ic",
   instagramUrl: "https://www.instagram.com/nirva_resort?igsi=MW43a3J5bWJoOHI4cQ%3D%3D&utm_source=qr",
   facebookUrl: "https://www.facebook.com/NirvaResort",
-  totalRooms: 20,
   restaurantName: "Bliss Cafe",
   restaurantCapacity: "40 Guests",
-  timings: [
-    {
-      type: "Day Outing (Weekdays Only)",
-      hours: "9:00 AM – 7:00 PM",
-      description: "Full day access to pool, Bliss Cafe, and lush lawns.",
-    },
-    {
-      type: "Overnight Stay (Option 1)",
-      hours: "12:00 PM – 10:00 AM",
-      description: "Standard 22-hour leisurely retreat with evening sunset.",
-    },
-    {
-      type: "Overnight Stay (Option 2)",
-      hours: "6:00 PM – 4:00 PM",
-      description: "Late check-in ideal for after-work weekend escapes.",
-    },
-  ],
 };
+
+export const CHECKIN_TIMINGS = [
+  {
+    type: "One Night",
+    badge: "ONE NIGHT",
+    hours: "Check-in: 12:00 PM • Check-out: 10:00 AM",
+    display: "12 PM → 10 AM",
+    description: "Standard overnight retreat with sunset and morning valley views.",
+  },
+  {
+    type: "Evening Stay",
+    badge: "EVENING STAY",
+    hours: "Check-in: 06:00 PM • Check-out: 04:00 PM",
+    display: "6 PM → 4 PM",
+    description: "Evening check-in ideal for after-work weekend escapes.",
+  },
+  {
+    type: "One Day",
+    badge: "DAY OUTING",
+    hours: "Check-in: 09:00 AM • Check-out: 07:00 PM",
+    display: "9 AM → 7 PM",
+    description: "Full day leisure outing with pool access and resort grounds.",
+  },
+];
+
+export const OFFICIAL_AMENITIES = [
+  "AC",
+  "Games",
+  "Free Parking",
+  "Room Service",
+  "Restaurant",
+  "Infinity Pool",
+  "Rooftop Restaurant",
+  "Wi-Fi",
+];
 
 export const ROOMS_DATA: Room[] = [
   {
-    id: "sunset-suite",
-    name: "Sunset Suite Rooms",
-    category: "Signature Suite",
-    tagline: "Unobstructed views of the valley painted in twilight hues.",
+    id: "single-cottage",
+    name: "Single Cottage",
+    category: "Cottage",
+    tagline: "Vibrant standalone retreat in cheerful lilac, yellow, orange and blue hues.",
     description:
-      "Our most sought-after accommodation, perched with expansive glass vistas overlooking the rolling Kondeshwar hills. Features rich teakwood finishes, plush king bedding, private sunset deck, and tailored lighting.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBtLe7cIPOgeM3xyzXaePjdIdXc6n8qQH2nm_fylm-C-riYUZFw_eMyP6N4iMpImKX23HvEJR2GBJU5z1gFdniqi48aB1IJWQxQjP7r9RNkjwjocILBqRB5K_fdu8Vav4TbyzkyHi-nVMxH39hl5yw51erwYQAS6SthPErbCeF6bBjJKIT-NWL8eUT6_bVtbbOVCSnv11mbo0snCDUMcMNsI8dZ6NXcXy6mtJaSoYHrhhMF3HBUnnLu5g",
-    capacity: "2 Adults + 1 Child",
-    view: "Panoramic Valley & Sunset",
-    bed: "King Size Plush",
-    amenities: [
-      "Private Sunset Balcony",
-      "Panoramic Glass Facade",
-      "Air Conditioning & Climate Control",
-      "Smart HD TV & High-Speed Wi-Fi",
-      "Artisan Bath Amenities",
-      "Complimentary Tea & Coffee Bar",
-    ],
-    featured: true,
-  },
-  {
-    id: "sunset-suite-bathtub",
-    name: "Sunset Suite with Bathtub",
-    category: "Ultra Luxury",
-    tagline: "Indulgent deep-soaking bathtub overlooking serene green ridges.",
-    description:
-      "An upgraded edition of our signature suite featuring an artisanal standalone bathtub placed before panoramic picture windows. Designed for couples seeking unmatched intimacy and restorative peace.",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UHDMoxZrHmA_FKLP-DjEPA6iXplMT0hE7VfUfIVKPx9-28-u7aN_5HXYn63TEWA4bKHgqAK2fUpJJEM0B8iv6J_-bvZI9I4aMyGua-syP8NFopOHH9nCybKcjtKo9xOtpkLyT_hVDGEZpeDoZZtl36wyxP1rAZHJXcM9-Vl6Ityvu98i0cI2zGAYfFDxM8rssTVUPwYJrXI2xDGvf1-HB3toMbfXygedlA5mZ-cSKKnPR6bVxXt1xfX1vC",
-    capacity: "2 Adults",
-    view: "Valley & Sunset Overlook",
-    bed: "Royal King Size",
-    amenities: [
-      "Designer Deep-Soak Bathtub",
-      "Panoramic Valley Window",
-      "Warm Amber Mood Lighting",
-      "Complimentary Bath Salts & Robes",
-      "Private Viewing Lounge",
-      "In-Room Dining Service",
-    ],
-    featured: true,
-  },
-  {
-    id: "colourful-cottages",
-    name: "Single Colourful Cottages",
-    category: "Boutique Cottage",
-    tagline: "Vibrant standalone retreats nestled amidst blooming flora.",
-    description:
-      "Charming, independent cottages with joyful contemporary color palettes and rustic timber textures. Each cottage offers absolute privacy, direct garden pathways, and a welcoming covered sit-out.",
+      "Experience the charm of our colourful single cottages, available in vibrant hues of yellow, orange, lilac, and blue. Each cottage is designed to provide a cosy and unique retreat.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuC5caNXPlhp70d_0swwBQbfrQ33XZtZW2RfImAT3seK8NemVg-Hb_zOHc3v7nBhCMJ0iHS72i_9uACZG4J1Rs6CIOf7B4E18bUIlrU3ICS3nd2t1itCwFAkhu42nC6Y-ybqbjAWHlRb3GDUW8c4ewu0K1qO4iFm3aZni6wZjmEAThGIi66UTNxM1vqJJSTTQoZdR6R74SSc3RMtFthXJWdH2bz2UurLDk8n5Fvww8xiQrpZjHKxbrrZBw",
-    capacity: "2 Adults",
-    view: "Tropical Gardens",
-    bed: "Queen Size Comfort",
-    amenities: [
-      "Private Covered Porch",
-      "Direct Garden Access",
-      "Air Conditioning",
-      "En-suite Modern Bathroom",
-      "Dedicated Room Service",
-      "High-Speed Wi-Fi",
-    ],
-    featured: true,
-  },
-  {
-    id: "3bhk-villa",
-    name: "3BHK Luxury Villa",
-    category: "Private Estate",
-    tagline: "Spacious luxury sanctuary designed for family gatherings & groups.",
-    description:
-      "A grand multi-bedroom residence boasting high ceilings, an expansive living and dining hall, private terrace, and lush garden vistas. Perfect for reunions, bridal parties, or private weekend get-togethers.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCHF4eVG3_7tb4BSb_REZxWwluqg09QB6WcN_c274ayPJrskv_oYXaEoCrogA7uapfA4KgCO8zB--JQLBua3NM2bTn-7uYgM5SkqXWW_2Xhbveb7oyF8WA8BaZkCKJOx0n7-sQINzFj5dXOdkzVVi2t8ghqvd6hCss_HKNX01fO6HGLUD13RIIntQW96cvSHAIs5kHUc57shcwvVO_NwASiZ9ESqH1Udq6fggiL-7bebDHSMXMVIQQ3vw",
-    capacity: "6 to 10 Guests",
-    view: "Private Estate & Hills",
-    bed: "3 Master King Bedrooms",
-    amenities: [
-      "3 Private En-suite Bedrooms",
-      "Expansive Living & Dining Hall",
-      "Floor-to-Ceiling Windows",
-      "Private Terrace Balcony",
-      "Personal Butler Assistance",
-      "Kitchenette & Fridge",
-    ],
+    capacity: "For 2 people",
+    capacityNumber: 2,
+    dayPrice: 2500,
+    nightPrice: 4500,
+    dayPriceDisplay: "₹2,500",
+    nightPriceDisplay: "₹4,500",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    amenities: OFFICIAL_AMENITIES,
     featured: true,
   },
   {
     id: "duplex-cottage",
     name: "Duplex Cottage",
-    category: "Split-Level Suite",
-    tagline: "Two-level architectural charm with elevated master bedroom loft.",
+    category: "Duplex Cottage",
+    tagline: "Spacious split-level comfort balancing luxury with practicality for families.",
     description:
-      "Featuring a distinctive mezzanine layout with high wood-beamed ceilings, ground-floor living space, and an airy upper sleeping sanctuary. Ideal for small families and long weekends.",
+      "Enjoy the ample space and comfort of our duplex cottage, ideal for families and groups. These well-appointed cottages provide a perfect balance of luxury and practicality.",
     image:
       "https://lh3.googleusercontent.com/aida/AEtjO1UHDMoxZrHmA_FKLP-DjEPA6iXplMT0hE7VfUfIVKPx9-28-u7aN_5HXYn63TEWA4bKHgqAK2fUpJJEM0B8iv6J_-bvZI9I4aMyGua-syP8NFopOHH9nCybKcjtKo9xOtpkLyT_hVDGEZpeDoZZtl36wyxP1rAZHJXcM9-Vl6Ityvu98i0cI2zGAYfFDxM8rssTVUPwYJrXI2xDGvf1-HB3toMbfXygedlA5mZ-cSKKnPR6bVxXt1xfX1vC",
-    capacity: "4 Guests",
-    view: "Garden & Ridge View",
-    bed: "1 King + 2 Twin Beds",
-    amenities: [
-      "Split-Level Mezzanine Design",
-      "Double Height Ceilings",
-      "Dual Air Conditioning Units",
-      "Spacious Living Lounge",
-      "Premium Bathroom Fixtures",
-      "Coffee & Tea Maker",
-    ],
+    capacity: "For 5 people",
+    capacityNumber: 5,
+    dayPrice: 5000,
+    nightPrice: 9000,
+    dayPriceDisplay: "₹5,000",
+    nightPriceDisplay: "₹9,000",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    amenities: OFFICIAL_AMENITIES,
+    featured: true,
   },
   {
-    id: "bunked-bed-cottage",
-    name: "Bunked Bed Cottage",
-    category: "Group & Squad",
-    tagline: "Cleverly crafted communal cottage for friendship adventures.",
+    id: "suite-cottage",
+    name: "Suite Cottage",
+    category: "Suite Cottage",
+    tagline: "Step into the lap of luxury with elegant interiors and indulgent relaxation.",
     description:
-      "Designed for youth gangs, trekkers, and close-knit friend circles visiting Kondeshwar trails. Features comfortable custom-built bunk beds, modern lockers, and vibrant lounge spaces.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC5caNXPlhp70d_0swwBQbfrQ33XZtZW2RfImAT3seK8NemVg-Hb_zOHc3v7nBhCMJ0iHS72i_9uACZG4J1Rs6CIOf7B4E18bUIlrU3ICS3nd2t1itCwFAkhu42nC6Y-ybqbjAWHlRb3GDUW8c4ewu0K1qO4iFm3aZni6wZjmEAThGIi66UTNxM1vqJJSTTQoZdR6R74SSc3RMtFthXJWdH2bz2UurLDk8n5Fvww8xiQrpZjHKxbrrZBw",
-    capacity: "4 to 6 Guests",
-    view: "Courtyard & Hills",
-    bed: "Custom Quad Bunk Beds",
-    amenities: [
-      "Sturdy Ergonomic Bunk Setup",
-      "Individual Charging Stations",
-      "Spacious Luggage Storage",
-      "Air Conditioning",
-      "Dedicated Social Corner",
-      "Fast Wi-Fi for Streaming",
-    ],
-  },
-  {
-    id: "suite-cottages",
-    name: "Suite Cottages",
-    category: "Executive Cottage",
-    tagline: "Quiet sophistication with private veranda and plush amenities.",
-    description:
-      "A serene standalone cottage pairing clean modern aesthetics with warm local stone and timber touches. Features an intimate living nook and secluded outdoor sit-out.",
+      "Step into the lap of luxury with our suite cottage, designed for ultimate relaxation. Enjoy elegant interiors and premium amenities for a truly indulgent stay.",
     image:
       "https://lh3.googleusercontent.com/aida-public/AB6AXuBtLe7cIPOgeM3xyzXaePjdIdXc6n8qQH2nm_fylm-C-riYUZFw_eMyP6N4iMpImKX23HvEJR2GBJU5z1gFdniqi48aB1IJWQxQjP7r9RNkjwjocILBqRB5K_fdu8Vav4TbyzkyHi-nVMxH39hl5yw51erwYQAS6SthPErbCeF6bBjJKIT-NWL8eUT6_bVtbbOVCSnv11mbo0snCDUMcMNsI8dZ6NXcXy6mtJaSoYHrhhMF3HBUnnLu5g",
-    capacity: "2 to 3 Guests",
-    view: "Lush Valley Greenery",
-    bed: "King Bed + Daybed",
-    amenities: [
-      "Private Sit-Out Veranda",
-      "Daybed Reading Nook",
-      "Air Conditioning",
-      "Rain Shower En-suite",
-      "Complimentary Mineral Water",
-      "Daily Housekeeping",
+    capacity: "For 6 people",
+    capacityNumber: 6,
+    dayPrice: 6000,
+    nightPrice: 10000,
+    dayPriceDisplay: "₹6,000",
+    nightPriceDisplay: "₹10,000",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    amenities: OFFICIAL_AMENITIES,
+    featured: true,
+  },
+  {
+    id: "bunk-bed-cottage",
+    name: "Bunk Bed Cottage",
+    category: "Group Cottage",
+    tagline: "Playful and practical communal cottage crafted for large group adventures.",
+    description:
+      "Perfect for large groups, our bunk bed cottage combines fun with comfort. These cottages provide a playful and practical accommodation option.",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuC5caNXPlhp70d_0swwBQbfrQ33XZtZW2RfImAT3seK8NemVg-Hb_zOHc3v7nBhCMJ0iHS72i_9uACZG4J1Rs6CIOf7B4E18bUIlrU3ICS3nd2t1itCwFAkhu42nC6Y-ybqbjAWHlRb3GDUW8c4ewu0K1qO4iFm3aZni6wZjmEAThGIi66UTNxM1vqJJSTTQoZdR6R74SSc3RMtFthXJWdH2bz2UurLDk8n5Fvww8xiQrpZjHKxbrrZBw",
+    capacity: "For 10 people",
+    capacityNumber: 10,
+    dayPrice: 10000,
+    nightPrice: 14000,
+    dayPriceDisplay: "₹10,000",
+    nightPriceDisplay: "₹14,000",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    amenities: OFFICIAL_AMENITIES,
+  },
+  {
+    id: "villa",
+    name: "Villa",
+    category: "Private Villa",
+    tagline: "Spacious private sanctuary with exclusive elegance and premium comforts.",
+    description:
+      "Our villa offers a luxurious escape with spacious interiors and premium amenities. Enjoy exclusive comfort and elegance in a private setting.",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCHF4eVG3_7tb4BSb_REZxWwluqg09QB6WcN_c274ayPJrskv_oYXaEoCrogA7uapfA4KgCO8zB--JQLBua3NM2bTn-7uYgM5SkqXWW_2Xhbveb7oyF8WA8BaZkCKJOx0n7-sQINzFj5dXOdkzVVi2t8ghqvd6hCss_HKNX01fO6HGLUD13RIIntQW96cvSHAIs5kHUc57shcwvVO_NwASiZ9ESqH1Udq6fggiL-7bebDHSMXMVIQQ3vw",
+    capacity: "For 12 people",
+    capacityNumber: 12,
+    dayPrice: 11000,
+    nightPrice: 16000,
+    dayPriceDisplay: "₹11,000",
+    nightPriceDisplay: "₹16,000",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    amenities: OFFICIAL_AMENITIES,
+    featured: true,
+  },
+  {
+    id: "sunset-suite",
+    name: "Sunset Suite",
+    category: "Signature Suite",
+    tagline: "Breathtaking twilight vistas and deluxe comfort with optional bathtub upgrade.",
+    description:
+      "Experience stunning sunsets and deluxe comfort in our beautifully appointed Sunset Suite. Enjoy a luxurious bathtub and premium room with breathtaking sunset views.",
+    image:
+      "https://lh3.googleusercontent.com/aida/AEtjO1UHDMoxZrHmA_FKLP-DjEPA6iXplMT0hE7VfUfIVKPx9-28-u7aN_5HXYn63TEWA4bKHgqAK2fUpJJEM0B8iv6J_-bvZI9I4aMyGua-syP8NFopOHH9nCybKcjtKo9xOtpkLyT_hVDGEZpeDoZZtl36wyxP1rAZHJXcM9-Vl6Ityvu98i0cI2zGAYfFDxM8rssTVUPwYJrXI2xDGvf1-HB3toMbfXygedlA5mZ-cSKKnPR6bVxXt1xfX1vC",
+    capacity: "For 2 people",
+    capacityNumber: 2,
+    dayPrice: 3500,
+    nightPrice: 6500,
+    dayPriceDisplay: "₹3,500",
+    nightPriceDisplay: "₹6,500",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    optionalAddOns: [
+      {
+        name: "Bathtub Suite Add-on",
+        price: 500,
+        priceDisplay: "+₹500",
+        description: "Bathtub available as an optional ₹500 add-on",
+      },
     ],
+    amenities: OFFICIAL_AMENITIES,
+    featured: true,
+  },
+  {
+    id: "dormitory-rooms",
+    name: "Dormitory Rooms",
+    category: "Group Stay",
+    tagline: "Comfortable and convenient group sanctuary for gatherings and squad retreats.",
+    description:
+      "Ideal for large groups, our dormitory rooms offer comfort and convenience. These spacious accommodations are perfect for gatherings and group stays.",
+    image:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBtLe7cIPOgeM3xyzXaePjdIdXc6n8qQH2nm_fylm-C-riYUZFw_eMyP6N4iMpImKX23HvEJR2GBJU5z1gFdniqi48aB1IJWQxQjP7r9RNkjwjocILBqRB5K_fdu8Vav4TbyzkyHi-nVMxH39hl5yw51erwYQAS6SthPErbCeF6bBjJKIT-NWL8eUT6_bVtbbOVCSnv11mbo0snCDUMcMNsI8dZ6NXcXy6mtJaSoYHrhhMF3HBUnnLu5g",
+    capacity: "For 7 people",
+    capacityNumber: 7,
+    dayPrice: 6500,
+    nightPrice: 11000,
+    dayPriceDisplay: "₹6,500",
+    nightPriceDisplay: "₹11,000",
+    weekdayDiscount: "10% off on weekdays — Monday to Friday.",
+    foodIncluded: false,
+    amenities: OFFICIAL_AMENITIES,
+  },
+];
+
+export const STAY_WITH_FOOD_PACKAGES: FoodPackage[] = [
+  {
+    title: "One Night Food Package",
+    pricePerPerson: 2800,
+    priceDisplay: "₹2,800",
+    period: "per person / night",
+    includes: [
+      "Overnight Stay in Chosen Category",
+      "2 Main Meals (Lunch & Dinner)",
+      "Morning Breakfast",
+      "Evening High-Tea & Snacks",
+      "Veg & Non-Veg Multi-Cuisine Options",
+    ],
+  },
+  {
+    title: "One Day Food Package",
+    pricePerPerson: 1900,
+    priceDisplay: "₹1,900",
+    period: "per person / day",
+    includes: [
+      "Day Outing Resort & Pool Access",
+      "1 Main Meal (Lunch)",
+      "Welcome Breakfast",
+      "Evening Snacks & Tea",
+      "Veg & Non-Veg Multi-Cuisine Options",
+    ],
+  },
+];
+
+export const SINGLE_COTTAGE_FOOD_PACKAGE = {
+  title: "Single Cottage Food Package",
+  subtitle: "Inclusive of cottage stay, meals, breakfast and snacks for 2 guests",
+  adultRates: {
+    dayPrice: "₹4,500",
+    nightPrice: "₹6,500",
+    capacity: "2 People",
+  },
+  kidsRates: {
+    ageRange: "Kids (5 – 12 Years)",
+    dayPrice: "₹1,300",
+    nightPrice: "₹1,700",
+  },
+};
+
+export const FLOATING_BREAKFAST = {
+  title: "Floating Breakfast",
+  price: 1199,
+  priceDisplay: "₹1,199",
+  description: "Wake up to a serene morning at our infinity pool with a luxurious floating breakfast.",
+  note: "Advance booking required.",
+};
+
+export const BUFFET_TIMINGS: BuffetMeal[] = [
+  {
+    id: "breakfast",
+    name: "Breakfast",
+    time: "8:30 AM – 10:30 AM",
+    items: [
+      "Misal Pav / Kanda Poha / Upma (Any One Daily Specialty)",
+      "Egg Bhurji",
+      "Bread, Butter & Jam",
+      "Freshly Brewed Tea & Coffee",
+    ],
+  },
+  {
+    id: "lunch",
+    name: "Lunch",
+    time: "1:00 PM – 3:00 PM",
+    items: [
+      "Veg Starter",
+      "Chicken Gravy (Non-Veg Specialty)",
+      "Vegetable Sabji",
+      "Dal Fry & Steamed Rice",
+      "Fresh Tawa Roti",
+      "Green Salad, Crispy Papad & Pickle",
+      "Traditional Sweet Dish",
+    ],
+  },
+  {
+    id: "snacks",
+    name: "Evening Snacks",
+    time: "5:00 PM – 6:30 PM",
+    items: [
+      "Vada Pav / Mix Pakoda / Pav Bhaji (Any One Daily Specialty)",
+      "Bread, Butter & Jam",
+      "Hot Masala Tea & Filter Coffee",
+    ],
+  },
+  {
+    id: "dinner",
+    name: "Dinner",
+    time: "8:30 PM – 11:00 PM",
+    items: [
+      "Veg Starter",
+      "Chicken Gravy (Non-Veg Specialty)",
+      "Vegetable Sabji",
+      "Dal Fry & Steamed Rice",
+      "Fresh Tawa Roti",
+      "Green Salad, Crispy Papad & Pickle",
+      "Traditional Sweet Dish",
+    ],
+  },
+];
+
+export const BOOKING_POLICIES = [
+  {
+    title: "Advance Payment",
+    rule: "A minimum advance of ₹3,000 or 50% of the total booking amount is required to secure the reservation.",
+  },
+  {
+    title: "Booking Confirmation",
+    rule: "Booking is considered confirmed on payment of 50% of the total amount. The remaining amount is payable on the day of check-in through cash or UPI.",
+  },
+  {
+    title: "Cancellation Policy",
+    rule: "The booking amount is non-refundable.",
+  },
+  {
+    title: "Outside Food & Beverages",
+    rule: "Outside food and beverages are strictly prohibited on the resort premises.",
+  },
+  {
+    title: "Pet Policy",
+    rule: "Pets are strictly prohibited within the resort premises.",
+  },
+  {
+    title: "Swimming Pool Timings",
+    rule: "Swimming pool timing is strictly 8:30 AM – 7:00 PM.",
+  },
+  {
+    title: "Smoking Restriction",
+    rule: "Smoking is strictly prohibited inside cottages and restaurant dining areas.",
+  },
+  {
+    title: "Taxes & GST",
+    rule: "All prices mentioned across accommodations and packages are exclusive of GST.",
   },
 ];
 

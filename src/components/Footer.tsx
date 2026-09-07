@@ -9,18 +9,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Col 1: Brand & Bio */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#d4af37]/40 bg-[#121411]">
+            <div className="flex items-center gap-3.5">
+              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#d4af37]/60 bg-[#121411] shadow-[0_0_15px_rgba(212,175,55,0.2)] flex items-center justify-center p-1 shrink-0">
                 <Image
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt5mI_5NjwB85kPAZk7Rt124ayWp0RWp8-JSAAm1XsYXvG0fN-0uLUp0szxvQC6jxWLH_tkOpKEyGGMS_DR9QFFb3cgNiW__RMSLw9kAxRKVtXDro6T8z35jVZ2fzXmkrXr3MR0FMUYhqlPL0_ajz3cZHwYTnXO26SLA59O6xPUHs9pLvXoA4XPKv4oj21PuMNgHcOxwudjkKK8t6rn6lY4NCwe-p6-g67Q7USJhNAkUdLefMByl3D_g"
-                  alt="Nirva Resort Emblem"
+                  src="/nirva-emblem.png"
+                  alt="Nirva The Cottage & Resort Emblem"
                   fill
-                  className="object-contain p-0.5"
+                  sizes="48px"
+                  className="object-contain p-1"
                 />
               </div>
-              <span className="font-serif text-2xl font-bold text-[#f2ca50]">
-                {RESORT_INFO.shortName}
-              </span>
+              <div className="flex flex-col">
+                <span className="font-serif text-2xl font-bold text-[#f2ca50] leading-none">
+                  Nirva
+                </span>
+                <span className="text-[9px] uppercase tracking-[0.22em] text-[#d0c5af] font-sans font-medium mt-1">
+                  THE COTTAGE & RESORT
+                </span>
+              </div>
             </div>
             <p className="font-sans text-xs text-[#E5E4E2]/70 leading-relaxed font-light">
               An intimate sanctuary nestled amidst the rolling foothills of Badlapur East. Where quiet
@@ -106,13 +112,13 @@ export default function Footer() {
               Stay Categories
             </h4>
             <ul className="space-y-2 text-xs text-[#E5E4E2]/70 font-sans">
-              <li>Sunset Suite Rooms</li>
-              <li>Sunset Suite with Bathtub</li>
-              <li>Single Colourful Cottages</li>
-              <li>3BHK Luxury Villa</li>
-              <li>Duplex Cottage</li>
-              <li>Bunked Bed Cottage</li>
-              <li>Suite Cottages</li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Single Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Duplex Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Suite Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Bunk Bed Cottage</a></li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Villa</a></li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Sunset Suite</a></li>
+              <li><a href="#stay" className="hover:text-[#f2ca50] transition-colors">Dormitory Rooms</a></li>
             </ul>
           </div>
 
@@ -124,7 +130,14 @@ export default function Footer() {
             <div className="space-y-3 text-xs text-[#E5E4E2]/75 font-sans">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#f2ca50] shrink-0 mt-0.5" />
-                <span>Near Dahiwali Gaon Bridge, Kondeshwar Road, Badlapur East</span>
+                <a
+                  href={RESORT_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#f2ca50] transition-colors"
+                >
+                  Near Dahiwali Gaon Bridge, Kondeshwar Road, Badlapur East
+                </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#f2ca50] shrink-0" />

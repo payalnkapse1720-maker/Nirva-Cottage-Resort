@@ -23,9 +23,17 @@ export default function Hero() {
 
       {/* Hero Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 md:px-8 text-center pt-24 pb-16 flex flex-col items-center">
-        {/* Subtle Luxury Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#121411]/80 border border-[#d4af37]/30 backdrop-blur-md mb-8 animate-fade-in">
-          <Sparkles className="w-3.5 h-3.5 text-[#f2ca50]" />
+        {/* Subtle Luxury Badge with Official Crest */}
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#121411]/85 border border-[#d4af37]/40 backdrop-blur-md mb-8 shadow-[0_0_20px_rgba(212,175,55,0.15)] animate-fade-in">
+          <div className="relative w-4 h-4 shrink-0">
+            <Image
+              src="/nirva-emblem.png"
+              alt="Nirva Crest"
+              fill
+              sizes="16px"
+              className="object-contain"
+            />
+          </div>
           <span className="text-[11px] uppercase tracking-[0.25em] text-[#E5E4E2] font-medium font-sans">
             Boutique Luxury • Badlapur East
           </span>
