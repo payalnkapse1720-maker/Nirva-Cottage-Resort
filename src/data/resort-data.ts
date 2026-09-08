@@ -37,6 +37,7 @@ export interface FoodPackage {
   pricePerPerson: number;
   priceDisplay: string;
   period: string;
+  note?: string;
   includes: string[];
 }
 
@@ -277,28 +278,29 @@ export const ROOMS_DATA: Room[] = [
 
 export const STAY_WITH_FOOD_PACKAGES: FoodPackage[] = [
   {
-    title: "One Night Food Package",
-    pricePerPerson: 2800,
-    priceDisplay: "₹2,800",
-    period: "per person / night",
-    includes: [
-      "Overnight Stay in Chosen Category",
-      "2 Main Meals (Lunch & Dinner)",
-      "Morning Breakfast",
-      "Evening High-Tea & Snacks",
-      "Veg & Non-Veg Multi-Cuisine Options",
-    ],
-  },
-  {
     title: "One Day Food Package",
     pricePerPerson: 1900,
     priceDisplay: "₹1,900",
     period: "per person / day",
     includes: [
-      "Day Outing Resort & Pool Access",
-      "1 Main Meal (Lunch)",
-      "Welcome Breakfast",
-      "Evening Snacks & Tea",
+      "01 Meal",
+      "01 Breakfast",
+      "Lunch",
+      "High Tea (or) Snacks",
+      "Veg & Non-Veg Multi-Cuisine Options",
+    ],
+  },
+  {
+    title: "One Night Food Package",
+    pricePerPerson: 2800,
+    priceDisplay: "₹2,800",
+    period: "per person / night",
+    note: "(Group Booking — Minimum 03 people required to apply for ₹2,800 rate)",
+    includes: [
+      "Overnight Stay in Chosen Category",
+      "2 Main Meals (Lunch & Dinner)",
+      "Morning Breakfast",
+      "Evening High-Tea & Snacks",
       "Veg & Non-Veg Multi-Cuisine Options",
     ],
   },

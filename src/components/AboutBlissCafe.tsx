@@ -140,18 +140,17 @@ export default function AboutBlissCafe() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Package 1: One Night Food Package */}
+            {/* Package 1: One Day Food Package */}
             <div className="p-6 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] flex flex-col justify-between space-y-6 relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C99A4A]/5 rounded-bl-full pointer-events-none" />
               <div className="space-y-3">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[#C99A4A] font-semibold block">
-                  Overnight Dining Package
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#6B5540] font-semibold block">
+                  Day Outing Dining Package
                 </span>
                 <h4 className="font-serif text-xl text-[#3E2F24] font-bold">
                   {STAY_WITH_FOOD_PACKAGES[0].title}
                 </h4>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-serif text-3xl font-bold text-[#C99A4A]">
+                  <span className="font-sans text-3xl font-bold text-[#3E2F24]">
                     {STAY_WITH_FOOD_PACKAGES[0].priceDisplay}
                   </span>
                   <span className="text-xs text-[#6B5540] font-light">
@@ -168,28 +167,34 @@ export default function AboutBlissCafe() {
                 </ul>
               </div>
               <div className="pt-3 border-t border-[#D8C6A8]/40 text-[10px] text-[#6B5540] flex items-center justify-between">
-                <span>Stay + 2 Meals + Breakfast + Snacks</span>
+                <span>Stay + 1 Meal + Breakfast + Snacks</span>
                 <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
               </div>
             </div>
 
-            {/* Package 2: One Day Food Package */}
+            {/* Package 2: One Night Food Package */}
             <div className="p-6 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] flex flex-col justify-between space-y-6 relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C99A4A]/5 rounded-bl-full pointer-events-none" />
               <div className="space-y-3">
-                <span className="text-[10px] uppercase tracking-[0.2em] text-[#6B5540] font-semibold block">
-                  Day Outing Dining Package
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#C99A4A] font-semibold block">
+                  Overnight Dining Package
                 </span>
                 <h4 className="font-serif text-xl text-[#3E2F24] font-bold">
                   {STAY_WITH_FOOD_PACKAGES[1].title}
                 </h4>
                 <div className="flex items-baseline gap-2">
-                  <span className="font-serif text-3xl font-bold text-[#3E2F24]">
+                  <span className="font-sans text-3xl font-bold text-[#C99A4A]">
                     {STAY_WITH_FOOD_PACKAGES[1].priceDisplay}
                   </span>
                   <span className="text-xs text-[#6B5540] font-light">
                     {STAY_WITH_FOOD_PACKAGES[1].period}
                   </span>
                 </div>
+                {STAY_WITH_FOOD_PACKAGES[1].note && (
+                  <p className="text-[11px] text-[#6B5540] font-light">
+                    {STAY_WITH_FOOD_PACKAGES[1].note}
+                  </p>
+                )}
                 <ul className="space-y-2.5 pt-3 border-t border-[#D8C6A8]/40 text-xs text-[#3E2F24]">
                   {STAY_WITH_FOOD_PACKAGES[1].includes.map((inc) => (
                     <li key={inc} className="flex items-center gap-2">
@@ -200,7 +205,7 @@ export default function AboutBlissCafe() {
                 </ul>
               </div>
               <div className="pt-3 border-t border-[#D8C6A8]/40 text-[10px] text-[#6B5540] flex items-center justify-between">
-                <span>Stay + 1 Meal + Breakfast + Snacks</span>
+                <span>Stay + 2 Meals + Breakfast + Snacks</span>
                 <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
               </div>
             </div>
@@ -224,18 +229,18 @@ export default function AboutBlissCafe() {
                     <span className="text-[#3E2F24] font-medium">
                       Adults ({SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.capacity})
                     </span>
-                    <span className="text-[#C99A4A] font-semibold font-serif">
-                      Day {SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.dayPrice} • Night{" "}
-                      {SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.nightPrice}
+                    <span className="text-[#C99A4A] font-semibold">
+                      Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.dayPrice}</span> • Night{" "}
+                      <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.nightPrice}</span>
                     </span>
                   </div>
                   <div className="p-3 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-between text-xs">
                     <span className="text-[#6B5540] font-medium">
                       {SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.ageRange}
                     </span>
-                    <span className="text-[#3E2F24] font-medium font-serif">
-                      Day {SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.dayPrice} • Night{" "}
-                      {SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.nightPrice}
+                    <span className="text-[#3E2F24] font-medium">
+                      Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.dayPrice}</span> • Night{" "}
+                      <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.nightPrice}</span>
                     </span>
                   </div>
                 </div>
@@ -251,7 +256,7 @@ export default function AboutBlissCafe() {
                     {FLOATING_BREAKFAST.note}
                   </span>
                 </div>
-                <span className="font-serif text-sm font-bold text-[#C99A4A]">
+                <span className="font-sans text-sm font-bold text-[#C99A4A]">
                   {FLOATING_BREAKFAST.priceDisplay}
                 </span>
               </div>

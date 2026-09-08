@@ -354,7 +354,7 @@ Sent via Nirva Resort Official Website.`;
                         <Bath className="w-3.5 h-3.5 text-[#C99A4A]" /> Bathtub Suite Add-on
                       </span>
                     </label>
-                    <span className="text-xs font-serif font-bold text-[#C99A4A]">+₹500</span>
+                    <span className="text-xs font-sans font-bold text-[#C99A4A]">+₹500</span>
                   </div>
                 )}
 

@@ -81,7 +81,7 @@ export default function Accommodations() {
                   {room.optionalAddOns && room.optionalAddOns.length > 0 && (
                     <div className="px-3 py-2 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] text-[11px] text-[#3E2F24] font-medium flex items-center justify-between">
                       <span className="text-[#6B5540]">Bathtub Suite Add-on</span>
-                      <span className="font-bold text-[#C99A4A]">{room.optionalAddOns[0].priceDisplay}</span>
+                      <span className="font-sans font-bold text-[#C99A4A]">{room.optionalAddOns[0].priceDisplay}</span>
                     </div>
                   )}
 
@@ -92,7 +92,7 @@ export default function Accommodations() {
                         <span className="text-[10px] uppercase tracking-wider text-[#6B5540] block font-medium">
                           One Day
                         </span>
-                        <span className="font-serif text-base sm:text-lg font-bold text-[#3E2F24]">
+                        <span className="font-sans text-base sm:text-lg font-bold text-[#3E2F24]">
                           {room.dayPriceDisplay}
                         </span>
                       </div>
@@ -101,7 +101,7 @@ export default function Accommodations() {
                         <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-semibold block">
                           One Night
                         </span>
-                        <span className="font-serif text-base sm:text-lg font-bold text-[#C99A4A]">
+                        <span className="font-sans text-base sm:text-lg font-bold text-[#C99A4A]">
                           {room.nightPriceDisplay}
                         </span>
                       </div>

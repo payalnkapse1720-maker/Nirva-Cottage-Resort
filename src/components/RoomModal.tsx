@@ -85,7 +85,7 @@ export default function RoomModal({ room, onClose }: RoomModalProps) {
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[#6B5540] font-semibold block">
                     DAY STAY
                   </span>
-                  <div className="font-serif text-2xl sm:text-3xl font-bold text-[#3E2F24] mt-1">
+                  <div className="font-sans text-2xl sm:text-3xl font-bold text-[#3E2F24] mt-1">
                     {room.dayPriceDisplay}
                   </div>
                 </div>
@@ -101,7 +101,7 @@ export default function RoomModal({ room, onClose }: RoomModalProps) {
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[#C99A4A] font-semibold block">
                     ONE NIGHT
                   </span>
-                  <div className="font-serif text-2xl sm:text-3xl font-bold text-[#C99A4A] mt-1">
+                  <div className="font-sans text-2xl sm:text-3xl font-bold text-[#C99A4A] mt-1">
                     {room.nightPriceDisplay}
                   </div>
                 </div>
@@ -129,7 +129,7 @@ export default function RoomModal({ room, onClose }: RoomModalProps) {
                 <span className="text-xs uppercase tracking-[0.18em] text-[#C99A4A] font-semibold flex items-center gap-1.5">
                   <Bath className="w-4 h-4 text-[#C99A4A]" /> Optional Upgrade
                 </span>
-                <span className="text-xs font-serif font-bold text-[#3E2F24] bg-[#C99A4A]/20 px-2.5 py-1 rounded-md border border-[#C99A4A]/40">
+                <span className="text-xs font-sans font-bold text-[#3E2F24] bg-[#C99A4A]/20 px-2.5 py-1 rounded-md border border-[#C99A4A]/40">
                   {room.optionalAddOns[0].priceDisplay}
                 </span>
               </div>
