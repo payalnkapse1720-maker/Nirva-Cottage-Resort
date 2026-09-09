@@ -2,12 +2,297 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ArrowUpRight, Sparkles, Users, Tag, Wind, Wifi, Waves, Utensils } from "lucide-react";
+import {
+  ArrowUpRight,
+  Sparkles,
+  Users,
+  Tag,
+  Wind,
+  Wifi,
+  Waves,
+  Utensils,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { ROOMS_DATA, Room } from "@/data/resort-data";
 import RoomModal from "./RoomModal";
 
+function RoomCard({
+  room,
+  onSelect,
+}: {
+  room: Room;
+  onSelect: (room: Room, color?: string) => void;
+}) {
+  const [selectedColor, setSelectedColor] = useState<string>("Blue");
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const hasVariants = Boolean(room.colorVariants && room.colorVariants.length > 0);
+  const activeVariant = hasVariants
+    ? room.colorVariants?.find((v) => v.name === selectedColor) || room.colorVariants?.[0]
+    : null;
+
+  const currentImage = activeVariant
+    ? activeVariant.images[currentImageIndex] || room.image
+    : room.image;
+
+  const totalImages = activeVariant ? activeVariant.images.length : 1;
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (!activeVariant) return;
+    setCurrentImageIndex((prev) => (prev + 1) % activeVariant.images.length);
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (!activeVariant) return;
+    setCurrentImageIndex((prev) => (prev - 1 + activeVariant.images.length) % activeVariant.images.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null || !activeVariant) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 40) {
+      handleNext();
+    } else if (diff < -40) {
+      handlePrev();
+    }
+    setTouchStartX(null);
+  };
+
+  return (
+    <div
+      onClick={() => onSelect(room, hasVariants ? selectedColor : undefined)}
+      className="group relative bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] rounded-2xl overflow-hidden shadow-xl hover:shadow-[0_10px_35px_-10px_rgba(62,47,36,0.15)] transition-all duration-300 cursor-pointer flex flex-col justify-between"
+    >
+      {/* Card Top: Image & Overlay Badges */}
+      <div
+        className={`relative ${
+          hasVariants ? "h-80 sm:h-96 md:h-[380px] bg-[#231A13]" : "h-60 sm:h-64"
+        } w-full overflow-hidden shrink-0 transition-all duration-300`}
+        onTouchStart={hasVariants ? handleTouchStart : undefined}
+        onTouchEnd={hasVariants ? handleTouchEnd : undefined}
+      >
+        {/* Ambient blurred backdrop for single cottage to eliminate stark beige margins */}
+        {hasVariants && (
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+            <Image
+              src={currentImage}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 450px"
+              className="object-cover object-center blur-2xl scale-125 opacity-50 brightness-[0.7]"
+              priority
+            />
+            <div className="absolute inset-0 bg-[#231A13]/40 backdrop-blur-md" />
+          </div>
+        )}
+
+        <Image
+          key={currentImage}
+          src={currentImage}
+          alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          className={`${
+            hasVariants
+              ? "object-contain object-center drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]"
+              : "object-cover"
+          } transition-transform duration-500 ease-out group-hover:scale-[1.02]`}
+          priority={hasVariants}
+        />
+        {/* Background preloading for remaining images in active colour collection */}
+        {hasVariants && activeVariant && activeVariant.images.length > 1 && (
+          <div className="hidden" aria-hidden="true">
+            {activeVariant.images.map((src) => (
+              <img key={src} src={src} alt="" loading="eager" decoding="async" />
+            ))}
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/85 via-black/10 to-transparent pointer-events-none" />
+
+        {/* Top Badges */}
+        <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3E2F24]/85 backdrop-blur-md border border-[#D8C6A8]/40 text-[10px] uppercase tracking-wider text-[#F7F3EA] font-semibold">
+            <Users className="w-3 h-3 text-[#C99A4A]" /> {room.capacity}
+          </span>
+          <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#C99A4A] text-[#2F241C] text-[10px] uppercase tracking-wider font-bold shadow-md">
+            <Tag className="w-3 h-3" /> 10% OFF MON–FRI
+          </span>
+        </div>
+
+        {/* Navigation Controls for Colour Variants */}
+        {hasVariants && activeVariant && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+
+            {/* Subtle Image Counter Badge */}
+            <div className="absolute top-12 right-3 z-10 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-2 py-0.5 rounded-full border border-white/15 text-[10px] font-sans text-white/95 pointer-events-none">
+              <span>
+                {currentImageIndex + 1} / {totalImages}
+              </span>
+            </div>
+          </>
+        )}
+
+        {/* Bottom Category on Image */}
+        <div className="absolute bottom-3 left-4 right-4 z-10 pointer-events-none">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold block mb-0.5">
+            {room.category}
+          </span>
+          <h3 className="font-serif text-xl sm:text-2xl text-white font-bold group-hover:text-[#DFB76C] transition-colors">
+            {room.name}
+          </h3>
+        </div>
+      </div>
+
+      {/* Card Body: Info, Pricing & Amenities */}
+      <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
+        {/* Subtle Colour Variant Controls for Single Cottage */}
+        {hasVariants && (
+          <div
+            className="p-2.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between text-[11px]">
+              <span className="uppercase tracking-wider text-[#6B5540] font-semibold text-[10px]">
+                Colour Variant:
+              </span>
+              <span className="font-semibold text-[#3E2F24] flex items-center gap-1.5">
+                <span
+                  className="w-2 h-2 rounded-full inline-block shrink-0"
+                  style={{ backgroundColor: activeVariant?.colorCode }}
+                />
+                {selectedColor} ({totalImages} photos)
+              </span>
+            </div>
+            <div className="grid grid-cols-4 gap-1.5">
+              {room.colorVariants!.map((variant) => {
+                const isActive = selectedColor === variant.name;
+                return (
+                  <button
+                    key={variant.name}
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedColor(variant.name);
+                      setCurrentImageIndex(0);
+                    }}
+                    className={`py-1.5 px-2 rounded-lg text-xs font-sans font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                      isActive
+                        ? "bg-[#3E2F24] text-[#F7F3EA] border-[#3E2F24] shadow-sm font-semibold"
+                        : "bg-[#FBF8F1] text-[#6B5540] hover:text-[#3E2F24] hover:bg-[#F1E9DA] border-[#D8C6A8]"
+                    }`}
+                  >
+                    <span
+                      className="w-2 h-2 rounded-full shrink-0"
+                      style={{ backgroundColor: variant.colorCode }}
+                    />
+                    <span>{variant.name}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Tagline */}
+        <p className="font-sans text-xs sm:text-sm text-[#6B5540] font-light line-clamp-2 leading-relaxed">
+          {room.tagline}
+        </p>
+
+        {/* Sunset Suite Optional Add-on Callout */}
+        {room.optionalAddOns && room.optionalAddOns.length > 0 && (
+          <div className="px-3 py-2 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] text-[11px] text-[#3E2F24] font-medium flex items-center justify-between">
+            <span className="text-[#6B5540]">Bathtub Suite Add-on</span>
+            <span className="font-sans font-bold text-[#C99A4A]">{room.optionalAddOns[0].priceDisplay}</span>
+          </div>
+        )}
+
+        {/* Dual Pricing Display */}
+        <div className="p-3.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="text-left">
+              <span className="text-[10px] uppercase tracking-wider text-[#6B5540] block font-medium">
+                One Day
+              </span>
+              <span className="font-sans text-base sm:text-lg font-bold text-[#3E2F24]">
+                {room.dayPriceDisplay}
+              </span>
+            </div>
+            <div className="h-7 w-px bg-[#D8C6A8]" />
+            <div className="text-right">
+              <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-semibold block">
+                One Night
+              </span>
+              <span className="font-sans text-base sm:text-lg font-bold text-[#C99A4A]">
+                {room.nightPriceDisplay}
+              </span>
+            </div>
+          </div>
+          <div className="pt-1 border-t border-[#D8C6A8]/40 flex items-center justify-between text-[10px] text-[#6B5540]">
+            <span>Room-only tariff (without food)</span>
+            <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
+          </div>
+        </div>
+
+        {/* Amenities Quick Row */}
+        <div className="pt-2 border-t border-[#D8C6A8]/40 flex items-center justify-between text-[11px] text-[#6B5540]">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-1" title="Air Conditioning">
+              <Wind className="w-3.5 h-3.5 text-[#C99A4A]" /> AC
+            </span>
+            <span className="flex items-center gap-1" title="High-Speed Wi-Fi">
+              <Wifi className="w-3.5 h-3.5 text-[#C99A4A]" /> Wi-Fi
+            </span>
+            <span className="flex items-center gap-1" title="Infinity Pool Access">
+              <Waves className="w-3.5 h-3.5 text-[#C99A4A]" /> Pool
+            </span>
+            <span className="flex items-center gap-1" title="Bliss Cafe Restaurant">
+              <Utensils className="w-3.5 h-3.5 text-[#C99A4A]" /> Dining
+            </span>
+          </div>
+
+          {/* View Details Action */}
+          <div className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[#C99A4A] group-hover:text-[#9B7028] transition-colors">
+            Details <ArrowUpRight className="w-3.5 h-3.5" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Accommodations() {
   const [selectedRoom, setSelectedRoom] = useState<Room | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string>("Blue");
+
+  const handleSelectRoom = (room: Room, color?: string) => {
+    setSelectedRoom(room);
+    if (color) setSelectedColor(color);
+  };
 
   return (
     <section id="stay" className="py-24 md:py-32 bg-[#F1E9DA] relative">
@@ -31,113 +316,9 @@ export default function Accommodations() {
 
         {/* Accommodation Cards Grid (All 7 Official Categories) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {ROOMS_DATA.map((room) => {
-            return (
-              <div
-                key={room.id}
-                onClick={() => setSelectedRoom(room)}
-                className="group relative bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] rounded-2xl overflow-hidden shadow-xl hover:shadow-[0_10px_35px_-10px_rgba(62,47,36,0.15)] transition-all duration-300 cursor-pointer flex flex-col justify-between"
-              >
-                {/* Card Top: Image & Overlay Badges */}
-                <div className="relative h-60 sm:h-64 w-full overflow-hidden shrink-0">
-                  <Image
-                    src={room.image}
-                    alt={room.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/85 via-black/20 to-transparent" />
-
-                  {/* Top Badges */}
-                  <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#3E2F24]/85 backdrop-blur-md border border-[#D8C6A8]/40 text-[10px] uppercase tracking-wider text-[#F7F3EA] font-semibold">
-                      <Users className="w-3 h-3 text-[#C99A4A]" /> {room.capacity}
-                    </span>
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#C99A4A] text-[#2F241C] text-[10px] uppercase tracking-wider font-bold shadow-md">
-                      <Tag className="w-3 h-3" /> 10% OFF MON–FRI
-                    </span>
-                  </div>
-
-                  {/* Bottom Category on Image */}
-                  <div className="absolute bottom-3 left-4 right-4">
-                    <span className="text-[10px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold block mb-0.5">
-                      {room.category}
-                    </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-white font-bold group-hover:text-[#DFB76C] transition-colors">
-                      {room.name}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Card Body: Info, Pricing & Amenities */}
-                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
-                  {/* Tagline */}
-                  <p className="font-sans text-xs sm:text-sm text-[#6B5540] font-light line-clamp-2 leading-relaxed">
-                    {room.tagline}
-                  </p>
-
-                  {/* Sunset Suite Optional Add-on Callout */}
-                  {room.optionalAddOns && room.optionalAddOns.length > 0 && (
-                    <div className="px-3 py-2 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] text-[11px] text-[#3E2F24] font-medium flex items-center justify-between">
-                      <span className="text-[#6B5540]">Bathtub Suite Add-on</span>
-                      <span className="font-sans font-bold text-[#C99A4A]">{room.optionalAddOns[0].priceDisplay}</span>
-                    </div>
-                  )}
-
-                  {/* Dual Pricing Display */}
-                  <div className="p-3.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2">
-                    <div className="flex items-center justify-between">
-                      <div className="text-left">
-                        <span className="text-[10px] uppercase tracking-wider text-[#6B5540] block font-medium">
-                          One Day
-                        </span>
-                        <span className="font-sans text-base sm:text-lg font-bold text-[#3E2F24]">
-                          {room.dayPriceDisplay}
-                        </span>
-                      </div>
-                      <div className="h-7 w-px bg-[#D8C6A8]" />
-                      <div className="text-right">
-                        <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-semibold block">
-                          One Night
-                        </span>
-                        <span className="font-sans text-base sm:text-lg font-bold text-[#C99A4A]">
-                          {room.nightPriceDisplay}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="pt-1 border-t border-[#D8C6A8]/40 flex items-center justify-between text-[10px] text-[#6B5540]">
-                      <span>Room-only tariff (without food)</span>
-                      <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
-                    </div>
-                  </div>
-
-                  {/* Amenities Quick Row */}
-                  <div className="pt-2 border-t border-[#D8C6A8]/40 flex items-center justify-between text-[11px] text-[#6B5540]">
-                    <div className="flex items-center gap-3">
-                      <span className="flex items-center gap-1" title="Air Conditioning">
-                        <Wind className="w-3.5 h-3.5 text-[#C99A4A]" /> AC
-                      </span>
-                      <span className="flex items-center gap-1" title="High-Speed Wi-Fi">
-                        <Wifi className="w-3.5 h-3.5 text-[#C99A4A]" /> Wi-Fi
-                      </span>
-                      <span className="flex items-center gap-1" title="Infinity Pool Access">
-                        <Waves className="w-3.5 h-3.5 text-[#C99A4A]" /> Pool
-                      </span>
-                      <span className="flex items-center gap-1" title="Bliss Cafe Restaurant">
-                        <Utensils className="w-3.5 h-3.5 text-[#C99A4A]" /> Dining
-                      </span>
-                    </div>
-
-                    {/* View Details Action */}
-                    <div className="inline-flex items-center gap-1 text-xs font-semibold uppercase tracking-wider text-[#C99A4A] group-hover:text-[#9B7028] transition-colors">
-                      Details <ArrowUpRight className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {ROOMS_DATA.map((room) => (
+            <RoomCard key={room.id} room={room} onSelect={handleSelectRoom} />
+          ))}
         </div>
 
         {/* Category Quick Selector Pills */}
@@ -149,7 +330,7 @@ export default function Accommodations() {
             {ROOMS_DATA.map((room) => (
               <button
                 key={room.id}
-                onClick={() => setSelectedRoom(room)}
+                onClick={() => handleSelectRoom(room, "Blue")}
                 className="px-4 py-2 rounded-full border border-[#D8C6A8] bg-[#FBF8F1] text-[#3E2F24] text-xs font-sans hover:border-[#C99A4A] hover:text-[#C99A4A] hover:bg-[#F7F3EA] transition-all duration-200 cursor-pointer"
               >
                 {room.name} ({room.nightPriceDisplay}/night)
@@ -160,7 +341,11 @@ export default function Accommodations() {
       </div>
 
       {/* Detail Modal */}
-      <RoomModal room={selectedRoom} onClose={() => setSelectedRoom(null)} />
+      <RoomModal
+        room={selectedRoom}
+        initialColor={selectedColor}
+        onClose={() => setSelectedRoom(null)}
+      />
     </section>
   );
 }

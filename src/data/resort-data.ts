@@ -5,6 +5,12 @@ export interface RoomAddOn {
   description: string;
 }
 
+export interface RoomColorVariant {
+  name: string;
+  colorCode?: string;
+  images: string[];
+}
+
 export interface Room {
   id: string;
   name: string;
@@ -12,6 +18,7 @@ export interface Room {
   tagline: string;
   description: string;
   image: string;
+  colorVariants?: RoomColorVariant[];
   capacity: string;
   capacityNumber: number;
   dayPrice: number;
@@ -135,8 +142,47 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Vibrant standalone retreat in cheerful lilac, yellow, orange and blue hues.",
     description:
       "Experience the charm of our colourful single cottages, available in vibrant hues of yellow, orange, lilac, and blue. Each cottage is designed to provide a cosy and unique retreat.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC5caNXPlhp70d_0swwBQbfrQ33XZtZW2RfImAT3seK8NemVg-Hb_zOHc3v7nBhCMJ0iHS72i_9uACZG4J1Rs6CIOf7B4E18bUIlrU3ICS3nd2t1itCwFAkhu42nC6Y-ybqbjAWHlRb3GDUW8c4ewu0K1qO4iFm3aZni6wZjmEAThGIi66UTNxM1vqJJSTTQoZdR6R74SSc3RMtFthXJWdH2bz2UurLDk8n5Fvww8xiQrpZjHKxbrrZBw",
+    image: "/images/rooms/single-cottage/blue/Blue Cottage 1.JPG",
+    colorVariants: [
+      {
+        name: "Blue",
+        colorCode: "#3B82F6",
+        images: [
+          "/images/rooms/single-cottage/blue/Blue Cottage 1.JPG",
+          "/images/rooms/single-cottage/blue/Blue Cottage 2.JPG",
+          "/images/rooms/single-cottage/blue/Blue Cottage 3.JPG",
+          "/images/rooms/single-cottage/blue/Blue Cottage 4.JPG",
+        ],
+      },
+      {
+        name: "Lilac",
+        colorCode: "#A855F7",
+        images: [
+          "/images/rooms/single-cottage/lilac/Lilac Cottage 1.JPG",
+          "/images/rooms/single-cottage/lilac/Lilac Cottage 2.JPG",
+          "/images/rooms/single-cottage/lilac/Lilac Cottage 3.JPG",
+          "/images/rooms/single-cottage/lilac/Lilac Cottage 4.jpg",
+        ],
+      },
+      {
+        name: "Orange",
+        colorCode: "#F97316",
+        images: [
+          "/images/rooms/single-cottage/orange/Orange Cottage 1.JPG",
+          "/images/rooms/single-cottage/orange/Orange Cottage 2.JPG",
+          "/images/rooms/single-cottage/orange/Orange Cottage 3.JPG",
+        ],
+      },
+      {
+        name: "Yellow",
+        colorCode: "#EAB308",
+        images: [
+          "/images/rooms/single-cottage/yellow/Yellow Cottage 1.JPG",
+          "/images/rooms/single-cottage/yellow/Yellow Cottage 2.JPG",
+          "/images/rooms/single-cottage/yellow/Yellow Cottage 3.JPG",
+        ],
+      },
+    ],
     capacity: "For 2 people",
     capacityNumber: 2,
     dayPrice: 2500,

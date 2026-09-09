@@ -52,8 +52,8 @@ export default function Navbar() {
             className="flex items-center gap-3 shrink-0 group transition-transform duration-300 hover:scale-[1.01]"
             aria-label="Nirva The Cottage & Resort Home"
           >
-            {/* Circular Gold Badge Logo */}
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-full border border-[#C99A4A]/80 p-0.5 bg-[#FBF8F1] overflow-hidden shrink-0 shadow-[0_0_15px_rgba(201,154,74,0.2)] flex items-center justify-center">
+            {/* Square Gold Badge Logo */}
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-none border border-[#C99A4A]/80 p-0.5 bg-[#FBF8F1] overflow-hidden shrink-0 shadow-[0_0_15px_rgba(201,154,74,0.2)] flex items-center justify-center">
               <Image
                 src="/nirva-emblem.png"
                 alt="Nirva The Cottage & Resort Emblem"

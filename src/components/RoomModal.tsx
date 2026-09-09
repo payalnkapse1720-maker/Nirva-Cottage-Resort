@@ -1,18 +1,81 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { X, Check, Users, Sparkles, MessageSquare, Tag, Bath, Info } from "lucide-react";
+import {
+  X,
+  Check,
+  Users,
+  Sparkles,
+  MessageSquare,
+  Tag,
+  Bath,
+  Info,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 import { Room, RESORT_INFO } from "@/data/resort-data";
 
 interface RoomModalProps {
   room: Room | null;
+  initialColor?: string;
   onClose: () => void;
 }
 
-export default function RoomModal({ room, onClose }: RoomModalProps) {
+export default function RoomModal({ room, initialColor = "Blue", onClose }: RoomModalProps) {
+  const [selectedColor, setSelectedColor] = useState<string>(initialColor);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  useEffect(() => {
+    setSelectedColor(initialColor || "Blue");
+    setCurrentImageIndex(0);
+  }, [room, initialColor]);
+
   if (!room) return null;
 
-  const whatsappMessage = `Hello Nirva Resort, I would like to check availability for *${room.name}* (Capacity: ${room.capacity}).`;
+  const hasVariants = Boolean(room.colorVariants && room.colorVariants.length > 0);
+  const activeVariant = hasVariants
+    ? room.colorVariants?.find((v) => v.name === selectedColor) || room.colorVariants?.[0]
+    : null;
+
+  const currentImage = activeVariant
+    ? activeVariant.images[currentImageIndex] || room.image
+    : room.image;
+
+  const totalImages = activeVariant ? activeVariant.images.length : 1;
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (!activeVariant) return;
+    setCurrentImageIndex((prev) => (prev + 1) % activeVariant.images.length);
+  };
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    if (!activeVariant) return;
+    setCurrentImageIndex((prev) => (prev - 1 + activeVariant.images.length) % activeVariant.images.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null || !activeVariant) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (diff > 40) {
+      handleNext();
+    } else if (diff < -40) {
+      handlePrev();
+    }
+    setTouchStartX(null);
+  };
+
+  const whatsappMessage = hasVariants
+    ? `Hello Nirva Resort, I would like to check availability for *${room.name} (${selectedColor} Cottage)* (Capacity: ${room.capacity}).`
+    : `Hello Nirva Resort, I would like to check availability for *${room.name}* (Capacity: ${room.capacity}).`;
 
   return (
     <div
@@ -24,27 +87,91 @@ export default function RoomModal({ room, onClose }: RoomModalProps) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header Image */}
-        <div className="relative w-full h-56 sm:h-64 shrink-0">
+        <div
+          className={`relative w-full ${
+            hasVariants ? "h-80 sm:h-96 md:h-[460px] bg-[#231A13]" : "aspect-[16/10] sm:aspect-[16/9]"
+          } shrink-0 overflow-hidden transition-all duration-300`}
+          onTouchStart={hasVariants ? handleTouchStart : undefined}
+          onTouchEnd={hasVariants ? handleTouchEnd : undefined}
+        >
+          {/* Ambient blurred backdrop for colour variants to eliminate flat beige side panels */}
+          {hasVariants && (
+            <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+              <Image
+                src={currentImage}
+                alt=""
+                fill
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover object-center blur-2xl scale-125 opacity-50 brightness-[0.7]"
+                priority
+              />
+              <div className="absolute inset-0 bg-[#231A13]/40 backdrop-blur-md" />
+            </div>
+          )}
+
           <Image
-            src={room.image}
-            alt={room.name}
+            key={currentImage}
+            src={currentImage}
+            alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
             fill
             sizes="(max-width: 768px) 100vw, 672px"
-            className="object-cover"
+            className={`${
+              hasVariants
+                ? "object-contain object-center drop-shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
+                : "object-cover object-center"
+            } transition-all duration-300`}
+            priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/90 via-[#3E2F24]/40 to-black/30" />
+          {/* Background preloading for remaining images in active colour collection */}
+          {hasVariants && activeVariant && activeVariant.images.length > 1 && (
+            <div className="hidden" aria-hidden="true">
+              {activeVariant.images.map((src) => (
+                <img key={src} src={src} alt="" loading="eager" decoding="async" />
+              ))}
+            </div>
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/90 via-[#3E2F24]/10 via-20% to-black/20 pointer-events-none" />
+
+          {/* Navigation Controls for Colour Variants */}
+          {hasVariants && activeVariant && (
+            <>
+              <button
+                type="button"
+                onClick={handlePrev}
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+              <button
+                type="button"
+                onClick={handleNext}
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Subtle Image Counter Badge */}
+              <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-xs font-sans text-white/95 pointer-events-none">
+                <span>
+                  {selectedColor}: {currentImageIndex + 1} / {totalImages}
+                </span>
+              </div>
+            </>
+          )}
 
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-[#FBF8F1]/90 text-[#3E2F24] hover:text-black hover:bg-[#F1E9DA] transition-colors border border-[#D8C6A8] cursor-pointer shadow-md"
+            className="absolute top-4 right-4 p-2 rounded-full bg-[#FBF8F1]/90 text-[#3E2F24] hover:text-black hover:bg-[#F1E9DA] transition-colors border border-[#D8C6A8] cursor-pointer shadow-md z-20"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
           </button>
 
           {/* Room Title on Image */}
-          <div className="absolute bottom-4 left-6 right-6">
+          <div className="absolute bottom-4 left-6 right-6 z-10 pointer-events-none">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-[11px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold">
                 {room.category}
@@ -56,12 +183,61 @@ export default function RoomModal({ room, onClose }: RoomModalProps) {
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl text-white font-bold">
               {room.name}
+              {hasVariants && (
+                <span className="text-base sm:text-lg font-sans font-normal text-[#DFB76C] ml-2">
+                  ({selectedColor})
+                </span>
+              )}
             </h3>
           </div>
         </div>
 
         {/* Scrollable Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-sm">
+          {/* Colour Variant Controls for Single Cottage */}
+          {hasVariants && (
+            <div className="p-3.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2.5">
+              <div className="flex items-center justify-between text-xs">
+                <span className="uppercase tracking-wider text-[#6B5540] font-semibold text-[10px]">
+                  Cottage Shade / Colour Variant:
+                </span>
+                <span className="font-semibold text-[#3E2F24] flex items-center gap-1.5 text-xs">
+                  <span
+                    className="w-2.5 h-2.5 rounded-full inline-block shrink-0"
+                    style={{ backgroundColor: activeVariant?.colorCode }}
+                  />
+                  {selectedColor} Cottage ({totalImages} photos)
+                </span>
+              </div>
+              <div className="grid grid-cols-4 gap-2">
+                {room.colorVariants!.map((variant) => {
+                  const isActive = selectedColor === variant.name;
+                  return (
+                    <button
+                      key={variant.name}
+                      type="button"
+                      onClick={() => {
+                        setSelectedColor(variant.name);
+                        setCurrentImageIndex(0);
+                      }}
+                      className={`py-2 px-2.5 rounded-lg text-xs font-sans font-medium flex items-center justify-center gap-1.5 transition-all cursor-pointer border ${
+                        isActive
+                          ? "bg-[#3E2F24] text-[#F7F3EA] border-[#3E2F24] shadow-sm font-semibold"
+                          : "bg-[#FBF8F1] text-[#6B5540] hover:text-[#3E2F24] hover:bg-[#F1E9DA] border-[#D8C6A8]"
+                      }`}
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{ backgroundColor: variant.colorCode }}
+                      />
+                      <span>{variant.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
           {/* Description */}
           <p className="font-sans text-[#6B5540] leading-relaxed font-light">
             {room.description}
