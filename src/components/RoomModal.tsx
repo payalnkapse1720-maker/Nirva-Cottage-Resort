@@ -39,30 +39,35 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
     ? room.colorVariants?.find((v) => v.name === selectedColor) || room.colorVariants?.[0]
     : null;
 
-  const currentImage = activeVariant
-    ? activeVariant.images[currentImageIndex] || room.image
-    : room.image;
+  const roomImages: readonly string[] = hasVariants
+    ? activeVariant?.images || []
+    : room.images && room.images.length > 0
+    ? room.images
+    : room.image
+    ? [room.image]
+    : [];
 
-  const totalImages = activeVariant ? activeVariant.images.length : 1;
+  const totalImages = roomImages.length;
+  const currentImage = totalImages > 0 ? roomImages[currentImageIndex % totalImages] : "";
 
   const handleNext = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!activeVariant) return;
-    setCurrentImageIndex((prev) => (prev + 1) % activeVariant.images.length);
+    if (totalImages <= 1) return;
+    setCurrentImageIndex((prev) => (prev + 1) % totalImages);
   };
 
   const handlePrev = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!activeVariant) return;
-    setCurrentImageIndex((prev) => (prev - 1 + activeVariant.images.length) % activeVariant.images.length);
+    if (totalImages <= 1) return;
+    setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
+    if (totalImages > 1) setTouchStartX(e.touches[0].clientX);
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null || !activeVariant) return;
+    if (touchStartX === null || totalImages <= 1) return;
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
     if (diff > 40) {
@@ -86,54 +91,60 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
         className="relative w-full max-w-2xl bg-[#FBF8F1] border border-[#D8C6A8] rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header Image */}
+        {/* Header Image: Fixed 16:9 Image Frame */}
         <div
-          className={`relative w-full ${
-            hasVariants ? "h-80 sm:h-96 md:h-[460px] bg-[#231A13]" : "aspect-[16/10] sm:aspect-[16/9]"
-          } shrink-0 overflow-hidden transition-all duration-300`}
-          onTouchStart={hasVariants ? handleTouchStart : undefined}
-          onTouchEnd={hasVariants ? handleTouchEnd : undefined}
+          className="relative w-full aspect-[16/9] shrink-0 overflow-hidden bg-[#231A13]"
+          onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
+          onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
         >
-          {/* Ambient blurred backdrop for colour variants to eliminate flat beige side panels */}
-          {hasVariants && (
-            <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-              <Image
-                src={currentImage}
-                alt=""
-                fill
-                sizes="(max-width: 768px) 100vw, 672px"
-                className="object-cover object-center blur-2xl scale-125 opacity-50 brightness-[0.7]"
-                priority
-              />
-              <div className="absolute inset-0 bg-[#231A13]/40 backdrop-blur-md" />
+          {currentImage ? (
+            <>
+              {/* Background Layer: Same Image Strongly Blurred to Fill 16:9 Frame */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
+                <Image
+                  src={currentImage}
+                  alt=""
+                  fill
+                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 672px"
+                  className="object-cover object-center blur-2xl scale-125 opacity-70 brightness-[0.7]"
+                  priority
+                />
+                <div className="absolute inset-0 bg-[#231A13]/25 backdrop-blur-sm" />
+              </div>
+
+              {/* Foreground Layer: Full Original Image (object-contain, never cropped or distorted) */}
+              <div className="absolute inset-0 flex items-center justify-center z-[1] p-1 pointer-events-none">
+                <Image
+                  key={currentImage}
+                  src={currentImage}
+                  alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+                  fill
+                  unoptimized
+                  sizes="(max-width: 768px) 100vw, 672px"
+                  className="object-contain object-center drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] transition-all duration-300"
+                  priority
+                />
+              </div>
+            </>
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-[#3E2F24] to-[#231A13] flex items-center justify-center text-[#E6D8C2]/60 z-0">
+              <span className="text-xs uppercase tracking-widest font-medium">{room.name}</span>
             </div>
           )}
 
-          <Image
-            key={currentImage}
-            src={currentImage}
-            alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
-            fill
-            sizes="(max-width: 768px) 100vw, 672px"
-            className={`${
-              hasVariants
-                ? "object-contain object-center drop-shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
-                : "object-cover object-center"
-            } transition-all duration-300`}
-            priority
-          />
-          {/* Background preloading for remaining images in active colour collection */}
-          {hasVariants && activeVariant && activeVariant.images.length > 1 && (
+          {/* Background preloading for remaining images in active collection */}
+          {totalImages > 1 && (
             <div className="hidden" aria-hidden="true">
-              {activeVariant.images.map((src) => (
-                <img key={src} src={src} alt="" loading="eager" decoding="async" />
+              {roomImages.map((src) => (
+                src ? <img key={src} src={src} alt="" loading="eager" decoding="async" /> : null
               ))}
             </div>
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/90 via-[#3E2F24]/10 via-20% to-black/20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#231A13]/85 via-transparent via-40% to-black/25 pointer-events-none z-[2]" />
 
-          {/* Navigation Controls for Colour Variants */}
-          {hasVariants && activeVariant && (
+          {/* Navigation Controls */}
+          {totalImages > 1 && (
             <>
               <button
                 type="button"
@@ -155,7 +166,7 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
               {/* Subtle Image Counter Badge */}
               <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-xs font-sans text-white/95 pointer-events-none">
                 <span>
-                  {selectedColor}: {currentImageIndex + 1} / {totalImages}
+                  {hasVariants ? `${selectedColor}: ` : ""}{currentImageIndex + 1} / {totalImages}
                 </span>
               </div>
             </>

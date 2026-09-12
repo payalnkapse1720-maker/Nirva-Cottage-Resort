@@ -1,3 +1,5 @@
+import { ROOM_IMAGES } from "./rooms";
+
 export interface RoomAddOn {
   name: string;
   price: number;
@@ -8,7 +10,7 @@ export interface RoomAddOn {
 export interface RoomColorVariant {
   name: string;
   colorCode?: string;
-  images: string[];
+  images: readonly string[] | string[];
 }
 
 export interface Room {
@@ -18,6 +20,7 @@ export interface Room {
   tagline: string;
   description: string;
   image: string;
+  images?: readonly string[] | string[];
   colorVariants?: RoomColorVariant[];
   capacity: string;
   capacityNumber: number;
@@ -134,6 +137,10 @@ export const OFFICIAL_AMENITIES = [
   "Wi-Fi",
 ];
 
+const getFirstImage = (list: readonly string[] | string[] | undefined): string => {
+  return list && list.length > 0 ? list[0] : "";
+};
+
 export const ROOMS_DATA: Room[] = [
   {
     id: "single-cottage",
@@ -142,45 +149,27 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Vibrant standalone retreat in cheerful lilac, yellow, orange and blue hues.",
     description:
       "Experience the charm of our colourful single cottages, available in vibrant hues of yellow, orange, lilac, and blue. Each cottage is designed to provide a cosy and unique retreat.",
-    image: "/images/rooms/single-cottage/blue/Blue Cottage 1.JPG",
+    image: getFirstImage(ROOM_IMAGES["single-cottage"].blue),
     colorVariants: [
       {
         name: "Blue",
         colorCode: "#3B82F6",
-        images: [
-          "/images/rooms/single-cottage/blue/Blue Cottage 1.JPG",
-          "/images/rooms/single-cottage/blue/Blue Cottage 2.JPG",
-          "/images/rooms/single-cottage/blue/Blue Cottage 3.JPG",
-          "/images/rooms/single-cottage/blue/Blue Cottage 4.JPG",
-        ],
+        images: ROOM_IMAGES["single-cottage"].blue,
       },
       {
         name: "Lilac",
         colorCode: "#A855F7",
-        images: [
-          "/images/rooms/single-cottage/lilac/Lilac Cottage 1.JPG",
-          "/images/rooms/single-cottage/lilac/Lilac Cottage 2.JPG",
-          "/images/rooms/single-cottage/lilac/Lilac Cottage 3.JPG",
-          "/images/rooms/single-cottage/lilac/Lilac Cottage 4.jpg",
-        ],
+        images: ROOM_IMAGES["single-cottage"].lilac,
       },
       {
         name: "Orange",
         colorCode: "#F97316",
-        images: [
-          "/images/rooms/single-cottage/orange/Orange Cottage 1.JPG",
-          "/images/rooms/single-cottage/orange/Orange Cottage 2.JPG",
-          "/images/rooms/single-cottage/orange/Orange Cottage 3.JPG",
-        ],
+        images: ROOM_IMAGES["single-cottage"].orange,
       },
       {
         name: "Yellow",
         colorCode: "#EAB308",
-        images: [
-          "/images/rooms/single-cottage/yellow/Yellow Cottage 1.JPG",
-          "/images/rooms/single-cottage/yellow/Yellow Cottage 2.JPG",
-          "/images/rooms/single-cottage/yellow/Yellow Cottage 3.JPG",
-        ],
+        images: ROOM_IMAGES["single-cottage"].yellow,
       },
     ],
     capacity: "For 2 people",
@@ -201,8 +190,8 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Spacious split-level comfort balancing luxury with practicality for families.",
     description:
       "Enjoy the ample space and comfort of our duplex cottage, ideal for families and groups. These well-appointed cottages provide a perfect balance of luxury and practicality.",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UHDMoxZrHmA_FKLP-DjEPA6iXplMT0hE7VfUfIVKPx9-28-u7aN_5HXYn63TEWA4bKHgqAK2fUpJJEM0B8iv6J_-bvZI9I4aMyGua-syP8NFopOHH9nCybKcjtKo9xOtpkLyT_hVDGEZpeDoZZtl36wyxP1rAZHJXcM9-Vl6Ityvu98i0cI2zGAYfFDxM8rssTVUPwYJrXI2xDGvf1-HB3toMbfXygedlA5mZ-cSKKnPR6bVxXt1xfX1vC",
+    image: getFirstImage(ROOM_IMAGES["duplex-cottage"]),
+    images: ROOM_IMAGES["duplex-cottage"],
     capacity: "For 5 people",
     capacityNumber: 5,
     dayPrice: 5000,
@@ -221,8 +210,8 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Step into the lap of luxury with elegant interiors and indulgent relaxation.",
     description:
       "Step into the lap of luxury with our suite cottage, designed for ultimate relaxation. Enjoy elegant interiors and premium amenities for a truly indulgent stay.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBtLe7cIPOgeM3xyzXaePjdIdXc6n8qQH2nm_fylm-C-riYUZFw_eMyP6N4iMpImKX23HvEJR2GBJU5z1gFdniqi48aB1IJWQxQjP7r9RNkjwjocILBqRB5K_fdu8Vav4TbyzkyHi-nVMxH39hl5yw51erwYQAS6SthPErbCeF6bBjJKIT-NWL8eUT6_bVtbbOVCSnv11mbo0snCDUMcMNsI8dZ6NXcXy6mtJaSoYHrhhMF3HBUnnLu5g",
+    image: getFirstImage(ROOM_IMAGES["suite-cottage"]),
+    images: ROOM_IMAGES["suite-cottage"],
     capacity: "For 6 people",
     capacityNumber: 6,
     dayPrice: 6000,
@@ -241,8 +230,8 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Playful and practical communal cottage crafted for large group adventures.",
     description:
       "Perfect for large groups, our bunk bed cottage combines fun with comfort. These cottages provide a playful and practical accommodation option.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC5caNXPlhp70d_0swwBQbfrQ33XZtZW2RfImAT3seK8NemVg-Hb_zOHc3v7nBhCMJ0iHS72i_9uACZG4J1Rs6CIOf7B4E18bUIlrU3ICS3nd2t1itCwFAkhu42nC6Y-ybqbjAWHlRb3GDUW8c4ewu0K1qO4iFm3aZni6wZjmEAThGIi66UTNxM1vqJJSTTQoZdR6R74SSc3RMtFthXJWdH2bz2UurLDk8n5Fvww8xiQrpZjHKxbrrZBw",
+    image: getFirstImage(ROOM_IMAGES["bunk-bed-cottage"]),
+    images: ROOM_IMAGES["bunk-bed-cottage"],
     capacity: "For 10 people",
     capacityNumber: 10,
     dayPrice: 10000,
@@ -260,8 +249,8 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Spacious private sanctuary with exclusive elegance and premium comforts.",
     description:
       "Our villa offers a luxurious escape with spacious interiors and premium amenities. Enjoy exclusive comfort and elegance in a private setting.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCHF4eVG3_7tb4BSb_REZxWwluqg09QB6WcN_c274ayPJrskv_oYXaEoCrogA7uapfA4KgCO8zB--JQLBua3NM2bTn-7uYgM5SkqXWW_2Xhbveb7oyF8WA8BaZkCKJOx0n7-sQINzFj5dXOdkzVVi2t8ghqvd6hCss_HKNX01fO6HGLUD13RIIntQW96cvSHAIs5kHUc57shcwvVO_NwASiZ9ESqH1Udq6fggiL-7bebDHSMXMVIQQ3vw",
+    image: getFirstImage(ROOM_IMAGES["villa"]),
+    images: ROOM_IMAGES["villa"],
     capacity: "For 12 people",
     capacityNumber: 12,
     dayPrice: 11000,
@@ -280,8 +269,8 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Breathtaking twilight vistas and deluxe comfort with optional bathtub upgrade.",
     description:
       "Experience stunning sunsets and deluxe comfort in our beautifully appointed Sunset Suite. Enjoy a luxurious bathtub and premium room with breathtaking sunset views.",
-    image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UHDMoxZrHmA_FKLP-DjEPA6iXplMT0hE7VfUfIVKPx9-28-u7aN_5HXYn63TEWA4bKHgqAK2fUpJJEM0B8iv6J_-bvZI9I4aMyGua-syP8NFopOHH9nCybKcjtKo9xOtpkLyT_hVDGEZpeDoZZtl36wyxP1rAZHJXcM9-Vl6Ityvu98i0cI2zGAYfFDxM8rssTVUPwYJrXI2xDGvf1-HB3toMbfXygedlA5mZ-cSKKnPR6bVxXt1xfX1vC",
+    image: getFirstImage(ROOM_IMAGES["sunset-suite"]),
+    images: ROOM_IMAGES["sunset-suite"],
     capacity: "For 2 people",
     capacityNumber: 2,
     dayPrice: 3500,
@@ -308,8 +297,8 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Comfortable and convenient group sanctuary for gatherings and squad retreats.",
     description:
       "Ideal for large groups, our dormitory rooms offer comfort and convenience. These spacious accommodations are perfect for gatherings and group stays.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBtLe7cIPOgeM3xyzXaePjdIdXc6n8qQH2nm_fylm-C-riYUZFw_eMyP6N4iMpImKX23HvEJR2GBJU5z1gFdniqi48aB1IJWQxQjP7r9RNkjwjocILBqRB5K_fdu8Vav4TbyzkyHi-nVMxH39hl5yw51erwYQAS6SthPErbCeF6bBjJKIT-NWL8eUT6_bVtbbOVCSnv11mbo0snCDUMcMNsI8dZ6NXcXy6mtJaSoYHrhhMF3HBUnnLu5g",
+    image: getFirstImage(ROOM_IMAGES["dormitory-rooms"]),
+    images: ROOM_IMAGES["dormitory-rooms"],
     capacity: "For 7 people",
     capacityNumber: 7,
     dayPrice: 6500,

@@ -33,30 +33,35 @@ function RoomCard({
     ? room.colorVariants?.find((v) => v.name === selectedColor) || room.colorVariants?.[0]
     : null;
 
-  const currentImage = activeVariant
-    ? activeVariant.images[currentImageIndex] || room.image
-    : room.image;
+  const roomImages: readonly string[] = hasVariants
+    ? activeVariant?.images || []
+    : room.images && room.images.length > 0
+    ? room.images
+    : room.image
+    ? [room.image]
+    : [];
 
-  const totalImages = activeVariant ? activeVariant.images.length : 1;
+  const totalImages = roomImages.length;
+  const currentImage = totalImages > 0 ? roomImages[currentImageIndex % totalImages] : "";
 
   const handleNext = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!activeVariant) return;
-    setCurrentImageIndex((prev) => (prev + 1) % activeVariant.images.length);
+    if (totalImages <= 1) return;
+    setCurrentImageIndex((prev) => (prev + 1) % totalImages);
   };
 
   const handlePrev = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    if (!activeVariant) return;
-    setCurrentImageIndex((prev) => (prev - 1 + activeVariant.images.length) % activeVariant.images.length);
+    if (totalImages <= 1) return;
+    setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages);
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStartX(e.touches[0].clientX);
+    if (totalImages > 1) setTouchStartX(e.touches[0].clientX);
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX === null || !activeVariant) return;
+    if (touchStartX === null || totalImages <= 1) return;
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX - touchEndX;
     if (diff > 40) {
@@ -72,51 +77,57 @@ function RoomCard({
       onClick={() => onSelect(room, hasVariants ? selectedColor : undefined)}
       className="group relative bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] rounded-2xl overflow-hidden shadow-xl hover:shadow-[0_10px_35px_-10px_rgba(62,47,36,0.15)] transition-all duration-300 cursor-pointer flex flex-col justify-between"
     >
-      {/* Card Top: Image & Overlay Badges */}
+      {/* Card Top: Fixed 16:9 Image Frame */}
       <div
-        className={`relative ${
-          hasVariants ? "h-80 sm:h-96 md:h-[380px] bg-[#231A13]" : "h-60 sm:h-64"
-        } w-full overflow-hidden shrink-0 transition-all duration-300`}
-        onTouchStart={hasVariants ? handleTouchStart : undefined}
-        onTouchEnd={hasVariants ? handleTouchEnd : undefined}
+        className="relative w-full aspect-[16/9] overflow-hidden shrink-0 bg-[#231A13]"
+        onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
+        onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
       >
-        {/* Ambient blurred backdrop for single cottage to eliminate stark beige margins */}
-        {hasVariants && (
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-            <Image
-              src={currentImage}
-              alt=""
-              fill
-              sizes="(max-width: 768px) 100vw, 450px"
-              className="object-cover object-center blur-2xl scale-125 opacity-50 brightness-[0.7]"
-              priority
-            />
-            <div className="absolute inset-0 bg-[#231A13]/40 backdrop-blur-md" />
+        {currentImage ? (
+          <>
+            {/* Background Layer: Same Image Strongly Blurred to Fill 16:9 Frame */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
+              <Image
+                src={currentImage}
+                alt=""
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                className="object-cover object-center blur-2xl scale-125 opacity-70 brightness-[0.7]"
+                priority={hasVariants}
+              />
+              <div className="absolute inset-0 bg-[#231A13]/25 backdrop-blur-sm" />
+            </div>
+
+            {/* Foreground Layer: Full Original Image (object-contain, never cropped or distorted) */}
+            <div className="absolute inset-0 flex items-center justify-center z-[1] p-0.5 pointer-events-none">
+              <Image
+                key={currentImage}
+                src={currentImage}
+                alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                className="object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                priority={hasVariants}
+              />
+            </div>
+          </>
+        ) : (
+          <div className="absolute inset-0 bg-gradient-to-br from-[#3E2F24] to-[#231A13] flex items-center justify-center text-[#E6D8C2]/60 z-0">
+            <span className="text-xs uppercase tracking-widest font-medium">{room.name}</span>
           </div>
         )}
 
-        <Image
-          key={currentImage}
-          src={currentImage}
-          alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className={`${
-            hasVariants
-              ? "object-contain object-center drop-shadow-[0_10px_25px_rgba(0,0,0,0.5)]"
-              : "object-cover"
-          } transition-transform duration-500 ease-out group-hover:scale-[1.02]`}
-          priority={hasVariants}
-        />
-        {/* Background preloading for remaining images in active colour collection */}
-        {hasVariants && activeVariant && activeVariant.images.length > 1 && (
+        {/* Background preloading for remaining images in active collection */}
+        {totalImages > 1 && (
           <div className="hidden" aria-hidden="true">
-            {activeVariant.images.map((src) => (
-              <img key={src} src={src} alt="" loading="eager" decoding="async" />
+            {roomImages.map((src) => (
+              src ? <img key={src} src={src} alt="" loading="eager" decoding="async" /> : null
             ))}
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/85 via-black/10 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#231A13]/80 via-transparent via-40% to-black/20 pointer-events-none z-[2]" />
 
         {/* Top Badges */}
         <div className="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 z-10 pointer-events-none">
@@ -128,8 +139,8 @@ function RoomCard({
           </span>
         </div>
 
-        {/* Navigation Controls for Colour Variants */}
-        {hasVariants && activeVariant && (
+        {/* Navigation Controls */}
+        {totalImages > 1 && (
           <>
             <button
               type="button"
