@@ -495,7 +495,7 @@ export const TRAILS_DATA: Trail[] = [
     description:
       "A scenic trek through ancient forested hills and seasonal streams, culminating at the revered Kondeshwar temple and breathtaking cascade pools.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAxeyz6v5oMGOfsOEOkYa95_TsAizp9rWPnv_RE7xowy4hZLRH8vbQCF62ABG7pFrXWTQ7x8ugyKEkRRcuCLcABKxgbHSaRE04TFcWhNuw-83v-_j96kjWLKePfen-XAjT7GxDyGvOWaZFJlHq2dmcxz0ao4s27uva1ZKn-K4Ycrnf6tQ_u_6lnEx4dFvvmkN_Lr3qO_BAClzrynTtmADZrU-zLvaRucoFLt-NjxnYfpzI2oA1Xqfveaw",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789498914/Waterfall.png",
     highlights: ["Misty Forest Canopy", "Natural Waterfall Pool", "Historical Heritage Site"],
   },
   {
@@ -506,7 +506,7 @@ export const TRAILS_DATA: Trail[] = [
     description:
       "A gentle, elevated stroll directly accessible from the resort perimeter. Offers sweeping panoramic views of the entire valley during the golden hour.",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBXzsjZR_Wmms8rjxbltRhOV8f5ybSzb_PsuikeUAYKItj_LlwbESPS9jTMwxZqWQ6MCP2u10aEYIMMBZmvOCcxNUjI5s1Xfnatzd89jDj2KW0hdEZtEz7UnVAE6YJqWjjTyBxibAy_psBl9mAGYcLsVxjT7BQLpJ-nCXWwm_BjVcxAzYjcEs5KfgqkhxBe8s014-40xgVZsKiGQLBVn5zv-FeAmaXtxQEOlnaQ-g_GPKTQOl-9uil9PQ",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789498874/Sunset_Ridge.png",
     highlights: ["Golden Hour Vistas", "Birdwatching Haven", "Gentle Slopes for All Ages"],
   },
 ];
@@ -514,76 +514,76 @@ export const TRAILS_DATA: Trail[] = [
 export const GALLERY_DATA: GalleryItem[] = [
   {
     id: "g-1",
-    title: "Infinity Pool at Twilight",
+    title: "Infinity Pool",
     category: "pool",
-    categoryLabel: "Pool & Horizon",
+    categoryLabel: "Infinity Pool",
     image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1XKgs689rI0ekkvS8WkU4oZ7mso-Uy9kisj5_053go_3C6CMNKdKSnfx6zBwg2lFOMkILHEci5piCdWj0aUi0uDvCcjcduhIRT3u2zyGSegAARHyHTYXikfes61HDQrZm9rbGz-5wVE05Bt3dMJ3EJN3XoQVLeqAQUw2dNG-BpIQpQcUpa3ob1cafQnSF7iMTnFsggTjnXZJYTdgVNVgtUm7FdGGbFwcNYmIddBnNOQze0cvWY0aCtuVFw",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789504644/Infinity_pool_gal.jpg",
     span: "md:col-span-2 md:row-span-2",
   },
   {
     id: "g-2",
-    title: "Bliss Cafe Twilight Dining",
+    title: "Bliss Cafe",
     category: "dining",
-    categoryLabel: "Dining & Cafe",
+    categoryLabel: "Bliss Cafe",
     image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1VyhmmeDjBrohzInW_nEYWWKJIuGFwfL9UcTJxPDKUXuokWhy5Lve6yuz0IY09-LMHgqR23-oUobeiQ-cFblDAdU0oeBU_eDRK2Wi3opNwPq83G3gGMYdxRMWRvd7nCTPw9FbRzu3zKPdv62reX2u-OdZTZclwbo0T37yTXf4xq7koCFj2ZCwF6igqeuf5_iFoai-9-14aS1Nm9hifPdXNNEDWWQzterm1i_r5UefDLtP435ogoG1CLZNc",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789504680/Bliss_Cafe_gal.png",
   },
   {
     id: "g-3",
-    title: "Sunset Suite Fireplace & Ridge",
+    title: "Sunset Suite",
     category: "rooms",
-    categoryLabel: "Suites",
+    categoryLabel: "Rooms & Villas",
     image:
-      "https://lh3.googleusercontent.com/aida/AEtjO1UHDMoxZrHmA_FKLP-DjEPA6iXplMT0hE7VfUfIVKPx9-28-u7aN_5HXYn63TEWA4bKHgqAK2fUpJJEM0B8iv6J_-bvZI9I4aMyGua-syP8NFopOHH9nCybKcjtKo9xOtpkLyT_hVDGEZpeDoZZtl36wyxP1rAZHJXcM9-Vl6Ityvu98i0cI2zGAYfFDxM8rssTVUPwYJrXI2xDGvf1-HB3toMbfXygedlA5mZ-cSKKnPR6bVxXt1xfX1vC",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789504687/Sunset_suite_gal.png",
   },
   {
     id: "g-4",
     title: "Tropical Sanctuary Foliage",
     category: "nature",
-    categoryLabel: "Nature & Flora",
+    categoryLabel: "Nature & Views",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBcaC-Xl04e_2_GSak57gUmOulqBoVrdKYhey72luJRtSTlHaRpL96QzzI4p2bmKqnbCxAox_XQARGHzGZi7eaDT4E8yz1UI3N5icd0gkF63h2zNqguDAOUOx7Qti3EX9SGYQTkzKl3QjHkvSqE5hxOT9r9UN8lUeh42SqUC8sfqp6BgWqYiJHGYP-6KvT-tvtiDSyhNyyUy88Bhwptpt2OkZU5vlCzCESq1b8erBrWcNQFcRMzdM8EWg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789504687/Tropical_gal.png",
   },
   {
     id: "g-5",
-    title: "Celebration Venue Setup",
+    title: "Weddings & Celebrations",
     category: "events",
-    categoryLabel: "Events & Lawn",
+    categoryLabel: "Events & Lawns",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAFs7Mf_VFSgMtoU85e6o9n2ddRujyqLDyT1Z_IVQS5YZmx1DE9A7k7-CrIPxSupcaujDRWyT3FkZW9aWnIjdyVcvkiuLXMmYvJzfdYNXcMpjD8uqAVgUMF5BJJlvDl5qDXts0L0XTh0GtRMQQOJ5DjjSvof0F0Dig6CDCqyB-KtmrVIqVkUWQy3uzxlyy5XD1Hm1G6TgKLah0WuewWiAb2NC4mi1AD-owPpGfvqEzufnW-CxIOFZZjjA",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319261/Wedding_1.jpg",
   },
   {
     id: "g-6",
     title: "Contemporary Dusk Architecture",
     category: "nature",
-    categoryLabel: "Resort Architecture",
+    categoryLabel: "Nature & Views",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD_7_E68MmkYu5EF8CwCIvv7HQT2CW990dSCVW8JoMpFOVh6DjjP4wP9z9iqkDtfqilzXML1BEGrMQp0F9Uwywtoppj__gPy4Ts9mQijh-ffjhYeyOGPZ4i2ttA7LHWSfOC_k_TNgohieDBVwfqELgBKfew2TrAs8ZKkDAvuN3zqSNVnSH5wFGI4dFNP0FQcL4V-jABG7w1ccxIYsOnF3xxyLfu81kPRcX2xxQl_smFnfLw2w2jDNO4VA",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789505379/Architecture_gal.jpg",
   },
   {
     id: "g-7",
-    title: "Colourful Garden Cottages",
+    title: "Colourful Garden Cottage",
     category: "rooms",
-    categoryLabel: "Cottages",
+    categoryLabel: "Rooms & Villas",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC5caNXPlhp70d_0swwBQbfrQ33XZtZW2RfImAT3seK8NemVg-Hb_zOHc3v7nBhCMJ0iHS72i_9uACZG4J1Rs6CIOf7B4E18bUIlrU3ICS3nd2t1itCwFAkhu42nC6Y-ybqbjAWHlRb3GDUW8c4ewu0K1qO4iFm3aZni6wZjmEAThGIi66UTNxM1vqJJSTTQoZdR6R74SSc3RMtFthXJWdH2bz2UurLDk8n5Fvww8xiQrpZjHKxbrrZBw",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789506335/Color_cottage_gal.png",
   },
   {
     id: "g-8",
-    title: "3BHK Villa Living Space",
-    category: "rooms",
-    categoryLabel: "Private Villa",
+    title: "Reception",
+    category: "events",
+    categoryLabel: "Events & Lawns",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCHF4eVG3_7tb4BSb_REZxWwluqg09QB6WcN_c274ayPJrskv_oYXaEoCrogA7uapfA4KgCO8zB--JQLBua3NM2bTn-7uYgM5SkqXWW_2Xhbveb7oyF8WA8BaZkCKJOx0n7-sQINzFj5dXOdkzVVi2t8ghqvd6hCss_HKNX01fO6HGLUD13RIIntQW96cvSHAIs5kHUc57shcwvVO_NwASiZ9ESqH1Udq6fggiL-7bebDHSMXMVIQQ3vw",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789506308/Reception_space_gal.jpg",
   },
   {
     id: "g-9",
-    title: "Nighttime Poolside Gathering",
-    category: "pool",
-    categoryLabel: "Nightlife",
+    title: "Food & Dining",
+    category: "dining",
+    categoryLabel: "Bliss Cafe",
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuB2Q9rJOGgO-GClZ3Q8zZ_4ISO9G9Os4xN9PTmdU4Iw3rDxR5UH1ookNbPC0XEs1nlk9tV3ZqpjjU0fLK7tto-Rz0Stv3PIUkyCW5B3au2-oMRW0H4TPocSPwNwdxy3_Zhr9F_CaouEoq1wFVco7P2qv1EiizRJN22rughqTLk14pU1zhl-sWuLr8fRmtGAaGqHcoQE9b0JNbeK3pDcl_AxPYiJroA_tVREaLedkzuWL6zxVIsrIbtw6A",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789506381/Food_gal.png",
   },
 ];
 

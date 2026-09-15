@@ -96,6 +96,7 @@ export default function GallerySection() {
                 src={item.image}
                 alt={item.title}
                 fill
+                unoptimized
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
@@ -162,6 +163,7 @@ export default function GallerySection() {
               src={filteredItems[lightboxIndex].image}
               alt={filteredItems[lightboxIndex].title}
               fill
+              unoptimized
               className="object-contain"
             />
             <div className="absolute bottom-2 bg-[#3E2F24]/85 backdrop-blur-md px-6 py-2 rounded-full border border-[#D8C6A8]/40 text-center">

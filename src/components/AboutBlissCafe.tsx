@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
   Utensils,
   Music,
@@ -13,6 +12,8 @@ import {
   Check,
   Coffee,
   Info,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import {
   RESORT_INFO,
@@ -22,8 +23,49 @@ import {
   BUFFET_TIMINGS,
 } from "@/data/resort-data";
 
+const BLISS_CAFE_IMAGES = [
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789315203/Bliss_Cafe_1.jpg",
+    alt: "Bliss Cafe by the infinity pool at dusk at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789314862/Bliss_Cafe_2.jpg",
+    alt: "Bliss Cafe dining ambiance at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789314301/Bliss_Cafe_3.jpg",
+    alt: "Bliss Cafe poolside dining experience at Nirva The Cottage & Resort",
+  },
+];
+
 export default function AboutBlissCafe() {
   const [activeMealId, setActiveMealId] = useState<string>("lunch");
+  const [currentBlissIndex, setCurrentBlissIndex] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const totalBlissImages = BLISS_CAFE_IMAGES.length;
+
+  const handleNextBlissImage = () => {
+    setCurrentBlissIndex((prev) => (prev + 1) % totalBlissImages);
+  };
+
+  const handlePrevBlissImage = () => {
+    setCurrentBlissIndex((prev) => (prev - 1 + totalBlissImages) % totalBlissImages);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (diff > 40) handleNextBlissImage();
+    else if (diff < -40) handlePrevBlissImage();
+    setTouchStartX(null);
+  };
+
+  const currentBliss = BLISS_CAFE_IMAGES[currentBlissIndex];
 
   return (
     <section id="about" className="py-24 md:py-32 bg-[#F7F3EA] relative overflow-hidden">
@@ -31,7 +73,7 @@ export default function AboutBlissCafe() {
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-[#C99A4A]/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 space-y-20">
-        {/* Top Split: Intro & Feature Image */}
+        {/* Top Split: Intro & Feature Image Carousel */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text Content */}
           <div className="space-y-8">
@@ -101,22 +143,86 @@ export default function AboutBlissCafe() {
             </div>
           </div>
 
-          {/* Right Image with Offset Frame */}
-          <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
-            <div className="absolute -inset-4 border border-[#D8C6A8] rounded-2xl transform translate-x-3 translate-y-3 pointer-events-none" />
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group">
-              <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7GE-tbuLhkRuJM8DBNWIxrHx12UPQvkMOEq5Ron8qFgWqNLw-imeXE03oKhYCkc3e5aWLyCHwe7lWJvC2-jH4Tjud791FDdbIA6TYnD-3GZ1K05W6Rs53Lc-o5QBo3DhFJw_BREzvtN83qTgBwq8n46jlIoRhz0zuDLiskCTFsM-xHhSlfLF_rWcfvMMin_xQR33Gfap_8_DVlJHe7wySKyQwWpzmg8Di64zSVfhnoZGU4UomTiauNg"
-                alt="Bliss Cafe by the infinity pool at dusk at Nirva The Cottage & Resort"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
+          {/* Right: Bliss Cafe Carousel */}
+          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+            <div className="absolute -inset-3 sm:-inset-4 border border-[#D8C6A8] rounded-2xl transform translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 pointer-events-none -z-10" />
+            <div
+              className="relative w-full aspect-[4/3] sm:aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowLeft") handlePrevBlissImage();
+                if (e.key === "ArrowRight") handleNextBlissImage();
+              }}
+              aria-label="Bliss Cafe dining experience image carousel"
+            >
+              {/* Actual Photograph filling 100% of the fixed carousel card directly */}
+              <img
+                key={currentBliss.src}
+                src={currentBliss.src}
+                alt={currentBliss.alt}
+                className="w-full h-full object-cover object-center block select-none"
+                loading="eager"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/85 via-transparent to-transparent flex flex-col justify-end p-6">
-                <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#E6D8C2] font-medium">
+
+              {/* Subtle bottom gradient only for caption text legibility */}
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
+
+              {/* Top Bar: Slide Counter & Badge */}
+              <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[10px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold shadow-md">
                   Bliss Cafe Lounge
                 </span>
-                <p className="font-serif text-xl text-white">Twilight at the Infinity Deck</p>
+                <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[11px] font-mono text-[#F7F3EA] font-semibold tracking-wider shadow-md">
+                  {String(currentBlissIndex + 1).padStart(2, "0")} / {String(totalBlissImages).padStart(2, "0")}
+                </span>
+              </div>
+
+              {/* Navigation Arrows */}
+              <button
+                type="button"
+                onClick={handlePrevBlissImage}
+                aria-label="Previous Bliss Cafe photograph"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              <button
+                type="button"
+                onClick={handleNextBlissImage}
+                aria-label="Next Bliss Cafe photograph"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+
+              {/* Bottom Content & Dots */}
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10 pointer-events-none">
+                <div>
+                  <p className="font-serif text-lg sm:text-xl text-white font-bold drop-shadow-md">
+                    Twilight at the Infinity Deck
+                  </p>
+                </div>
+
+                {/* Pagination Dots */}
+                <div className="flex items-center gap-1.5 pointer-events-auto pb-1">
+                  {BLISS_CAFE_IMAGES.map((_, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setCurrentBlissIndex(idx)}
+                      aria-label={`Go to Bliss Cafe slide ${idx + 1}`}
+                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                        idx === currentBlissIndex
+                          ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
+                          : "w-1.5 bg-white/50 hover:bg-white/80"
+                      }`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
