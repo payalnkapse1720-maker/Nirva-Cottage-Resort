@@ -8,39 +8,37 @@
 export const ROOM_IMAGES = {
   "single-cottage": {
     blue: [
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789058769/Blue_Cottage_1_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789058903/Blue_Cottage_2_2.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789059066/Blue_Cottage_3_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789059173/Blue_Cottage_4_1.jpg",
-
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790796590/Single_cottage_Blue_1_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790796550/Single_cottage_Blue_2_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790796463/Single_cottage_Blue_3_1.jpg",
     ],
     lilac: [
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789059316/Lilac_Cottage_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789059581/Lilac_Cottage_2_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789059686/Lilac_Cottage_3_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789059722/Lilac_Cottage_4_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790797557/Single_cottage_Lilac_1_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790797482/Single_cottage_Lilac_2_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790797488/Single_cottage_Lilac_3_1.jpg",
     ],
     orange: [
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789241017/Orange_Cottage_1_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789241169/Orange_Cottage_3_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789241148/Orange_Cottage_2_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798098/Single_cottage_Orange_1_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798097/Single_cottage_Orange_2_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798148/Single_cottage_Orange_3_1.jpg",
     ],
     yellow: [
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789241587/Yellow_Cottage_1_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789241549/Yellow_Cottage_3_1.jpg",
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789241571/Yellow_Cottage_2_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798784/Single_cottage_Yellow_1_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798784/Single_cottage_Yellow_2_1.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798871/Single_cottage_Yellow_3_1.jpg",
     ],
   },
 
   "duplex-cottage": [
-    "https://res.cloudinary.com/cx2wca8r/image/upload/v1789058424/Duplex_Room_1_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1789058334/Duplex_Room_2.jpg",
+    "https://res.cloudinary.com/cx2wca8r/image/upload/v1790799562/Duplex_1_1.jpg",
+    "https://res.cloudinary.com/cx2wca8r/image/upload/v1790799555/Duplex_2_1.jpg",
+    "https://res.cloudinary.com/cx2wca8r/image/upload/v1790800393/Duplex_3.png",
   ],
 
   "suite-cottage": [
-    "https://res.cloudinary.com/cx2wca8r/image/upload/v1789056540/Suite-Cottage_1_1.jpg",
-    "https://res.cloudinary.com/cx2wca8r/image/upload/v1789056711/Suite-Cottage_2_1.jpg",
-    "https://res.cloudinary.com/cx2wca8r/image/upload/v1789057277/Suite-Cottage_3_1.jpg",
+    "https://res.cloudinary.com/cx2wca8r/image/upload/v1790800263/Suite_2_1.jpg",
+    "https://res.cloudinary.com/cx2wca8r/image/upload/v1790800264/Suite_1_1.jpg",
   ],
 
   "bunk-bed-cottage": [
