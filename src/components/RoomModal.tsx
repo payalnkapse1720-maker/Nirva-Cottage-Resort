@@ -110,47 +110,28 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
         onClick={onClose}
       >
         <div
-          className="relative w-full max-w-4xl lg:max-w-5xl bg-[#FBF8F1] rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh] focus:outline-none focus:ring-0 outline-none border-0"
+          className="relative w-full max-w-xl sm:max-w-2xl bg-[#FBF8F1] rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[88vh] focus:outline-none focus:ring-0 outline-none border-0"
           onClick={(e) => e.stopPropagation()}
         >
-          {/* Header Image: 16:9 Cinematic Proportional Frame */}
+          {/* Header Image: Compact, Proportionate Frame */}
           <div
-            className="relative w-full aspect-[16/9] shrink-0 overflow-hidden bg-[#231A13] border-0 cursor-zoom-in group select-none focus:outline-none focus:ring-0 outline-none"
+            className="relative w-full h-[200px] sm:h-[230px] md:h-[260px] lg:h-[280px] shrink-0 overflow-hidden bg-[#231A13] border-0 cursor-zoom-in group select-none focus:outline-none focus:ring-0 outline-none"
             onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
             onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
             onClick={() => setFullscreenView(true)}
             title="Click or tap to view photo enlarged"
           >
             {currentImage ? (
-              <>
-                {/* Background Layer: Same Image Strongly Blurred to Fill 16:9 Frame */}
-                <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
-                  <Image
-                    src={currentImage}
-                    alt=""
-                    fill
-                    unoptimized
-                    sizes="(max-width: 1024px) 100vw, 1200px"
-                    className="object-cover object-center blur-2xl scale-125 opacity-70 brightness-[0.7]"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-[#231A13]/25 backdrop-blur-sm" />
-                </div>
-
-                {/* Foreground Layer: Full Original Image (object-contain, never cropped or distorted) */}
-                <div className="absolute inset-0 flex items-center justify-center z-[1] p-1 pointer-events-none">
-                  <Image
-                    key={currentImage}
-                    src={currentImage}
-                    alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
-                    fill
-                    unoptimized
-                    sizes="(max-width: 1024px) 100vw, 1200px"
-                    className="object-contain object-center drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] transition-all duration-300 group-hover:scale-[1.01]"
-                    priority
-                  />
-                </div>
-              </>
+              <Image
+                key={currentImage}
+                src={currentImage}
+                alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+                fill
+                unoptimized
+                sizes="(max-width: 768px) 100vw, 672px"
+                className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+                priority
+              />
             ) : (
               <div className="absolute inset-0 bg-gradient-to-br from-[#3E2F24] to-[#231A13] flex items-center justify-center text-[#E6D8C2]/60 z-0">
                 <span className="text-xs uppercase tracking-widest font-medium">{room.name}</span>
@@ -165,7 +146,7 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
                 ))}
               </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#231A13]/85 via-transparent via-40% to-black/25 pointer-events-none z-[2]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#231A13]/90 via-black/20 via-50% to-black/30 pointer-events-none z-[2]" />
 
             {/* Navigation Controls */}
             {totalImages > 1 && (
@@ -173,22 +154,22 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
                 <button
                   type="button"
                   onClick={handlePrev}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/50 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/50 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
                   aria-label="Previous image"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/50 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/50 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
                   aria-label="Next image"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
 
                 {/* Subtle Image Counter Badge */}
-                <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-xs font-sans text-white/95 pointer-events-none">
+                <div className="absolute top-3 left-3 z-10 flex items-center gap-1 bg-black/55 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15 text-[11px] font-sans text-white/95 pointer-events-none">
                   <span>
                     {hasVariants ? `${selectedColor}: ` : ""}{currentImageIndex + 1} / {totalImages}
                   </span>
@@ -197,36 +178,36 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
             )}
 
             {/* Expand / Maximize Hint Badge */}
-            <div className="absolute top-4 right-16 z-10 hidden sm:flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 text-[11px] font-sans text-white/90 pointer-events-none group-hover:bg-[#C99A4A] group-hover:text-[#2F241C] transition-colors">
-              <Maximize2 className="w-3.5 h-3.5" />
-              <span>Tap to Enlarge</span>
+            <div className="absolute top-3 right-12 z-10 hidden sm:flex items-center gap-1 bg-black/50 backdrop-blur-md px-2.5 py-0.5 rounded-full border border-white/15 text-[10px] font-sans text-white/90 pointer-events-none group-hover:bg-[#C99A4A] group-hover:text-[#2F241C] transition-colors">
+              <Maximize2 className="w-3 h-3" />
+              <span>Enlarge</span>
             </div>
 
             {/* Close Button */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full bg-[#FBF8F1]/90 text-[#3E2F24] hover:text-black hover:bg-[#F1E9DA] transition-colors cursor-pointer shadow-md z-20 focus:outline-none focus:ring-0 outline-none border-0"
+              className="absolute top-3 right-3 p-1.5 rounded-full bg-[#FBF8F1]/90 text-[#3E2F24] hover:text-black hover:bg-[#F1E9DA] transition-colors cursor-pointer shadow-md z-20 focus:outline-none focus:ring-0 outline-none border-0"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
             {/* Room Title on Image */}
-            <div className="absolute bottom-4 left-6 right-6 z-10 pointer-events-none">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-[11px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold">
+            <div className="absolute bottom-3 left-4 right-4 sm:left-5 sm:right-5 z-10 pointer-events-none">
+              <div className="flex items-center gap-2 mb-0.5">
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold">
                   {room.category}
                 </span>
                 <span className="text-white/40">•</span>
-                <span className="text-[11px] uppercase tracking-wider text-[#F7F3EA]/90 font-medium">
+                <span className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#F7F3EA]/90 font-medium">
                   {room.capacity}
                 </span>
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-bold">
+              <h3 className="font-serif text-xl sm:text-2xl text-white font-bold">
                 {room.name}
                 {hasVariants && (
-                  <span className="text-base sm:text-lg lg:text-xl font-sans font-normal text-[#DFB76C] ml-2">
+                  <span className="text-sm sm:text-base font-sans font-normal text-[#DFB76C] ml-2">
                     ({selectedColor})
                   </span>
                 )}
