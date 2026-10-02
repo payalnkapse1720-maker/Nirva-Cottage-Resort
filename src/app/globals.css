@@ -19,6 +19,10 @@
   --font-display: var(--font-playfair), 'Playfair Display', Georgia, serif;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 html {
   scroll-behavior: smooth;
   color-scheme: light;
@@ -29,6 +33,16 @@ body {
   color: #3E2F24;
   font-family: var(--font-montserrat), 'Montserrat', sans-serif;
   overflow-x: hidden;
+}
+
+/* Prevent unwanted browser outlines/borders during mouse/touch/swipe interactions */
+:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+img, picture, video, canvas, svg {
+  -webkit-touch-callout: none;
 }
 
 ::selection {

@@ -44,6 +44,7 @@ export const ROOM_IMAGES = {
   "bunk-bed-cottage": [
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1789047618/Bunk-Bed_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1790844271/Bunk_bed_1.jpg",
+    "https://res.cloudinary.com/dduwzy2tf/image/upload/v1790940030/Copy_of_DSC08419_1_k9tgrn.jpg",
   ],
 
   "villa": [
@@ -61,5 +62,6 @@ export const ROOM_IMAGES = {
   "dormitory-rooms": [
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1789055027/Dormitory_Room_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1789055028/Dormitory_Room_2.jpg",
+    "https://res.cloudinary.com/dduwzy2tf/image/upload/v1790940090/Copy_of_DSC08708_a1lcxd.jpg",
   ],
 } as const;

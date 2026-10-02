@@ -79,40 +79,21 @@ function RoomCard({
     >
       {/* Card Top: Fixed 16:9 Image Frame */}
       <div
-        className="relative w-full aspect-[16/9] overflow-hidden shrink-0 bg-[#231A13]"
+        className="relative w-full aspect-[16/9] overflow-hidden shrink-0 bg-[#231A13] border-0 select-none focus:outline-none focus:ring-0 outline-none"
         onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
         onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
       >
         {currentImage ? (
-          <>
-            {/* Background Layer: Same Image Strongly Blurred to Fill 16:9 Frame */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
-              <Image
-                src={currentImage}
-                alt=""
-                fill
-                unoptimized
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                className="object-cover object-center blur-2xl scale-125 opacity-70 brightness-[0.7]"
-                priority={hasVariants}
-              />
-              <div className="absolute inset-0 bg-[#231A13]/25 backdrop-blur-sm" />
-            </div>
-
-            {/* Foreground Layer: Full Original Image (object-contain, never cropped or distorted) */}
-            <div className="absolute inset-0 flex items-center justify-center z-[1] p-0.5 pointer-events-none">
-              <Image
-                key={currentImage}
-                src={currentImage}
-                alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
-                fill
-                unoptimized
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                className="object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)] transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-                priority={hasVariants}
-              />
-            </div>
-          </>
+          <Image
+            key={currentImage}
+            src={currentImage}
+            alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+            fill
+            unoptimized
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+            className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+            priority={hasVariants}
+          />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-[#3E2F24] to-[#231A13] flex items-center justify-center text-[#E6D8C2]/60 z-0">
             <span className="text-xs uppercase tracking-widest font-medium">{room.name}</span>
@@ -145,7 +126,7 @@ function RoomCard({
             <button
               type="button"
               onClick={handlePrev}
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -153,7 +134,7 @@ function RoomCard({
             <button
               type="button"
               onClick={handleNext}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
               aria-label="Next image"
             >
               <ChevronRight className="w-4 h-4" />

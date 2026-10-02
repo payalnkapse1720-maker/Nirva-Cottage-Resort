@@ -147,7 +147,7 @@ export default function AboutBlissCafe() {
           <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             <div className="absolute -inset-3 sm:-inset-4 border border-[#D8C6A8] rounded-2xl transform translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 pointer-events-none -z-10" />
             <div
-              className="relative w-full aspect-[4/3] sm:aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none"
+              className="relative w-full aspect-[4/3] sm:aspect-[3/2] rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
               tabIndex={0}
@@ -185,7 +185,7 @@ export default function AboutBlissCafe() {
                 type="button"
                 onClick={handlePrevBlissImage}
                 aria-label="Previous Bliss Cafe photograph"
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -194,7 +194,7 @@ export default function AboutBlissCafe() {
                 type="button"
                 onClick={handleNextBlissImage}
                 aria-label="Next Bliss Cafe photograph"
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>

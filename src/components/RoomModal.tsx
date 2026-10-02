@@ -13,6 +13,7 @@ import {
   Info,
   ChevronLeft,
   ChevronRight,
+  Maximize2,
 } from "lucide-react";
 import { Room, RESORT_INFO } from "@/data/resort-data";
 
@@ -26,24 +27,24 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
   const [selectedColor, setSelectedColor] = useState<string>(initialColor);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [fullscreenView, setFullscreenView] = useState<boolean>(false);
 
   useEffect(() => {
     setSelectedColor(initialColor || "Blue");
     setCurrentImageIndex(0);
+    setFullscreenView(false);
   }, [room, initialColor]);
 
-  if (!room) return null;
-
-  const hasVariants = Boolean(room.colorVariants && room.colorVariants.length > 0);
+  const hasVariants = Boolean(room?.colorVariants && room.colorVariants.length > 0);
   const activeVariant = hasVariants
-    ? room.colorVariants?.find((v) => v.name === selectedColor) || room.colorVariants?.[0]
+    ? room?.colorVariants?.find((v) => v.name === selectedColor) || room?.colorVariants?.[0]
     : null;
 
   const roomImages: readonly string[] = hasVariants
     ? activeVariant?.images || []
-    : room.images && room.images.length > 0
+    : room?.images && room.images.length > 0
     ? room.images
-    : room.image
+    : room?.image
     ? [room.image]
     : [];
 
@@ -78,130 +79,160 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
     setTouchStartX(null);
   };
 
+  useEffect(() => {
+    if (!room) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (fullscreenView) {
+          setFullscreenView(false);
+        } else {
+          onClose();
+        }
+      }
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [room, fullscreenView, totalImages, onClose]);
+
+  if (!room) return null;
+
   const whatsappMessage = hasVariants
     ? `Hello Nirva Resort, I would like to check availability for *${room.name} (${selectedColor} Cottage)* (Capacity: ${room.capacity}).`
     : `Hello Nirva Resort, I would like to check availability for *${room.name}* (Capacity: ${room.capacity}).`;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-md animate-in fade-in duration-200"
-      onClick={onClose}
-    >
+    <>
       <div
-        className="relative w-full max-w-2xl bg-[#FBF8F1] border border-[#D8C6A8] rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
-        onClick={(e) => e.stopPropagation()}
+        className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8 bg-black/65 backdrop-blur-md animate-in fade-in duration-200 select-none"
+        onClick={onClose}
       >
-        {/* Header Image: Fixed 16:9 Image Frame */}
         <div
-          className="relative w-full aspect-[16/9] shrink-0 overflow-hidden bg-[#231A13]"
-          onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
-          onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
+          className="relative w-full max-w-4xl lg:max-w-5xl bg-[#FBF8F1] rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh] focus:outline-none focus:ring-0 outline-none border-0"
+          onClick={(e) => e.stopPropagation()}
         >
-          {currentImage ? (
-            <>
-              {/* Background Layer: Same Image Strongly Blurred to Fill 16:9 Frame */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
-                <Image
-                  src={currentImage}
-                  alt=""
-                  fill
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, 672px"
-                  className="object-cover object-center blur-2xl scale-125 opacity-70 brightness-[0.7]"
-                  priority
-                />
-                <div className="absolute inset-0 bg-[#231A13]/25 backdrop-blur-sm" />
-              </div>
-
-              {/* Foreground Layer: Full Original Image (object-contain, never cropped or distorted) */}
-              <div className="absolute inset-0 flex items-center justify-center z-[1] p-1 pointer-events-none">
-                <Image
-                  key={currentImage}
-                  src={currentImage}
-                  alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
-                  fill
-                  unoptimized
-                  sizes="(max-width: 768px) 100vw, 672px"
-                  className="object-contain object-center drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] transition-all duration-300"
-                  priority
-                />
-              </div>
-            </>
-          ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-[#3E2F24] to-[#231A13] flex items-center justify-center text-[#E6D8C2]/60 z-0">
-              <span className="text-xs uppercase tracking-widest font-medium">{room.name}</span>
-            </div>
-          )}
-
-          {/* Background preloading for remaining images in active collection */}
-          {totalImages > 1 && (
-            <div className="hidden" aria-hidden="true">
-              {roomImages.map((src) => (
-                src ? <img key={src} src={src} alt="" loading="eager" decoding="async" /> : null
-              ))}
-            </div>
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#231A13]/85 via-transparent via-40% to-black/25 pointer-events-none z-[2]" />
-
-          {/* Navigation Controls */}
-          {totalImages > 1 && (
-            <>
-              <button
-                type="button"
-                onClick={handlePrev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95"
-                aria-label="Previous image"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                type="button"
-                onClick={handleNext}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95"
-                aria-label="Next image"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-
-              {/* Subtle Image Counter Badge */}
-              <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-xs font-sans text-white/95 pointer-events-none">
-                <span>
-                  {hasVariants ? `${selectedColor}: ` : ""}{currentImageIndex + 1} / {totalImages}
-                </span>
-              </div>
-            </>
-          )}
-
-          {/* Close Button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-[#FBF8F1]/90 text-[#3E2F24] hover:text-black hover:bg-[#F1E9DA] transition-colors border border-[#D8C6A8] cursor-pointer shadow-md z-20"
-            aria-label="Close modal"
+          {/* Header Image: 16:9 Cinematic Proportional Frame */}
+          <div
+            className="relative w-full aspect-[16/9] shrink-0 overflow-hidden bg-[#231A13] border-0 cursor-zoom-in group select-none focus:outline-none focus:ring-0 outline-none"
+            onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
+            onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
+            onClick={() => setFullscreenView(true)}
+            title="Click or tap to view photo enlarged"
           >
-            <X className="w-5 h-5" />
-          </button>
+            {currentImage ? (
+              <>
+                {/* Background Layer: Same Image Strongly Blurred to Fill 16:9 Frame */}
+                <div className="absolute inset-0 overflow-hidden pointer-events-none select-none z-0" aria-hidden="true">
+                  <Image
+                    src={currentImage}
+                    alt=""
+                    fill
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 1200px"
+                    className="object-cover object-center blur-2xl scale-125 opacity-70 brightness-[0.7]"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-[#231A13]/25 backdrop-blur-sm" />
+                </div>
 
-          {/* Room Title on Image */}
-          <div className="absolute bottom-4 left-6 right-6 z-10 pointer-events-none">
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-[11px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold">
-                {room.category}
-              </span>
-              <span className="text-white/40">•</span>
-              <span className="text-[11px] uppercase tracking-wider text-[#F7F3EA]/90 font-medium">
-                {room.capacity}
-              </span>
+                {/* Foreground Layer: Full Original Image (object-contain, never cropped or distorted) */}
+                <div className="absolute inset-0 flex items-center justify-center z-[1] p-1 pointer-events-none">
+                  <Image
+                    key={currentImage}
+                    src={currentImage}
+                    alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+                    fill
+                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 1200px"
+                    className="object-contain object-center drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] transition-all duration-300 group-hover:scale-[1.01]"
+                    priority
+                  />
+                </div>
+              </>
+            ) : (
+              <div className="absolute inset-0 bg-gradient-to-br from-[#3E2F24] to-[#231A13] flex items-center justify-center text-[#E6D8C2]/60 z-0">
+                <span className="text-xs uppercase tracking-widest font-medium">{room.name}</span>
+              </div>
+            )}
+
+            {/* Background preloading for remaining images in active collection */}
+            {totalImages > 1 && (
+              <div className="hidden" aria-hidden="true">
+                {roomImages.map((src) => (
+                  src ? <img key={src} src={src} alt="" loading="eager" decoding="async" /> : null
+                ))}
+              </div>
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#231A13]/85 via-transparent via-40% to-black/25 pointer-events-none z-[2]" />
+
+            {/* Navigation Controls */}
+            {totalImages > 1 && (
+              <>
+                <button
+                  type="button"
+                  onClick={handlePrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/50 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="w-5 h-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={handleNext}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/50 hover:bg-[#3E2F24] text-white border border-white/20 backdrop-blur-md flex items-center justify-center transition-all z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+
+                {/* Subtle Image Counter Badge */}
+                <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 bg-black/55 backdrop-blur-md px-3 py-1 rounded-full border border-white/15 text-xs font-sans text-white/95 pointer-events-none">
+                  <span>
+                    {hasVariants ? `${selectedColor}: ` : ""}{currentImageIndex + 1} / {totalImages}
+                  </span>
+                </div>
+              </>
+            )}
+
+            {/* Expand / Maximize Hint Badge */}
+            <div className="absolute top-4 right-16 z-10 hidden sm:flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/15 text-[11px] font-sans text-white/90 pointer-events-none group-hover:bg-[#C99A4A] group-hover:text-[#2F241C] transition-colors">
+              <Maximize2 className="w-3.5 h-3.5" />
+              <span>Tap to Enlarge</span>
             </div>
-            <h3 className="font-serif text-2xl sm:text-3xl text-white font-bold">
-              {room.name}
-              {hasVariants && (
-                <span className="text-base sm:text-lg font-sans font-normal text-[#DFB76C] ml-2">
-                  ({selectedColor})
+
+            {/* Close Button */}
+            <button
+              type="button"
+              onClick={onClose}
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#FBF8F1]/90 text-[#3E2F24] hover:text-black hover:bg-[#F1E9DA] transition-colors cursor-pointer shadow-md z-20 focus:outline-none focus:ring-0 outline-none border-0"
+              aria-label="Close modal"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Room Title on Image */}
+            <div className="absolute bottom-4 left-6 right-6 z-10 pointer-events-none">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-[11px] uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold">
+                  {room.category}
                 </span>
-              )}
-            </h3>
+                <span className="text-white/40">•</span>
+                <span className="text-[11px] uppercase tracking-wider text-[#F7F3EA]/90 font-medium">
+                  {room.capacity}
+                </span>
+              </div>
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-bold">
+                {room.name}
+                {hasVariants && (
+                  <span className="text-base sm:text-lg lg:text-xl font-sans font-normal text-[#DFB76C] ml-2">
+                    ({selectedColor})
+                  </span>
+                )}
+              </h3>
+            </div>
           </div>
-        </div>
 
         {/* Scrollable Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-sm">
@@ -354,8 +385,9 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
         {/* Modal Footer CTA */}
         <div className="p-4 sm:p-5 border-t border-[#D8C6A8] bg-[#F1E9DA] flex items-center justify-between gap-4 shrink-0">
           <button
+            type="button"
             onClick={onClose}
-            className="text-xs uppercase tracking-wider text-[#6B5540] hover:text-[#3E2F24] px-3 py-2 transition-colors cursor-pointer font-medium"
+            className="text-xs uppercase tracking-wider text-[#6B5540] hover:text-[#3E2F24] px-3 py-2 transition-colors cursor-pointer font-medium focus:outline-none focus:ring-0 outline-none"
           >
             Close
           </button>
@@ -365,13 +397,87 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-[#C99A4A] text-[#2F241C] font-semibold text-xs uppercase tracking-[0.15em] px-5 py-3 rounded-lg hover:bg-[#b88939] transition-all flex items-center gap-2 shadow-[0_4px_20px_rgba(201,154,74,0.25)] cursor-pointer"
+            className="bg-[#C99A4A] text-[#2F241C] font-semibold text-xs uppercase tracking-[0.15em] px-5 py-3 rounded-lg hover:bg-[#b88939] transition-all flex items-center gap-2 shadow-[0_4px_20px_rgba(201,154,74,0.25)] cursor-pointer focus:outline-none focus:ring-0 outline-none"
           >
             <MessageSquare className="w-4 h-4" /> Enquire on WhatsApp
           </a>
         </div>
       </div>
     </div>
+
+    {/* Fullscreen Enlarged Room Image Lightbox */}
+    {fullscreenView && currentImage && (
+      <div
+        onClick={() => setFullscreenView(false)}
+        onTouchStart={totalImages > 1 ? handleTouchStart : undefined}
+        onTouchEnd={totalImages > 1 ? handleTouchEnd : undefined}
+        className="fixed inset-0 z-[70] bg-black/94 backdrop-blur-2xl flex items-center justify-center p-3 sm:p-6 md:p-8 animate-in fade-in duration-200 select-none"
+      >
+        {/* Top Bar: Counter Badge */}
+        <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 text-xs text-white/90 font-sans pointer-events-none">
+          <span>
+            {hasVariants ? `${selectedColor}: ` : ""}{currentImageIndex + 1} / {totalImages}
+          </span>
+        </div>
+
+        {/* Close button */}
+        <button
+          type="button"
+          onClick={() => setFullscreenView(false)}
+          className="absolute top-4 sm:top-6 right-4 sm:right-6 p-2.5 sm:p-3 rounded-full bg-white/15 text-white hover:bg-[#C99A4A] hover:text-[#2F241C] transition-colors z-20 cursor-pointer border border-white/20 shadow-lg focus:outline-none focus:ring-0 outline-none"
+          aria-label="Close enlarged photo"
+        >
+          <X className="w-5 h-5 sm:w-6 sm:h-6" />
+        </button>
+
+        {/* Navigation controls */}
+        {totalImages > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={handlePrev}
+              className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/50 text-white hover:bg-[#C99A4A] hover:text-[#2F241C] transition-all z-20 cursor-pointer border border-white/20 shadow-xl focus:outline-none focus:ring-0 outline-none active:scale-95"
+              aria-label="Previous image"
+            >
+              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+
+            <button
+              type="button"
+              onClick={handleNext}
+              className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/50 text-white hover:bg-[#C99A4A] hover:text-[#2F241C] transition-all z-20 cursor-pointer border border-white/20 shadow-xl focus:outline-none focus:ring-0 outline-none active:scale-95"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+            </button>
+          </>
+        )}
+
+        {/* Image Container - Expanded wide view */}
+        <div
+          className="relative max-w-7xl w-full max-h-[88vh] h-[78vh] sm:h-[84vh] flex items-center justify-center pointer-events-none"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Image
+            src={currentImage}
+            alt={`${room.name}${activeVariant ? ` - ${activeVariant.name}` : ""}`}
+            fill
+            unoptimized
+            className="object-contain drop-shadow-[0_16px_40px_rgba(0,0,0,0.7)]"
+            priority
+          />
+          <div className="absolute bottom-3 bg-[#3E2F24]/85 backdrop-blur-md px-6 py-2 rounded-full border border-[#D8C6A8]/40 text-center pointer-events-auto shadow-lg">
+            <span className="text-[10px] sm:text-xs uppercase tracking-widest text-[#E6D8C2] block">
+              {room.category} • {room.capacity}
+            </span>
+            <p className="font-serif text-sm sm:text-base text-white">
+              {room.name}{hasVariants ? ` (${selectedColor})` : ""}
+            </p>
+          </div>
+        </div>
+      </div>
+    )}
+  </>
   );
 }
 

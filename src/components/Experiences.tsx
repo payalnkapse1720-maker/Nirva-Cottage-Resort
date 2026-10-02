@@ -72,7 +72,7 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
 
   return (
     <div
-      className="md:col-span-7 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none"
+      className="md:col-span-7 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       tabIndex={0}
@@ -110,7 +110,7 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
         type="button"
         onClick={handlePrev}
         aria-label="Previous wedding photograph"
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -119,7 +119,7 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
         type="button"
         onClick={handleNext}
         aria-label="Next wedding photograph"
-        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
@@ -183,7 +183,7 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
 
   return (
     <div
-      className="md:col-span-7 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none order-1 md:order-2"
+      className="md:col-span-7 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none order-1 md:order-2 focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       tabIndex={0}
@@ -221,7 +221,7 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
         type="button"
         onClick={handlePrev}
         aria-label="Previous wellness photograph"
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
       >
         <ChevronLeft className="w-5 h-5" />
       </button>
@@ -230,7 +230,7 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
         type="button"
         onClick={handleNext}
         aria-label="Next wellness photograph"
-        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#C99A4A]"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
       >
         <ChevronRight className="w-5 h-5" />
       </button>
