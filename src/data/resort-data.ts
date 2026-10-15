@@ -490,7 +490,7 @@ export const TRAILS_DATA: Trail[] = [
   {
     id: "kondeshwar-trail",
     title: "Kondeshwar Waterfall Trail",
-    duration: "2 Hours",
+    duration: "15 mins",
     difficulty: "Moderate",
     description:
       "A scenic trek through ancient forested hills and seasonal streams, culminating at the revered Kondeshwar temple and breathtaking cascade pools.",
@@ -501,7 +501,7 @@ export const TRAILS_DATA: Trail[] = [
   {
     id: "sunset-ridge",
     title: "Sunset Ridge Walk",
-    duration: "45 Mins",
+    duration: "15 mins",
     difficulty: "Easy",
     description:
       "A gentle, elevated stroll directly accessible from the resort perimeter. Offers sweeping panoramic views of the entire valley during the golden hour.",

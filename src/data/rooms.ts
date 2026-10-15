@@ -60,7 +60,6 @@ export const ROOM_IMAGES = {
   ],
 
   "dormitory-rooms": [
-    "https://res.cloudinary.com/cx2wca8r/image/upload/v1789055027/Dormitory_Room_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1789055028/Dormitory_Room_2.jpg",
     "https://res.cloudinary.com/dduwzy2tf/image/upload/v1790940090/Copy_of_DSC08708_a1lcxd.jpg",
   ],

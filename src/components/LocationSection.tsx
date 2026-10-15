@@ -50,7 +50,7 @@ export default function LocationSection() {
                       <Train className="w-3.5 h-3.5" />
                       <span className="font-semibold text-[#3E2F24]">Badlapur Station</span>
                     </div>
-                    <p className="text-[#6B5540]">15 mins (6.5 km)</p>
+                    <p className="text-[#6B5540]">15 mins (4 km)</p>
                   </div>
 
                   <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-1">
@@ -72,9 +72,9 @@ export default function LocationSection() {
                   <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-1">
                     <div className="flex items-center gap-1.5 text-[#C99A4A]">
                       <Clock className="w-3.5 h-3.5" />
-                      <span className="font-semibold text-[#3E2F24]">Pune Expressway</span>
+                      <span className="font-semibold text-[#3E2F24]">Pune</span>
                     </div>
-                    <p className="text-[#6B5540]">~2 hrs 15 mins</p>
+                    <p className="text-[#6B5540]">~2 hrs 30 mins</p>
                   </div>
                 </div>
               </div>

@@ -335,18 +335,30 @@ export default function AboutBlissCafe() {
                     <span className="text-[#3E2F24] font-medium">
                       Adults ({SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.capacity})
                     </span>
-                    <span className="text-[#C99A4A] font-semibold">
-                      Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.dayPrice}</span> • Night{" "}
-                      <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.nightPrice}</span>
+                    <span className="font-semibold text-[#6B5540]">
+                      <span className="text-[#3E2F24]">
+                        Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.dayPrice}</span>
+                      </span>{" "}
+                      •{" "}
+                      <span className="text-[#C99A4A]">
+                        Night{" "}
+                        <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.nightPrice}</span>
+                      </span>
                     </span>
                   </div>
                   <div className="p-3 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-between text-xs">
                     <span className="text-[#6B5540] font-medium">
                       {SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.ageRange}
                     </span>
-                    <span className="text-[#3E2F24] font-medium">
-                      Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.dayPrice}</span> • Night{" "}
-                      <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.nightPrice}</span>
+                    <span className="font-medium text-[#6B5540]">
+                      <span className="text-[#3E2F24]">
+                        Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.dayPrice}</span>
+                      </span>{" "}
+                      •{" "}
+                      <span className="text-[#C99A4A]">
+                        Night{" "}
+                        <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.nightPrice}</span>
+                      </span>
                     </span>
                   </div>
                 </div>
