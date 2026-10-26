@@ -36,10 +36,6 @@ const WELLNESS_IMAGES = [
     src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789331405/Wellness_2.png",
     alt: "Tranquil evening poolside lounge and acoustic melodies at Nirva The Cottage & Resort",
   },
-  {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789332309/Wellness_4.png",
-    alt: "Sunset wellness moments and twilight celebration at Nirva The Cottage & Resort",
-  },
 ];
 
 function WeddingCarousel({ badge, title }: { badge: string; title: string }) {

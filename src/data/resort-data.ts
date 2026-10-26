@@ -470,7 +470,7 @@ export const EXPERIENCES_DATA: Experience[] = [
   },
   {
     id: "nightlife-wellness",
-    title: "Nightlife & Wellness",
+    title: "Nightlife",
     subtitle: "Balance & Rhythm",
     description:
       "Find your equilibrium. Transition seamlessly from high-energy DJ nights and curated pool parties by the illuminated infinity edge, to quiet sunrise yoga sessions and meditative walks through mist-kissed forests.",
@@ -584,6 +584,30 @@ export const GALLERY_DATA: GalleryItem[] = [
     categoryLabel: "Bliss Cafe",
     image:
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1789506381/Food_gal.png",
+  },
+  {
+    id: "g-10",
+    title: "Misty Monsoon Retreat",
+    category: "nature",
+    categoryLabel: "Nature & Views",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933447/Copy_of_DSC02332_ak5ogp.jpg",
+  },
+  {
+    id: "g-11",
+    title: "Aerial Resort Panorama",
+    category: "nature",
+    categoryLabel: "Nature & Views",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933433/Copy_of_DJI_0031_ilnmaj.jpg",
+  },
+  {
+    id: "g-12",
+    title: "Valley & River Meander",
+    category: "nature",
+    categoryLabel: "Nature & Views",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933428/Copy_of_DJI_0088_xlpa5r.jpg",
   },
 ];
 

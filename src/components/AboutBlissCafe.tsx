@@ -36,6 +36,26 @@ const BLISS_CAFE_IMAGES = [
     src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789314301/Bliss_Cafe_3.jpg",
     alt: "Bliss Cafe poolside dining experience at Nirva The Cottage & Resort",
   },
+  {
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932022/Copy_of_DSC09856_iipmdm.jpg",
+    alt: "Bliss Cafe dining experience at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932023/Copy_of_DSC09833_cuxivj.jpg",
+    alt: "Bliss Cafe culinary experience at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932027/Copy_of_DSC09821_r4ctrf.jpg",
+    alt: "Bliss Cafe relaxation and dining at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932702/Copy_of_Copy_of_DSC01104_mejph7.jpg",
+    alt: "Bliss Cafe atmosphere and ambiance at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932899/Copy_of_DSC03217_hpa5ti.jpg",
+    alt: "Bliss Cafe resort view and dining at Nirva The Cottage & Resort",
+  },
 ];
 
 export default function AboutBlissCafe() {
