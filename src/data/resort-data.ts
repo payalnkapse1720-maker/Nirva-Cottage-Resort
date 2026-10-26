@@ -74,7 +74,7 @@ export interface Trail {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: "all" | "rooms" | "dining" | "pool" | "nature" | "events";
+  category: "all" | "rooms" | "dining" | "pool" | "nature" | "events" | "reception";
   categoryLabel: string;
   image: string;
   span?: string;
@@ -608,6 +608,22 @@ export const GALLERY_DATA: GalleryItem[] = [
     categoryLabel: "Nature & Views",
     image:
       "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933428/Copy_of_DJI_0088_xlpa5r.jpg",
+  },
+  {
+    id: "g-13",
+    title: "Reception Lounge",
+    category: "reception",
+    categoryLabel: "Reception",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792934014/Copy_of_DSC03260_qscoqa.jpg",
+  },
+  {
+    id: "g-14",
+    title: "Welcome Reception",
+    category: "reception",
+    categoryLabel: "Reception",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792934012/Copy_of_DSC03244_c0nsoo.jpg",
   },
 ];
 

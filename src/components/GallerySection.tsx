@@ -17,6 +17,7 @@ export default function GallerySection() {
     { id: "pool", label: "Infinity Pool" },
     { id: "nature", label: "Nature & Views" },
     { id: "events", label: "Events & Lawns" },
+    { id: "reception", label: "Reception" },
   ];
 
   const filteredItems =

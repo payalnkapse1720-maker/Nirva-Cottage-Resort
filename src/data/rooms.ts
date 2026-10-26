@@ -57,6 +57,7 @@ export const ROOM_IMAGES = {
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1790845058/Sun_Suite_1_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1790845058/Sun_Suite_2_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1790845059/Sun_Suite_3_1.jpg",
+    "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792934679/Copy_of_DSC03070_pcuaed.jpg",
   ],
 
   "dormitory-rooms": [
