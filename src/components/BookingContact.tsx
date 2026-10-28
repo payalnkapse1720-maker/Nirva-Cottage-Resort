@@ -90,20 +90,20 @@ Sent via Nirva Resort Official Website.`;
             </p>
 
             {/* Official Check-in/Check-out Timings Strip */}
-            <div className="p-5 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-3 shadow-sm">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-2.5 sm:space-y-3 shadow-sm">
               <span className="text-xs uppercase tracking-[0.2em] text-[#C99A4A] font-bold flex items-center gap-2">
                 <Clock className="w-4 h-4" /> Official Stay Schedules
               </span>
-              <div className="grid sm:grid-cols-3 gap-3 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 pt-1">
                 {CHECKIN_TIMINGS.map((t) => (
-                  <div key={t.badge} className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8]">
-                    <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
+                  <div key={t.badge} className="p-2.5 sm:p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8]">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
                       {t.badge}
                     </span>
                     <span className="font-serif text-sm font-bold text-[#3E2F24] block mt-0.5">
                       {t.display}
                     </span>
-                    <span className="text-[10px] text-[#3E2F24] block mt-1 font-medium leading-snug">
+                    <span className="text-[10px] text-[#3E2F24] block mt-0.5 sm:mt-1 font-medium leading-snug">
                       {t.hours}
                     </span>
                   </div>

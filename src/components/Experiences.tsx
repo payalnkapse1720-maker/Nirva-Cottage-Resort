@@ -10,20 +10,36 @@ const WEDDING_IMAGES = [
     alt: "Weddings & Celebrations floating pool stage at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319343/Wedding_2.jpg",
-    alt: "Weddings & Celebrations luxury lawn celebration at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185315/Festive_Floral_Wedding_Entrance.png",
+    alt: "Festive Floral Wedding Entrance at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319347/Wedding_3.jpg",
-    alt: "Weddings & Celebrations boutique floral decor at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184703/Golden-Hour_Poolside_Floral_Mandap.png",
+    alt: "Golden-Hour Poolside Floral Mandap at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319397/Wedding_5.jpg",
-    alt: "Weddings & Celebrations evening banquet and celebration lighting at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188189/Tropical_Wedding_Arch_and_Welcome_Sign.png",
+    alt: "Tropical Wedding Arch and Welcome Sign at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319694/Wedding_6.jpg",
-    alt: "Weddings & Celebrations scenic mountain backdrop at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188610/Poolside_Mandap_with_Mountain_Views.png",
+    alt: "Poolside Mandap with Mountain Views at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188191/Tropical_Wedding_Entrance_Under_Night_Lights.png",
+    alt: "Tropical Wedding Entrance Under Night Lights at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185309/Poolside_Floral_Mandap_Ceremony_Setup.png",
+    alt: "Poolside Floral Mandap Ceremony Setup at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185549/Garden_Wedding_Entrance_with_Floral_Arch.png",
+    alt: "Garden Wedding Entrance with Floral Arch at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188191/Mountain_Garden_Wedding_Stage_Decor.png",
+    alt: "Mountain Garden Wedding Stage Decor at Nirva The Cottage & Resort",
   },
 ];
 
@@ -37,8 +53,8 @@ const WELLNESS_IMAGES = [
     alt: "Tranquil evening poolside lounge and acoustic melodies at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933890/Copy_of_DSC08326_tje1qr.jpg",
-    alt: "Nightlife evening celebration and ambiance at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185582/Warmly_Lit_Courtyard_Bungalow_at_Night.png",
+    alt: "Warmly Lit Courtyard Bungalow at Night at Nirva The Cottage & Resort",
   },
 ];
 
@@ -72,7 +88,7 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
 
   return (
     <div
-      className="md:col-span-7 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
+      className="md:col-span-7 relative h-[250px] sm:h-[380px] md:h-[460px] lg:h-[480px] w-full rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#D8C6A8] group select-none focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       tabIndex={0}
@@ -124,30 +140,21 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
         <ChevronRight className="w-5 h-5" />
       </button>
 
-      {/* Bottom Content & Dots */}
-      <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10 pointer-events-none">
-        <div className="space-y-0.5">
-          <p className="font-serif text-lg sm:text-2xl text-white font-bold drop-shadow-md">
-            {title}
-          </p>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex items-center gap-1.5 pointer-events-auto pb-1">
-          {WEDDING_IMAGES.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentIndex(idx)}
-              aria-label={`Go to wedding slide ${idx + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                idx === currentIndex
-                  ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
-                  : "w-1.5 bg-white/50 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Bottom Pagination Dots */}
+      <div className="absolute bottom-4 right-4 flex items-center gap-1.5 z-10 pointer-events-auto pb-1">
+        {WEDDING_IMAGES.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to wedding slide ${idx + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentIndex
+                ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
+                : "w-1.5 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -183,7 +190,7 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
 
   return (
     <div
-      className="md:col-span-7 relative h-[380px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8] group select-none order-1 md:order-2 focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
+      className="md:col-span-7 relative h-[250px] sm:h-[380px] md:h-[460px] lg:h-[480px] w-full rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl border border-[#D8C6A8] group select-none order-1 md:order-2 focus:outline-none focus:ring-0 focus-visible:outline-none outline-none"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
       tabIndex={0}
@@ -221,44 +228,35 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
         type="button"
         onClick={handlePrev}
         aria-label="Previous wellness photograph"
-        className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
+        className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
 
       <button
         type="button"
         onClick={handleNext}
         aria-label="Next wellness photograph"
-        className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
+        className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/45 hover:bg-[#3E2F24] text-white border border-white/25 backdrop-blur-md flex items-center justify-center transition-all opacity-85 hover:opacity-100 z-20 cursor-pointer shadow-lg active:scale-95 focus:outline-none focus:ring-0 outline-none"
       >
-        <ChevronRight className="w-5 h-5" />
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
 
-      {/* Bottom Content & Dots */}
-      <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10 pointer-events-none">
-        <div className="space-y-0.5">
-          <p className="font-serif text-lg sm:text-2xl text-white font-bold drop-shadow-md">
-            {title}
-          </p>
-        </div>
-
-        {/* Pagination Dots */}
-        <div className="flex items-center gap-1.5 pointer-events-auto pb-1">
-          {WELLNESS_IMAGES.map((_, idx) => (
-            <button
-              key={idx}
-              type="button"
-              onClick={() => setCurrentIndex(idx)}
-              aria-label={`Go to wellness slide ${idx + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                idx === currentIndex
-                  ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
-                  : "w-1.5 bg-white/50 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Bottom Pagination Dots */}
+      <div className="absolute bottom-4 right-4 flex items-center gap-1.5 z-10 pointer-events-auto pb-1">
+        {WELLNESS_IMAGES.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setCurrentIndex(idx)}
+            aria-label={`Go to wellness slide ${idx + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+              idx === currentIndex
+                ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
+                : "w-1.5 bg-white/50 hover:bg-white/80"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
@@ -269,10 +267,10 @@ export default function Experiences() {
   const exp2 = EXPERIENCES_DATA[1]; // Nightlife & Wellness
 
   return (
-    <section id="experiences" className="py-24 md:py-32 bg-[#F7F3EA] relative overflow-hidden">
+    <section id="experiences" className="py-16 sm:py-24 md:py-32 bg-[#F7F3EA] relative overflow-hidden">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20 space-y-4">
+        <div className="text-center mb-12 sm:mb-20 space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
             <Sparkles className="w-3.5 h-3.5 text-[#C99A4A]" />
             <span className="text-xs uppercase tracking-[0.25em] text-[#C99A4A] font-semibold font-sans">
@@ -286,8 +284,8 @@ export default function Experiences() {
         </div>
 
         {/* Experience 1: Weddings & Events */}
-        <div className="space-y-24 md:space-y-32">
-          <div className="grid md:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="space-y-14 sm:space-y-24 md:space-y-32">
+          <div className="grid md:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
             <WeddingCarousel badge={exp1.badge} title={exp1.title} />
 
             <div className="md:col-span-5 md:pl-6 lg:pl-10 space-y-6">

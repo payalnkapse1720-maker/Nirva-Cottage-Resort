@@ -41,21 +41,25 @@ export default function AmenitiesGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {AMENITIES_LIST.map((amenity) => (
             <div
               key={amenity.title}
-              className="glass-panel p-6 rounded-2xl border border-[#D8C6A8] hover:border-[#C99A4A] transition-all duration-300 group hover:-translate-y-1"
+              className="glass-panel p-3.5 sm:p-6 rounded-xl sm:rounded-2xl border border-[#D8C6A8] hover:border-[#C99A4A] transition-all duration-300 group hover:-translate-y-1 flex flex-col justify-between"
             >
-              <div className="w-12 h-12 rounded-xl bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                {iconMap[amenity.icon]}
+              <div>
+                <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center mb-2.5 sm:mb-4 group-hover:scale-105 transition-transform">
+                  <div className="scale-75 sm:scale-100 flex items-center justify-center">
+                    {iconMap[amenity.icon]}
+                  </div>
+                </div>
+                <h3 className="font-serif text-sm sm:text-lg text-[#3E2F24] font-semibold mb-1 sm:mb-2 group-hover:text-[#C99A4A] transition-colors leading-tight">
+                  {amenity.title}
+                </h3>
+                <p className="font-sans text-[11px] sm:text-xs text-[#6B5540] leading-snug sm:leading-relaxed font-light line-clamp-3 sm:line-clamp-none">
+                  {amenity.description}
+                </p>
               </div>
-              <h3 className="font-serif text-lg text-[#3E2F24] font-semibold mb-2 group-hover:text-[#C99A4A] transition-colors">
-                {amenity.title}
-              </h3>
-              <p className="font-sans text-xs text-[#6B5540] leading-relaxed font-light">
-                {amenity.description}
-              </p>
             </div>
           ))}
         </div>

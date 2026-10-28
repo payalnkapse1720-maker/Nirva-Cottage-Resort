@@ -170,32 +170,32 @@ export default function GallerySection() {
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Gallery Grid - 2x2 grid on mobile */}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
           {visibleItems.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => openLightbox(idx)}
-              className={`relative overflow-hidden rounded-2xl glass-panel border border-[#D8C6A8] group cursor-pointer aspect-[4/3] shadow-lg ${
-                item.span || ""
-              }`}
+              className="relative overflow-hidden rounded-xl sm:rounded-2xl glass-panel border border-[#D8C6A8] group cursor-pointer aspect-[4/3] shadow-md sm:shadow-lg"
             >
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
                 unoptimized
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 768px) 50vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/90 via-[#3E2F24]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#E6D8C2] font-semibold mb-1">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#3E2F24]/90 via-[#3E2F24]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2.5 sm:p-6">
+                <span className="text-[8px] sm:text-[10px] font-sans uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#E6D8C2] font-semibold mb-0.5 sm:mb-1 truncate">
                   {item.categoryLabel}
                 </span>
-                <div className="flex items-center justify-between">
-                  <h3 className="font-serif text-lg text-white font-bold">{item.title}</h3>
-                  <div className="w-8 h-8 rounded-full bg-[#C99A4A] text-[#2F241C] flex items-center justify-center shrink-0">
-                    <Eye className="w-4 h-4" />
+                <div className="flex items-center justify-between gap-1">
+                  <h3 className="font-serif text-xs sm:text-lg text-white font-bold truncate leading-tight">
+                    {item.title}
+                  </h3>
+                  <div className="w-5 h-5 sm:w-8 sm:h-8 rounded-full bg-[#C99A4A] text-[#2F241C] flex items-center justify-center shrink-0">
+                    <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
                   </div>
                 </div>
               </div>

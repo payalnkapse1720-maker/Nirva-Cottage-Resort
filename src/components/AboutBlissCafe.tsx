@@ -33,16 +33,32 @@ const BLISS_CAFE_IMAGES = [
     alt: "Bliss Cafe poolside dining experience at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932022/Copy_of_DSC09856_iipmdm.jpg",
-    alt: "Bliss Cafe dining experience at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793186223/Resort_Poolside_Bliss_with_Fresh_Fruit.png",
+    alt: "Resort Poolside Bliss with Fresh Fruit at Bliss Cafe",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184694/Poolside_Breakfast_Spread_with_Fresh_Fruit_and_Drinks.png",
+    alt: "Poolside Breakfast Spread with Fresh Fruit and Drinks at Bliss Cafe",
   },
   {
     src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793127775/Copy_of_DSC09833_cuxivj_p2xydn.jpg",
-    alt: "Bliss Cafe culinary artistry and dining at Nirva The Cottage & Resort",
+    alt: "Artisan Dining at Bliss Cafe",
   },
   {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793128791/Copy_of_DSC09821_r4ctrf_qfshwy.jpg",
-    alt: "Bliss Cafe evening ambiance and dining at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184652/Ready_to_Sip_Herb_Lemonade.png",
+    alt: "Ready to Sip Herb Lemonade at Bliss Cafe",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184690/Glazed_Stir-Fry_on_Black_Plate.png",
+    alt: "Glazed Stir-Fry on Black Plate at Bliss Cafe",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184916/Golden_Stir-Fried_Noodles_on_Wood.png",
+    alt: "Golden Stir-Fried Noodles on Wood at Bliss Cafe",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793186223/Indian-Inspired_Feast_Flat_Lay.png",
+    alt: "Indian-Inspired Feast Flat Lay at Bliss Cafe",
   },
   {
     src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793128785/Gemini_Generated_Image_z3vdkdz3vdkdz3vd_bvqven.png",
@@ -111,44 +127,44 @@ export default function AboutBlissCafe() {
               ambient, soulful music that perfectly complements the golden hour.
             </p>
 
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-2 gap-6 sm:gap-8 pt-2">
-              <div className="space-y-2">
-                <div className="font-serif text-3xl text-[#C99A4A] font-bold">01</div>
-                <h3 className="font-sans text-sm sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
-                  <Waves className="w-4 h-4 text-[#C99A4A]" /> Infinity Pool
+            {/* Highlights Grid - 2x2 grid on mobile */}
+            <div className="grid grid-cols-2 gap-3 sm:gap-8 pt-2">
+              <div className="space-y-1 sm:space-y-2 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-[#FBF8F1] sm:bg-transparent border border-[#D8C6A8]/60 sm:border-0">
+                <div className="font-serif text-2xl sm:text-3xl text-[#C99A4A] font-bold">01</div>
+                <h3 className="font-sans text-xs sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
+                  <Waves className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A]" /> Infinity Pool
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B5540] font-light leading-snug">
+                <p className="text-[11px] sm:text-sm text-[#6B5540] font-light leading-snug">
                   Seamlessly blending with the misty valley horizon.
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <div className="font-serif text-3xl text-[#C99A4A] font-bold">02</div>
-                <h3 className="font-sans text-sm sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
-                  <Utensils className="w-4 h-4 text-[#C99A4A]" /> Gourmet Dining
+              <div className="space-y-1 sm:space-y-2 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-[#FBF8F1] sm:bg-transparent border border-[#D8C6A8]/60 sm:border-0">
+                <div className="font-serif text-2xl sm:text-3xl text-[#C99A4A] font-bold">02</div>
+                <h3 className="font-sans text-xs sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
+                  <Utensils className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A]" /> Gourmet Dining
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B5540] font-light leading-snug">
+                <p className="text-[11px] sm:text-sm text-[#6B5540] font-light leading-snug">
                   Multi-cuisine delights freshly prepared by artisan chefs.
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <div className="font-serif text-3xl text-[#C99A4A] font-bold">03</div>
-                <h3 className="font-sans text-sm sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
-                  <Music className="w-4 h-4 text-[#C99A4A]" /> Soulful Music
+              <div className="space-y-1 sm:space-y-2 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-[#FBF8F1] sm:bg-transparent border border-[#D8C6A8]/60 sm:border-0">
+                <div className="font-serif text-2xl sm:text-3xl text-[#C99A4A] font-bold">03</div>
+                <h3 className="font-sans text-xs sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
+                  <Music className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A]" /> Soulful Music
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B5540] font-light leading-snug">
+                <p className="text-[11px] sm:text-sm text-[#6B5540] font-light leading-snug">
                   Curated soundscapes that flow as twilight descends.
                 </p>
               </div>
 
-              <div className="space-y-2">
-                <div className="font-serif text-3xl text-[#C99A4A] font-bold">04</div>
-                <h3 className="font-sans text-sm sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
-                  <Users className="w-4 h-4 text-[#C99A4A]" /> {RESORT_INFO.restaurantCapacity}
+              <div className="space-y-1 sm:space-y-2 p-2.5 sm:p-0 rounded-xl sm:rounded-none bg-[#FBF8F1] sm:bg-transparent border border-[#D8C6A8]/60 sm:border-0">
+                <div className="font-serif text-2xl sm:text-3xl text-[#C99A4A] font-bold">04</div>
+                <h3 className="font-sans text-xs sm:text-base font-semibold text-[#3E2F24] tracking-wide flex items-center gap-1.5">
+                  <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A]" /> {RESORT_INFO.restaurantCapacity}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#6B5540] font-light leading-snug">
+                <p className="text-[11px] sm:text-sm text-[#6B5540] font-light leading-snug">
                   Intimate indoor & poolside seating for private dining.
                 </p>
               </div>
@@ -211,30 +227,21 @@ export default function AboutBlissCafe() {
                 <ChevronRight className="w-5 h-5" />
               </button>
 
-              {/* Bottom Content & Dots */}
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10 pointer-events-none">
-                <div>
-                  <p className="font-serif text-lg sm:text-xl text-white font-bold drop-shadow-md">
-                    Artisan Dining at Bliss Cafe
-                  </p>
-                </div>
-
-                {/* Pagination Dots */}
-                <div className="flex items-center gap-1.5 pointer-events-auto pb-1">
-                  {BLISS_CAFE_IMAGES.map((_, idx) => (
-                    <button
-                      key={idx}
-                      type="button"
-                      onClick={() => setCurrentBlissIndex(idx)}
-                      aria-label={`Go to Bliss Cafe slide ${idx + 1}`}
-                      className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
-                        idx === currentBlissIndex
-                          ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
-                          : "w-1.5 bg-white/50 hover:bg-white/80"
-                      }`}
-                    />
-                  ))}
-                </div>
+              {/* Bottom Pagination Dots */}
+              <div className="absolute bottom-4 right-4 flex items-center gap-1.5 z-10 pointer-events-auto pb-1">
+                {BLISS_CAFE_IMAGES.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setCurrentBlissIndex(idx)}
+                    aria-label={`Go to Bliss Cafe slide ${idx + 1}`}
+                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${
+                      idx === currentBlissIndex
+                        ? "w-6 bg-[#C99A4A] shadow-[0_0_8px_#C99A4A]"
+                        : "w-1.5 bg-white/50 hover:bg-white/80"
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -411,50 +418,54 @@ export default function AboutBlissCafe() {
             </p>
           </div>
 
-          {/* 4 Compact Cards / Tabs */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* 4 Compact Cards / Tabs - Clean 2x2 grid on mobile */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
             {BUFFET_TIMINGS.map((meal) => {
               const isOpen = activeMealId === meal.id;
               return (
                 <div
                   key={meal.id}
                   onClick={() => setActiveMealId(isOpen ? "" : meal.id)}
-                  className={`p-5 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                  className={`p-3 sm:p-5 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isOpen
-                      ? "bg-[#FBF8F1] border-[#C99A4A] shadow-lg shadow-[#C99A4A]/10"
+                      ? "bg-[#FBF8F1] border-[#C99A4A] shadow-md shadow-[#C99A4A]/10"
                       : "bg-[#FBF8F1] border-[#D8C6A8] hover:border-[#C99A4A]"
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <div className="flex items-center gap-2">
-                      <Coffee className="w-4 h-4 text-[#C99A4A]" />
-                      <h4 className="font-serif text-lg text-[#3E2F24] font-bold">{meal.name}</h4>
+                  <div>
+                    <div className="flex items-center justify-between gap-1 mb-2 sm:mb-3">
+                      <div className="flex items-center gap-1.5 truncate">
+                        <Coffee className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A] shrink-0" />
+                        <h4 className="font-serif text-sm sm:text-lg text-[#3E2F24] font-bold truncate">
+                          {meal.name}
+                        </h4>
+                      </div>
+                      <ChevronDown
+                        className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A] shrink-0 transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : ""
+                        }`}
+                      />
                     </div>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#C99A4A] transition-transform duration-300 ${
-                        isOpen ? "rotate-180" : ""
-                      }`}
-                    />
-                  </div>
 
-                  <div className="inline-block text-xs font-mono text-[#6B5540] bg-[#F1E9DA] px-2.5 py-1 rounded-md mb-3 border border-[#D8C6A8] self-start font-medium">
-                    {meal.time}
+                    <div className="inline-block text-[10px] sm:text-xs font-mono text-[#6B5540] bg-[#F1E9DA] px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-md mb-2 sm:mb-3 border border-[#D8C6A8] font-medium leading-snug">
+                      {meal.time}
+                    </div>
                   </div>
 
                   {/* Menu Items Preview / Expanded */}
-                  <div className="space-y-2">
+                  <div className="space-y-1 sm:space-y-2 mt-auto">
                     {isOpen ? (
-                      <ul className="space-y-1.5 pt-2 border-t border-[#D8C6A8]/40 text-xs text-[#3E2F24]">
+                      <ul className="space-y-1 pt-1.5 sm:pt-2 border-t border-[#D8C6A8]/40 text-[10px] sm:text-xs text-[#3E2F24]">
                         {meal.items.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-1.5">
-                            <span className="text-[#C99A4A] leading-none mt-1">•</span>
+                          <li key={idx} className="flex items-start gap-1">
+                            <span className="text-[#C99A4A] leading-none mt-0.5">•</span>
                             <span className="leading-snug">{item}</span>
                           </li>
                         ))}
                       </ul>
                     ) : (
-                      <p className="text-[11px] text-[#6B5540] italic">
-                        Tap to reveal buffet items →
+                      <p className="text-[10px] sm:text-[11px] text-[#6B5540] italic">
+                        Tap for menu →
                       </p>
                     )}
                   </div>

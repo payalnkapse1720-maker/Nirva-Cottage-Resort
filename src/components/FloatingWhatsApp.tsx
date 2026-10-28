@@ -5,14 +5,14 @@ import { RESORT_INFO } from "@/data/resort-data";
 
 export default function FloatingWhatsApp() {
   return (
-    <div className="fixed bottom-6 right-6 z-40 group">
+    <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 group">
       <a
         href={`https://wa.me/${RESORT_INFO.whatsappRaw}?text=${encodeURIComponent(
           "Hello Nirva Resort, I would like to enquire about booking a stay."
         )}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-all duration-300 border-2 border-[#C99A4A]/60"
+        className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-110 transition-all duration-300 border-2 border-[#C99A4A]/60"
         aria-label="Direct WhatsApp Reservation"
       >
         {/* Pulsing Aura */}

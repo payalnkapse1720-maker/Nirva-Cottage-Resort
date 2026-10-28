@@ -36,12 +36,12 @@ export default function AdventuresTrails() {
           </a>
         </div>
 
-        {/* Trail Cards Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Trail Cards Grid - responsive padding & typography */}
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
           {TRAILS_DATA.map((trail) => (
             <div
               key={trail.id}
-              className="bg-[#FBF8F1] border border-[#D8C6A8] rounded-2xl p-5 sm:p-6 flex flex-col gap-5 group hover:border-[#C99A4A] transition-all duration-300 shadow-xl"
+              className="bg-[#FBF8F1] border border-[#D8C6A8] rounded-2xl p-3.5 sm:p-6 flex flex-col gap-3.5 sm:gap-5 group hover:border-[#C99A4A] transition-all duration-300 shadow-lg sm:shadow-xl"
             >
               {/* Image with Duration Overlay */}
               <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden">
@@ -55,8 +55,8 @@ export default function AdventuresTrails() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-                <div className="absolute top-4 left-4 bg-[#FBF8F1]/90 backdrop-blur-md px-3 py-1.5 rounded-full border border-[#D8C6A8] flex items-center gap-1.5 text-xs text-[#3E2F24]">
-                  <Clock className="w-3.5 h-3.5 text-[#C99A4A]" />
+                <div className="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 bg-[#FBF8F1]/90 backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-[#D8C6A8] flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-[#3E2F24]">
+                  <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C99A4A]" />
                   <span className="font-medium">{trail.duration}</span>
                   <span className="text-[#6B5540]/40">•</span>
                   <span className="text-[#C99A4A] font-semibold">{trail.difficulty}</span>
@@ -64,22 +64,22 @@ export default function AdventuresTrails() {
               </div>
 
               {/* Trail Info */}
-              <div className="space-y-3">
-                <h3 className="font-serif text-2xl text-[#3E2F24] font-bold group-hover:text-[#C99A4A] transition-colors">
+              <div className="space-y-2 sm:space-y-3">
+                <h3 className="font-serif text-lg sm:text-2xl text-[#3E2F24] font-bold group-hover:text-[#C99A4A] transition-colors leading-tight">
                   {trail.title}
                 </h3>
-                <p className="font-sans text-sm text-[#6B5540] font-light leading-relaxed">
+                <p className="font-sans text-xs sm:text-sm text-[#6B5540] font-light leading-snug sm:leading-relaxed">
                   {trail.description}
                 </p>
 
                 {/* Highlights tags */}
-                <div className="flex flex-wrap gap-2 pt-1">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
                   {trail.highlights.map((h) => (
                     <span
                       key={h}
-                      className="inline-flex items-center gap-1 text-[11px] px-3 py-1 rounded-full bg-[#F7F3EA] border border-[#D8C6A8] text-[#6B5540]"
+                      className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F7F3EA] border border-[#D8C6A8] text-[#6B5540]"
                     >
-                      <Mountain className="w-3 h-3 text-[#C99A4A]" /> {h}
+                      <Mountain className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#C99A4A]" /> {h}
                     </span>
                   ))}
                 </div>

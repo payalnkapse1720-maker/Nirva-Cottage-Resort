@@ -221,7 +221,7 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
           </div>
 
         {/* Scrollable Body */}
-        <div className="p-6 overflow-y-auto space-y-6 text-sm">
+        <div className="p-4 sm:p-6 overflow-y-auto space-y-4 sm:space-y-6 text-sm">
           {/* Variant Controls for Single Cottage & Sunset Suite */}
           {hasVariants && (
             <div className="p-3.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2.5">

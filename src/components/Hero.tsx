@@ -23,10 +23,10 @@ export default function Hero() {
       </div>
 
       {/* Hero Content - Left Aligned */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-28 pb-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
         <div className="max-w-2xl text-left flex flex-col items-start">
           {/* Subtle Luxury Badge / Eyebrow */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md mb-6 shadow-md animate-fade-in">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md mb-4 sm:mb-6 shadow-md animate-fade-in">
             <div className="relative w-4 h-4 shrink-0">
               <Image
                 src="/nirva-emblem.png"
@@ -42,59 +42,52 @@ export default function Hero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.08] mb-6 drop-shadow-md">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 drop-shadow-md">
             Escape to<br />
             <span className="text-[#E0B86C] italic font-normal">Infinite Serenity</span>
           </h1>
 
           {/* Supporting Paragraph */}
-          <p className="font-sans text-base sm:text-lg md:text-xl text-[#F3EDE2]/90 max-w-xl mb-8 font-medium leading-relaxed drop-shadow-sm">
-            Discover a sanctuary where quiet luxury meets the breathtaking stillness of nature.
-            Experience boutique hospitality redefined along the pristine Kondeshwar valley.
+          <p className="font-sans text-sm sm:text-lg md:text-xl text-[#F3EDE2]/90 max-w-xl mb-6 sm:mb-8 font-medium leading-relaxed drop-shadow-sm">
+            Experience peaceful luxury surrounded by the natural beauty of Kondeshwar Valley.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-5 w-full sm:w-auto">
-            <a
-              href="#stay"
-              className="bg-[#C99A4A] text-[#2F241C] font-semibold text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-lg hover:bg-[#b88939] hover:shadow-[0_4px_25px_rgba(201,154,74,0.45)] transition-all duration-300 text-center font-sans border border-[#C99A4A]"
-            >
-              Book Your Stay
-            </a>
+          {/* CTA - Explore Resort only */}
+          <div className="flex items-center w-full sm:w-auto">
             <a
               href="#about"
-              className="bg-white/10 text-white hover:bg-white/20 hover:text-white font-semibold text-xs uppercase tracking-[0.2em] px-8 py-4 rounded-lg border border-white/30 backdrop-blur-md transition-all duration-300 text-center flex items-center justify-center gap-2 font-sans group shadow-sm"
+              className="bg-white/15 text-white hover:bg-[#C99A4A] hover:text-[#2F241C] hover:border-[#C99A4A] font-semibold text-xs uppercase tracking-[0.2em] px-7 sm:px-8 py-3.5 sm:py-4 rounded-lg border border-white/30 backdrop-blur-md transition-all duration-300 text-center flex items-center justify-center gap-2 font-sans group shadow-md"
             >
               Explore Resort
-              <ArrowDown className="w-3.5 h-3.5 text-[#E0B86C] transition-transform duration-300 group-hover:translate-y-1" />
+              <ArrowDown className="w-3.5 h-3.5 text-[#E0B86C] group-hover:text-[#2F241C] transition-transform duration-300 group-hover:translate-y-1" />
             </a>
           </div>
 
-          {/* Floating Highlights Strip */}
-          <div className="mt-12 sm:mt-16 pt-5 pb-5 px-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 sm:grid-cols-4 gap-6 text-left w-full max-w-2xl">
+          {/* Floating Highlights Strip - Clean 2x2 on mobile, 4-col on tablet/desktop */}
+          <div className="mt-8 sm:mt-16 py-3.5 sm:py-5 px-4 sm:px-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 text-left w-full max-w-2xl">
             <div className="flex flex-col">
-              <span className="font-serif text-2xl sm:text-3xl text-[#E0B86C] font-bold">20</span>
-              <span className="text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold">
+              <span className="font-serif text-xl sm:text-2xl md:text-3xl text-[#E0B86C] font-bold">20</span>
+              <span className="text-[10px] sm:text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold leading-tight">
                 Luxury Cottages & Villas
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-2xl sm:text-3xl text-[#E0B86C] font-bold">Horizon</span>
-              <span className="text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold">
+              <span className="font-serif text-xl sm:text-2xl md:text-3xl text-[#E0B86C] font-bold">Horizon</span>
+              <span className="text-[10px] sm:text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold leading-tight">
                 Valley Infinity Pool
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-2xl sm:text-3xl text-[#E0B86C] font-bold">Bliss Cafe</span>
-              <span className="text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold">
+              <span className="font-serif text-xl sm:text-2xl md:text-3xl text-[#E0B86C] font-bold">Bliss Cafe</span>
+              <span className="text-[10px] sm:text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold leading-tight">
                 Multi-Cuisine Dining
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="font-serif text-2xl sm:text-3xl text-[#E0B86C] font-bold flex items-center gap-1">
-                <MapPin className="w-5 h-5 text-[#E0B86C]" /> Badlapur
+              <span className="font-serif text-xl sm:text-2xl md:text-3xl text-[#E0B86C] font-bold flex items-center gap-1">
+                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#E0B86C] shrink-0" /> Badlapur
               </span>
-              <span className="text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold">
+              <span className="text-[10px] sm:text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold leading-tight">
                 Kondeshwar Foothills
               </span>
             </div>
