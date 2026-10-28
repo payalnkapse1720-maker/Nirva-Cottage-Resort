@@ -6,12 +6,12 @@ import { EXPERIENCES_DATA } from "@/data/resort-data";
 
 const WEDDING_IMAGES = [
   {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319261/Wedding_1.jpg",
-    alt: "Weddings & Celebrations floating pool stage at Nirva The Cottage & Resort",
-  },
-  {
     src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185315/Festive_Floral_Wedding_Entrance.png",
     alt: "Festive Floral Wedding Entrance at Nirva The Cottage & Resort",
+  },
+  {
+    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789319261/Wedding_1.jpg",
+    alt: "Weddings & Celebrations floating pool stage at Nirva The Cottage & Resort",
   },
   {
     src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184703/Golden-Hour_Poolside_Floral_Mandap.png",
