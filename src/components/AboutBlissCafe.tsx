@@ -25,10 +25,6 @@ import {
 
 const BLISS_CAFE_IMAGES = [
   {
-    src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789315203/Bliss_Cafe_1.jpg",
-    alt: "Bliss Cafe by the infinity pool at dusk at Nirva The Cottage & Resort",
-  },
-  {
     src: "https://res.cloudinary.com/cx2wca8r/image/upload/v1789314862/Bliss_Cafe_2.jpg",
     alt: "Bliss Cafe dining ambiance at Nirva The Cottage & Resort",
   },
@@ -41,20 +37,16 @@ const BLISS_CAFE_IMAGES = [
     alt: "Bliss Cafe dining experience at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932023/Copy_of_DSC09833_cuxivj.jpg",
-    alt: "Bliss Cafe culinary experience at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793127775/Copy_of_DSC09833_cuxivj_p2xydn.jpg",
+    alt: "Bliss Cafe culinary artistry and dining at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932027/Copy_of_DSC09821_r4ctrf.jpg",
-    alt: "Bliss Cafe relaxation and dining at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793128791/Copy_of_DSC09821_r4ctrf_qfshwy.jpg",
+    alt: "Bliss Cafe evening ambiance and dining at Nirva The Cottage & Resort",
   },
   {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932702/Copy_of_Copy_of_DSC01104_mejph7.jpg",
-    alt: "Bliss Cafe atmosphere and ambiance at Nirva The Cottage & Resort",
-  },
-  {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792932899/Copy_of_DSC03217_hpa5ti.jpg",
-    alt: "Bliss Cafe resort view and dining at Nirva The Cottage & Resort",
+    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793128785/Gemini_Generated_Image_z3vdkdz3vdkdz3vd_bvqven.png",
+    alt: "Bliss Cafe poolside dining view at Nirva The Cottage & Resort",
   },
 ];
 
@@ -223,7 +215,7 @@ export default function AboutBlissCafe() {
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10 pointer-events-none">
                 <div>
                   <p className="font-serif text-lg sm:text-xl text-white font-bold drop-shadow-md">
-                    Twilight at the Infinity Deck
+                    Artisan Dining at Bliss Cafe
                   </p>
                 </div>
 

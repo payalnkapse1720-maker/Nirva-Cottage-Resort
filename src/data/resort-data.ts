@@ -11,6 +11,10 @@ export interface RoomColorVariant {
   name: string;
   colorCode?: string;
   images: readonly string[] | string[];
+  dayPrice?: number;
+  nightPrice?: number;
+  dayPriceDisplay?: string;
+  nightPriceDisplay?: string;
 }
 
 export interface Room {
@@ -275,11 +279,19 @@ export const ROOMS_DATA: Room[] = [
         name: "Without Bathtub",
         colorCode: "#C99A4A",
         images: ROOM_IMAGES["sunset-suite"]["without-bathtub"],
+        dayPrice: 3500,
+        nightPrice: 6500,
+        dayPriceDisplay: "₹3,500",
+        nightPriceDisplay: "₹6,500",
       },
       {
         name: "With Bathtub",
         colorCode: "#38BDF8",
         images: ROOM_IMAGES["sunset-suite"]["with-bathtub"],
+        dayPrice: 4000,
+        nightPrice: 7000,
+        dayPriceDisplay: "₹4,000",
+        nightPriceDisplay: "₹7,000",
       },
     ],
     capacity: "For 2 people",

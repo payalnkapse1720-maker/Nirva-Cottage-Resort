@@ -2,13 +2,65 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Sparkles, X, ChevronLeft, ChevronRight, Eye } from "lucide-react";
-import { GALLERY_DATA } from "@/data/resort-data";
+import { Sparkles, X, ChevronLeft, ChevronRight, Eye, ChevronDown, ChevronUp } from "lucide-react";
+import { GALLERY_DATA, GalleryItem } from "@/data/resort-data";
+
+const ALL_EXCLUSIVE_ITEMS: GalleryItem[] = [
+  {
+    id: "g-all-1",
+    title: "Pink Porch Swing in Lush Garden",
+    category: "all",
+    categoryLabel: "Garden & Grounds",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793133951/Pink_Porch_Swing_in_a_Lush_Garden.png",
+  },
+  {
+    id: "g-all-2",
+    title: "Misty Mountain Poolside Retreat",
+    category: "all",
+    categoryLabel: "Poolside Retreat",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793133954/Misty_Mountain_Poolside_Retreat.png",
+  },
+  {
+    id: "g-all-3",
+    title: "Warmly Lit Garden Pathway at Night",
+    category: "all",
+    categoryLabel: "Twilight Pathway",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793133944/Warmly_Lit_Garden_Pathway_at_Night.png",
+  },
+  {
+    id: "g-all-4",
+    title: "Garden-Framed Cottage Entrance",
+    category: "all",
+    categoryLabel: "Cottage Grounds",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134999/Garden-Framed_Cottage_Entrance.png",
+  },
+  {
+    id: "g-all-5",
+    title: "Sunset Wedding by the Infinity Pool",
+    category: "all",
+    categoryLabel: "Poolside Wedding",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134998/Sunset_Wedding_by_the_Infinity_Pool.png",
+  },
+  {
+    id: "g-all-6",
+    title: "Illuminated Tropical Wedding Entrance",
+    category: "all",
+    categoryLabel: "Celebration Gateway",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134994/Illuminated_Tropical_Wedding_Entrance.png",
+  },
+];
 
 export default function GallerySection() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const categories = [
     { id: "all", label: "All" },
@@ -22,8 +74,13 @@ export default function GallerySection() {
 
   const filteredItems =
     activeCategory === "all"
-      ? GALLERY_DATA
+      ? [...GALLERY_DATA.filter((item) => item.id !== "g-13"), ...ALL_EXCLUSIVE_ITEMS]
       : GALLERY_DATA.filter((item) => item.category === activeCategory);
+
+  const visibleItems =
+    activeCategory === "all" && !isExpanded
+      ? filteredItems.slice(0, 9)
+      : filteredItems;
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
@@ -115,7 +172,7 @@ export default function GallerySection() {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item, idx) => (
+          {visibleItems.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => openLightbox(idx)}
@@ -145,6 +202,24 @@ export default function GallerySection() {
             </div>
           ))}
         </div>
+
+        {/* Show More / Show Less Button for All Category */}
+        {activeCategory === "all" && filteredItems.length > 9 && (
+          <div className="mt-12 text-center">
+            <button
+              type="button"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full border border-[#D8C6A8] bg-[#FBF8F1] text-[#3E2F24] hover:text-[#2F241C] hover:bg-[#C99A4A] hover:border-[#C99A4A] text-xs font-sans uppercase tracking-[0.18em] font-semibold transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer group active:scale-95"
+            >
+              <span>{isExpanded ? "Show Less" : "Show More"}</span>
+              {isExpanded ? (
+                <ChevronUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+              ) : (
+                <ChevronDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+              )}
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Fullscreen Lightbox Modal */}

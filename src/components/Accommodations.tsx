@@ -43,6 +43,9 @@ function RoomCard({
     ? [room.image]
     : [];
 
+  const displayDayPrice = activeVariant?.dayPriceDisplay || room.dayPriceDisplay;
+  const displayNightPrice = activeVariant?.nightPriceDisplay || room.nightPriceDisplay;
+
   const totalImages = roomImages.length;
   const currentImage = totalImages > 0 ? roomImages[currentImageIndex % totalImages] : "";
 
@@ -237,7 +240,7 @@ function RoomCard({
                 One Day
               </span>
               <span className="font-sans text-base sm:text-lg font-bold text-[#3E2F24]">
-                {room.dayPriceDisplay}
+                {displayDayPrice}
               </span>
             </div>
             <div className="h-7 w-px bg-[#D8C6A8]" />
@@ -246,7 +249,7 @@ function RoomCard({
                 One Night
               </span>
               <span className="font-sans text-base sm:text-lg font-bold text-[#C99A4A]">
-                {room.nightPriceDisplay}
+                {displayNightPrice}
               </span>
             </div>
           </div>

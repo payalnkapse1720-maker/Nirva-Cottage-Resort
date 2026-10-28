@@ -10,13 +10,13 @@ export default function Footer() {
           {/* Col 1: Brand & Bio */}
           <div className="space-y-4">
             <div className="flex items-center gap-3.5">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#C99A4A]/80 bg-[#FBF8F1] shadow-[0_0_15px_rgba(201,154,74,0.2)] flex items-center justify-center p-1 shrink-0">
+              <div className="relative w-12 h-12 shrink-0 flex items-center justify-center">
                 <Image
                   src="/nirva-emblem.png"
                   alt="Nirva The Cottage & Resort Emblem"
                   fill
                   sizes="48px"
-                  className="object-contain p-1"
+                  className="object-contain"
                 />
               </div>
               <div className="flex flex-col">

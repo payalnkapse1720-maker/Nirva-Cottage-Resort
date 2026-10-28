@@ -6,7 +6,7 @@ import { RESORT_INFO } from "@/data/resort-data";
 import { Menu, X, Phone, ArrowRight } from "lucide-react";
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState("experiences");
+  const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Nav links matching the exact screenshot
@@ -24,19 +24,22 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
+      let currentSection = "";
       for (const link of navLinks) {
         const element = document.getElementById(link.id);
         if (element) {
           const top = element.offsetTop;
           const height = element.offsetHeight;
           if (scrollPos >= top && scrollPos < top + height) {
-            setActiveSection(link.id);
+            currentSection = link.id;
             break;
           }
         }
       }
+      setActiveSection(currentSection);
     };
 
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -52,14 +55,14 @@ export default function Navbar() {
             className="flex items-center gap-3 shrink-0 group transition-transform duration-300 hover:scale-[1.01]"
             aria-label="Nirva The Cottage & Resort Home"
           >
-            {/* Square Gold Badge Logo */}
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-none border border-[#C99A4A]/80 p-0.5 bg-[#FBF8F1] overflow-hidden shrink-0 shadow-[0_0_15px_rgba(201,154,74,0.2)] flex items-center justify-center">
+            {/* Gold Emblem Logo */}
+            <div className="relative w-10 h-10 sm:w-11 sm:h-11 shrink-0 flex items-center justify-center">
               <Image
                 src="/nirva-emblem.png"
                 alt="Nirva The Cottage & Resort Emblem"
                 fill
                 sizes="44px"
-                className="object-contain p-1"
+                className="object-contain"
                 priority
               />
             </div>

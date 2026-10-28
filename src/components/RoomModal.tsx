@@ -48,6 +48,9 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
     ? [room.image]
     : [];
 
+  const displayDayPrice = activeVariant?.dayPriceDisplay || room?.dayPriceDisplay || "";
+  const displayNightPrice = activeVariant?.nightPriceDisplay || room?.nightPriceDisplay || "";
+
   const totalImages = roomImages.length;
   const currentImage = totalImages > 0 ? roomImages[currentImageIndex % totalImages] : "";
 
@@ -102,8 +105,8 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
   const whatsappMessage = hasVariants
     ? `Hello Nirva Resort, I would like to check availability for *${room.name} (${selectedColor}${
         room.id === "single-cottage" ? " Cottage" : ""
-      })* (Capacity: ${room.capacity}).`
-    : `Hello Nirva Resort, I would like to check availability for *${room.name}* (Capacity: ${room.capacity}).`;
+      })* (Capacity: ${room.capacity}, Day: ${displayDayPrice}, Night: ${displayNightPrice}).`
+    : `Hello Nirva Resort, I would like to check availability for *${room.name}* (Capacity: ${room.capacity}, Day: ${displayDayPrice}, Night: ${displayNightPrice}).`;
 
   return (
     <>
@@ -294,7 +297,7 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
                     DAY STAY
                   </span>
                   <div className="font-sans text-2xl sm:text-3xl font-bold text-[#3E2F24] mt-1">
-                    {room.dayPriceDisplay}
+                    {displayDayPrice}
                   </div>
                 </div>
                 <span className="text-[11px] text-[#6B5540] mt-2 font-light">
@@ -310,7 +313,7 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
                     ONE NIGHT
                   </span>
                   <div className="font-sans text-2xl sm:text-3xl font-bold text-[#C99A4A] mt-1">
-                    {room.nightPriceDisplay}
+                    {displayNightPrice}
                   </div>
                 </div>
                 <span className="text-[11px] text-[#6B5540] mt-2 font-light">

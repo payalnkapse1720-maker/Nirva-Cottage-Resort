@@ -40,10 +40,6 @@ const WELLNESS_IMAGES = [
     src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933890/Copy_of_DSC08326_tje1qr.jpg",
     alt: "Nightlife evening celebration and ambiance at Nirva The Cottage & Resort",
   },
-  {
-    src: "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933889/Copy_of_DSC08330_ifeoi7.jpg",
-    alt: "Nightlife illuminated night vibes and pool deck at Nirva The Cottage & Resort",
-  },
 ];
 
 function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
