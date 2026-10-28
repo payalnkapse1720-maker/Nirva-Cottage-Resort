@@ -24,7 +24,9 @@ function RoomCard({
   room: Room;
   onSelect: (room: Room, color?: string) => void;
 }) {
-  const [selectedColor, setSelectedColor] = useState<string>("Blue");
+  const [selectedColor, setSelectedColor] = useState<string>(
+    () => room.colorVariants?.[0]?.name || "Blue"
+  );
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
@@ -162,7 +164,7 @@ function RoomCard({
 
       {/* Card Body: Info, Pricing & Amenities */}
       <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between space-y-4">
-        {/* Subtle Colour Variant Controls for Single Cottage */}
+        {/* Subtle Variant Controls for Single Cottage & Sunset Suite */}
         {hasVariants && (
           <div
             className="p-2.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2"
@@ -170,7 +172,7 @@ function RoomCard({
           >
             <div className="flex items-center justify-between text-[11px]">
               <span className="uppercase tracking-wider text-[#6B5540] font-semibold text-[10px]">
-                Colour Variant:
+                {room.id === "single-cottage" ? "Colour Variant:" : "Option / Variant:"}
               </span>
               <span className="font-semibold text-[#3E2F24] flex items-center gap-1.5">
                 <span
@@ -180,7 +182,11 @@ function RoomCard({
                 {selectedColor} ({totalImages} photos)
               </span>
             </div>
-            <div className="grid grid-cols-4 gap-1.5">
+            <div
+              className={`grid gap-1.5 ${
+                room.colorVariants!.length === 2 ? "grid-cols-2" : "grid-cols-4"
+              }`}
+            >
               {room.colorVariants!.map((variant) => {
                 const isActive = selectedColor === variant.name;
                 return (
@@ -322,7 +328,14 @@ export default function Accommodations() {
             {ROOMS_DATA.map((room) => (
               <button
                 key={room.id}
-                onClick={() => handleSelectRoom(room, "Blue")}
+                onClick={() =>
+                  handleSelectRoom(
+                    room,
+                    room.colorVariants && room.colorVariants.length > 0
+                      ? room.colorVariants[0].name
+                      : undefined
+                  )
+                }
                 className="px-4 py-2 rounded-full border border-[#D8C6A8] bg-[#FBF8F1] text-[#3E2F24] text-xs font-sans hover:border-[#C99A4A] hover:text-[#C99A4A] hover:bg-[#F7F3EA] transition-all duration-200 cursor-pointer"
               >
                 {room.name} ({room.nightPriceDisplay}/night)

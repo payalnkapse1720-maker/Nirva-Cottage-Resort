@@ -269,8 +269,19 @@ export const ROOMS_DATA: Room[] = [
     tagline: "Breathtaking twilight vistas and deluxe comfort with optional bathtub upgrade.",
     description:
       "Experience stunning sunsets and deluxe comfort in our beautifully appointed Sunset Suite. Enjoy a luxurious bathtub and premium room with breathtaking sunset views.",
-    image: getFirstImage(ROOM_IMAGES["sunset-suite"]),
-    images: ROOM_IMAGES["sunset-suite"],
+    image: getFirstImage(ROOM_IMAGES["sunset-suite"]["without-bathtub"]),
+    colorVariants: [
+      {
+        name: "Without Bathtub",
+        colorCode: "#C99A4A",
+        images: ROOM_IMAGES["sunset-suite"]["without-bathtub"],
+      },
+      {
+        name: "With Bathtub",
+        colorCode: "#38BDF8",
+        images: ROOM_IMAGES["sunset-suite"]["with-bathtub"],
+      },
+    ],
     capacity: "For 2 people",
     capacityNumber: 2,
     dayPrice: 3500,

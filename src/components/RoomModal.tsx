@@ -30,7 +30,7 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
   const [fullscreenView, setFullscreenView] = useState<boolean>(false);
 
   useEffect(() => {
-    setSelectedColor(initialColor || "Blue");
+    setSelectedColor(initialColor || room?.colorVariants?.[0]?.name || "Blue");
     setCurrentImageIndex(0);
     setFullscreenView(false);
   }, [room, initialColor]);
@@ -100,7 +100,9 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
   if (!room) return null;
 
   const whatsappMessage = hasVariants
-    ? `Hello Nirva Resort, I would like to check availability for *${room.name} (${selectedColor} Cottage)* (Capacity: ${room.capacity}).`
+    ? `Hello Nirva Resort, I would like to check availability for *${room.name} (${selectedColor}${
+        room.id === "single-cottage" ? " Cottage" : ""
+      })* (Capacity: ${room.capacity}).`
     : `Hello Nirva Resort, I would like to check availability for *${room.name}* (Capacity: ${room.capacity}).`;
 
   return (
@@ -217,22 +219,29 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
 
         {/* Scrollable Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-sm">
-          {/* Colour Variant Controls for Single Cottage */}
+          {/* Variant Controls for Single Cottage & Sunset Suite */}
           {hasVariants && (
             <div className="p-3.5 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-2.5">
               <div className="flex items-center justify-between text-xs">
                 <span className="uppercase tracking-wider text-[#6B5540] font-semibold text-[10px]">
-                  Cottage Shade / Colour Variant:
+                  {room.id === "single-cottage"
+                    ? "Cottage Shade / Colour Variant:"
+                    : "Suite Option / Variant:"}
                 </span>
                 <span className="font-semibold text-[#3E2F24] flex items-center gap-1.5 text-xs">
                   <span
                     className="w-2.5 h-2.5 rounded-full inline-block shrink-0"
                     style={{ backgroundColor: activeVariant?.colorCode }}
                   />
-                  {selectedColor} Cottage ({totalImages} photos)
+                  {selectedColor}
+                  {room.id === "single-cottage" ? " Cottage" : ""} ({totalImages} photos)
                 </span>
               </div>
-              <div className="grid grid-cols-4 gap-2">
+              <div
+                className={`grid gap-2 ${
+                  room.colorVariants!.length === 2 ? "grid-cols-2" : "grid-cols-4"
+                }`}
+              >
                 {room.colorVariants!.map((variant) => {
                   const isActive = selectedColor === variant.name;
                   return (
