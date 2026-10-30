@@ -288,12 +288,15 @@ Sent via Nirva Resort Official Website.`;
                   <ChevronDown className={`w-4 h-4 text-[#C99A4A] transition-transform duration-300 ${policiesOpen ? "rotate-180" : ""}`} />
                 </button>
                 {policiesOpen && (
-                  <div className="px-5 pb-5 pt-2 border-t border-[#D8C6A8]/40 space-y-2 text-xs text-[#6B5540] leading-relaxed">
-                    {BOOKING_POLICIES.map((policy, i) => (
-                      <p key={i} className="flex items-start gap-2">
-                        <span className="text-[#C99A4A] font-bold">•</span>
-                        <span>{policy}</span>
-                      </p>
+                  <div className="px-5 pb-5 pt-2 border-t border-[#D8C6A8]/40 space-y-2.5 text-xs text-[#6B5540] leading-relaxed">
+                    {BOOKING_POLICIES.map((policy) => (
+                      <div key={policy.title} className="flex items-start gap-2">
+                        <span className="text-[#C99A4A] font-bold mt-0.5">•</span>
+                        <p>
+                          <strong className="text-[#3E2F24] font-semibold">{policy.title}: </strong>
+                          <span>{policy.rule}</span>
+                        </p>
+                      </div>
                     ))}
                   </div>
                 )}
