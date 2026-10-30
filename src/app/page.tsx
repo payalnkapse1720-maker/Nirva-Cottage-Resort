@@ -1,13 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import AboutBlissCafe from "@/components/AboutBlissCafe";
+import AboutIntro from "@/components/AboutIntro";
 import Accommodations from "@/components/Accommodations";
-import Experiences from "@/components/Experiences";
-import AdventuresTrails from "@/components/AdventuresTrails";
-import AmenitiesGrid from "@/components/AmenitiesGrid";
-import GallerySection from "@/components/GallerySection";
-import LocationSection from "@/components/LocationSection";
-import BookingContact from "@/components/BookingContact";
+import DiningCafe from "@/components/DiningCafe";
+import CuratedEscapes from "@/components/CuratedEscapes";
+import ResortFeatures from "@/components/ResortFeatures";
+import DestinationAccess from "@/components/DestinationAccess";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 
@@ -20,29 +18,23 @@ export default function Home() {
       {/* Hero Showcase */}
       <Hero />
 
-      {/* About & Bliss Cafe Dining Overlooking Infinity Pool */}
-      <AboutBlissCafe />
+      {/* 1. Introduction / About */}
+      <AboutIntro />
 
-      {/* Accommodations Bento Grid (Sunset Suites, Villas, Cottages) */}
+      {/* 2. Accommodations – Sanctuaries of Comfort (Includes Rooms & Curated Packages) */}
       <Accommodations />
 
-      {/* Curated Experiences (Weddings, Pool Parties, Celebrations) */}
-      <Experiences />
+      {/* 3. Café & Restaurant (Bliss Cafe Dining Experience & Daily Schedule) */}
+      <DiningCafe />
 
-      {/* Adventures & Trails (Kondeshwar Falls & Sunset Ridge) */}
-      <AdventuresTrails />
+      {/* 4. Curated Escapes (Weddings, Nightlife & Nature Trails) */}
+      <CuratedEscapes />
 
-      {/* Amenities & Privileges Grid */}
-      <AmenitiesGrid />
+      {/* 5. Resort Features (Amenities & Visual Moments Gallery) */}
+      <ResortFeatures />
 
-      {/* Visual Journey / Filterable Gallery */}
-      <GallerySection />
-
-      {/* Location, Distances & Google Maps */}
-      <LocationSection />
-
-      {/* Reservation & Direct WhatsApp Booking Form */}
-      <BookingContact />
+      {/* 6. Destination & Access (How to Reach Nirva & Reservations Concierge) */}
+      <DestinationAccess />
 
       {/* Resort Footer */}
       <Footer />

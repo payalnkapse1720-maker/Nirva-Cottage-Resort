@@ -13,8 +13,15 @@ import {
   Utensils,
   ChevronLeft,
   ChevronRight,
+  Check,
 } from "lucide-react";
-import { ROOMS_DATA, Room } from "@/data/resort-data";
+import {
+  ROOMS_DATA,
+  Room,
+  STAY_WITH_FOOD_PACKAGES,
+  SINGLE_COTTAGE_FOOD_PACKAGE,
+  FLOATING_BREAKFAST,
+} from "@/data/resort-data";
 import RoomModal from "./RoomModal";
 
 function RoomCard({
@@ -299,7 +306,7 @@ export default function Accommodations() {
     <section id="stay" className="py-24 md:py-32 bg-[#F1E9DA] relative">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-8 sm:mb-10 space-y-4">
           <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
             <Sparkles className="w-3.5 h-3.5 text-[#C99A4A]" />
             <span className="text-xs uppercase tracking-[0.25em] text-[#C99A4A] font-semibold font-sans">
@@ -315,9 +322,8 @@ export default function Accommodations() {
           </p>
         </div>
 
-        {/* Category Quick Selector - Placed above room cards on mobile, below on md+ or consistent order */}
-        {/* On mobile: order-first so it appears above room cards */}
-        <div className="mb-8 md:mb-0 md:order-2 md:mt-14 text-center">
+        {/* Category Quick Selector */}
+        <div className="mb-10 sm:mb-12 md:mb-16 text-center">
           <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-[#6B5540] mb-3 md:mb-4 font-semibold">
             Quick View — 7 Official Categories
           </p>
@@ -346,10 +352,164 @@ export default function Accommodations() {
         </div>
 
         {/* Accommodation Cards Grid (All 7 Official Categories) - Clean 2x2 grid on mobile */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8 md:order-1">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6 lg:gap-8">
           {ROOMS_DATA.map((room) => (
             <RoomCard key={room.id} room={room} onSelect={handleSelectRoom} />
           ))}
+        </div>
+
+        {/* Curated Packages: Stay With Food Packages & Single Cottage Special Package */}
+        <div id="packages" className="space-y-8 pt-16 mt-16 border-t border-[#D8C6A8]">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-0.5">
+              <Sparkles className="w-3 h-3 text-[#C99A4A]" />
+              <span className="text-[11px] uppercase tracking-[0.2em] text-[#C99A4A] font-semibold">
+                Curated Packages
+              </span>
+            </div>
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-[#3E2F24] font-medium">
+              Stay With Food Packages
+            </h3>
+            <p className="text-xs sm:text-sm text-[#6B5540] font-light">
+              Elevate your retreat with all-inclusive dining packages crafted by our chef.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Package 1: One Day Food Package */}
+            <div className="p-6 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] flex flex-col justify-between space-y-6 relative overflow-hidden group shadow-sm">
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#6B5540] font-semibold block">
+                  Day Outing Dining Package
+                </span>
+                <h4 className="font-serif text-xl text-[#3E2F24] font-bold">
+                  {STAY_WITH_FOOD_PACKAGES[0].title}
+                </h4>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-sans text-3xl font-bold text-[#3E2F24]">
+                    {STAY_WITH_FOOD_PACKAGES[0].priceDisplay}
+                  </span>
+                  <span className="text-xs text-[#6B5540] font-light">
+                    {STAY_WITH_FOOD_PACKAGES[0].period}
+                  </span>
+                </div>
+                <ul className="space-y-2.5 pt-3 border-t border-[#D8C6A8]/40 text-xs text-[#3E2F24]">
+                  {STAY_WITH_FOOD_PACKAGES[0].includes.map((inc) => (
+                    <li key={inc} className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-[#C99A4A] shrink-0" />
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="pt-3 border-t border-[#D8C6A8]/40 text-[10px] text-[#6B5540] flex items-center justify-between">
+                <span>Stay + 1 Meal + Breakfast + Snacks</span>
+                <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
+              </div>
+            </div>
+
+            {/* Package 2: One Night Food Package */}
+            <div className="p-6 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] flex flex-col justify-between space-y-6 relative overflow-hidden group shadow-sm">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C99A4A]/5 rounded-bl-full pointer-events-none" />
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#C99A4A] font-semibold block">
+                  Overnight Dining Package
+                </span>
+                <h4 className="font-serif text-xl text-[#3E2F24] font-bold">
+                  {STAY_WITH_FOOD_PACKAGES[1].title}
+                </h4>
+                <div className="flex items-baseline gap-2">
+                  <span className="font-sans text-3xl font-bold text-[#C99A4A]">
+                    {STAY_WITH_FOOD_PACKAGES[1].priceDisplay}
+                  </span>
+                  <span className="text-xs text-[#6B5540] font-light">
+                    {STAY_WITH_FOOD_PACKAGES[1].period}
+                  </span>
+                </div>
+                {STAY_WITH_FOOD_PACKAGES[1].note && (
+                  <p className="text-[11px] text-[#6B5540] font-light">
+                    {STAY_WITH_FOOD_PACKAGES[1].note}
+                  </p>
+                )}
+                <ul className="space-y-2.5 pt-3 border-t border-[#D8C6A8]/40 text-xs text-[#3E2F24]">
+                  {STAY_WITH_FOOD_PACKAGES[1].includes.map((inc) => (
+                    <li key={inc} className="flex items-center gap-2">
+                      <Check className="w-3.5 h-3.5 text-[#C99A4A] shrink-0" />
+                      <span>{inc}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="pt-3 border-t border-[#D8C6A8]/40 text-[10px] text-[#6B5540] flex items-center justify-between">
+                <span>Stay + 2 Meals + Breakfast + Snacks</span>
+                <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
+              </div>
+            </div>
+
+            {/* Package 3: Single Cottage Food Package & Kids Rate */}
+            <div className="p-6 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] flex flex-col justify-between space-y-5 md:col-span-2 lg:col-span-1 shadow-sm">
+              <div className="space-y-3">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-[#C99A4A] font-semibold block">
+                  Dedicated Cottage Package
+                </span>
+                <h4 className="font-serif text-xl text-[#3E2F24] font-bold">
+                  {SINGLE_COTTAGE_FOOD_PACKAGE.title}
+                </h4>
+                <p className="text-xs text-[#6B5540] font-light">
+                  {SINGLE_COTTAGE_FOOD_PACKAGE.subtitle}
+                </p>
+
+                {/* Rates Table */}
+                <div className="space-y-2 pt-2">
+                  <div className="p-3 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-between text-xs">
+                    <span className="text-[#3E2F24] font-medium">
+                      Adults ({SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.capacity})
+                    </span>
+                    <span className="font-semibold text-[#6B5540]">
+                      <span className="text-[#3E2F24]">
+                        Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.dayPrice}</span>
+                      </span>{" "}
+                      •{" "}
+                      <span className="text-[#C99A4A]">
+                        Night{" "}
+                        <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.adultRates.nightPrice}</span>
+                      </span>
+                    </span>
+                  </div>
+                  <div className="p-3 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-between text-xs">
+                    <span className="text-[#6B5540] font-medium">
+                      {SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.ageRange}
+                    </span>
+                    <span className="font-medium text-[#6B5540]">
+                      <span className="text-[#3E2F24]">
+                        Day <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.dayPrice}</span>
+                      </span>{" "}
+                      •{" "}
+                      <span className="text-[#C99A4A]">
+                        Night{" "}
+                        <span className="font-sans font-bold">{SINGLE_COTTAGE_FOOD_PACKAGE.kidsRates.nightPrice}</span>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Breakfast Callout */}
+              <div className="p-3.5 rounded-xl bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-between">
+                <div className="space-y-0.5">
+                  <span className="text-xs text-[#3E2F24] font-bold flex items-center gap-1.5">
+                    <Waves className="w-3.5 h-3.5 text-[#C99A4A]" /> {FLOATING_BREAKFAST.title}
+                  </span>
+                  <span className="text-[10px] text-[#6B5540] block font-light">
+                    {FLOATING_BREAKFAST.note}
+                  </span>
+                </div>
+                <span className="font-sans text-sm font-bold text-[#C99A4A]">
+                  {FLOATING_BREAKFAST.priceDisplay}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

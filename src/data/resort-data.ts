@@ -517,8 +517,7 @@ export const TRAILS_DATA: Trail[] = [
     difficulty: "Moderate",
     description:
       "A scenic trek through ancient forested hills and seasonal streams, culminating at the revered Kondeshwar temple and breathtaking cascade pools.",
-    image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789498914/Waterfall.png",
+    image: "/kondeshwar-waterfall.jpg",
     highlights: ["Misty Forest Canopy", "Natural Waterfall Pool", "Historical Heritage Site"],
   },
   {
@@ -528,8 +527,7 @@ export const TRAILS_DATA: Trail[] = [
     difficulty: "Easy",
     description:
       "A gentle, elevated stroll directly accessible from the resort perimeter. Offers sweeping panoramic views of the entire valley during the golden hour.",
-    image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789498874/Sunset_Ridge.png",
+    image: "/sunset-ridge-walk-hd.jpg",
     highlights: ["Golden Hour Vistas", "Birdwatching Haven", "Gentle Slopes for All Ages"],
   },
 ];

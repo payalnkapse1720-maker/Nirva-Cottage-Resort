@@ -75,32 +75,32 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-[#6B5540] font-sans">
               <li>
                 <a href="#about" className="hover:text-[#C99A4A] transition-colors">
-                  About the Resort
+                  Introduction / About
                 </a>
               </li>
               <li>
                 <a href="#stay" className="hover:text-[#C99A4A] transition-colors">
-                  Rooms, Cottages & Villas
+                  Accommodations & Packages
                 </a>
               </li>
               <li>
-                <a href="#bliss-cafe" className="hover:text-[#C99A4A] transition-colors">
-                  Bliss Cafe Dining
+                <a href="#dining" className="hover:text-[#C99A4A] transition-colors">
+                  Café & Restaurant (Bliss Cafe)
                 </a>
               </li>
               <li>
-                <a href="#experiences" className="hover:text-[#C99A4A] transition-colors">
-                  Weddings & Events
+                <a href="#escapes" className="hover:text-[#C99A4A] transition-colors">
+                  Curated Escapes & Trails
                 </a>
               </li>
               <li>
-                <a href="#trails" className="hover:text-[#C99A4A] transition-colors">
-                  Adventures & Trails
+                <a href="#features" className="hover:text-[#C99A4A] transition-colors">
+                  Resort Features & Gallery
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-[#C99A4A] transition-colors">
-                  Visual Gallery
+                <a href="#access" className="hover:text-[#C99A4A] transition-colors">
+                  Destination & Concierge
                 </a>
               </li>
             </ul>
