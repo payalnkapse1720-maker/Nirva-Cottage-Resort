@@ -7,6 +7,7 @@ import {
   Compass,
   Clock,
   CalendarCheck,
+  Gamepad2,
 } from "lucide-react";
 import { AMENITIES_LIST } from "@/data/resort-data";
 
@@ -19,6 +20,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Compass: <Compass className="w-6 h-6 text-[#C99A4A]" />,
   Clock: <Clock className="w-6 h-6 text-[#C99A4A]" />,
   CalendarCheck: <CalendarCheck className="w-6 h-6 text-[#C99A4A]" />,
+  Gamepad2: <Gamepad2 className="w-6 h-6 text-[#C99A4A]" />,
 };
 
 export default function AmenitiesGrid() {
@@ -41,7 +43,7 @@ export default function AmenitiesGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
           {AMENITIES_LIST.map((amenity) => (
             <div
               key={amenity.title}

@@ -646,6 +646,22 @@ export const GALLERY_DATA: GalleryItem[] = [
     image:
       "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792934012/Copy_of_DSC03244_c0nsoo.jpg",
   },
+  {
+    id: "g-15",
+    title: "Valley View Infinity Pool",
+    category: "pool",
+    categoryLabel: "Infinity Pool",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793379090/Copy_of_DSC08906_alydv6.jpg",
+  },
+  {
+    id: "g-16",
+    title: "Poolside Horizon Deck",
+    category: "pool",
+    categoryLabel: "Infinity Pool",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793379099/Copy_of_DSC08905_vzcado.jpg",
+  },
 ];
 
 export const AMENITIES_LIST = [
@@ -688,5 +704,10 @@ export const AMENITIES_LIST = [
     title: "Flexible Stay & Day Packages",
     description: "Day outings (9am-7pm), leisurely weekend nights, and late-checkin options.",
     icon: "CalendarCheck",
+  },
+  {
+    title: "Indoor & Outdoor",
+    description: "Engaging indoor games and open-air lawn activities designed for guests of all ages.",
+    icon: "Gamepad2",
   },
 ];
