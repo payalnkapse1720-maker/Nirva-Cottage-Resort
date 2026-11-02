@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import AboutIntro from "@/components/AboutIntro";
+import StaySchedules from "@/components/StaySchedules";
 import Accommodations from "@/components/Accommodations";
 import DiningCafe from "@/components/DiningCafe";
 import CuratedEscapes from "@/components/CuratedEscapes";
@@ -22,6 +23,9 @@ export default function Home() {
       <AboutIntro />
 
       {/* 2. Accommodations – Sanctuaries of Comfort (Includes Rooms & Curated Packages) */}
+      {/* Official Stay Schedules */}
+      <StaySchedules />
+
       <Accommodations />
 
       {/* 3. Café & Restaurant (Bliss Cafe Dining Experience & Daily Schedule) */}

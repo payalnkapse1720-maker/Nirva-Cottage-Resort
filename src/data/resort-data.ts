@@ -591,14 +591,6 @@ export const GALLERY_DATA: GalleryItem[] = [
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1789506335/Color_cottage_gal.png",
   },
   {
-    id: "g-8",
-    title: "Reception",
-    category: "events",
-    categoryLabel: "Events & Lawns",
-    image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789506308/Reception_space_gal.jpg",
-  },
-  {
     id: "g-9",
     title: "Food & Dining",
     category: "dining",
@@ -661,6 +653,102 @@ export const GALLERY_DATA: GalleryItem[] = [
     categoryLabel: "Infinity Pool",
     image:
       "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793379099/Copy_of_DSC08905_vzcado.jpg",
+  },
+  {
+    id: "g-17",
+    title: "Glazed Stir-Fry",
+    category: "dining",
+    categoryLabel: "Bliss Cafe",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184690/Glazed_Stir-Fry_on_Black_Plate.png",
+  },
+  {
+    id: "g-18",
+    title: "Golden Stir-Fried Noodles",
+    category: "dining",
+    categoryLabel: "Bliss Cafe",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184916/Golden_Stir-Fried_Noodles_on_Wood.png",
+  },
+  {
+    id: "g-19",
+    title: "Indian-Inspired Feast",
+    category: "dining",
+    categoryLabel: "Bliss Cafe",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793186223/Indian-Inspired_Feast_Flat_Lay.png",
+  },
+  {
+    id: "g-20",
+    title: "Infinity Pool View",
+    category: "pool",
+    categoryLabel: "Infinity Pool",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793547349/9_20261101_170613_0003.jpg.jpg",
+  },
+  {
+    id: "g-21",
+    title: "Poolside Bliss & Fresh Fruit",
+    category: "pool",
+    categoryLabel: "Infinity Pool",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793186223/Resort_Poolside_Bliss_with_Fresh_Fruit.png",
+  },
+  {
+    id: "g-22",
+    title: "Illuminated Tropical Wedding Entrance",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134994/Illuminated_Tropical_Wedding_Entrance.png",
+  },
+  {
+    id: "g-23",
+    title: "Poolside Floral Mandap Ceremony",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185309/Poolside_Floral_Mandap_Ceremony_Setup.png",
+  },
+  {
+    id: "g-24",
+    title: "Golden-Hour Floral Mandap",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793184703/Golden-Hour_Poolside_Floral_Mandap.png",
+  },
+  {
+    id: "g-25",
+    title: "Mountain View Poolside Mandap",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188610/Poolside_Mandap_with_Mountain_Views.png",
+  },
+  {
+    id: "g-26",
+    title: "Festive Floral Wedding Entrance",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185315/Festive_Floral_Wedding_Entrance.png",
+  },
+  {
+    id: "g-27",
+    title: "Luxury Sunset Suite",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790800264/Suite_1_1.jpg",
+  },
+  {
+    id: "g-28",
+    title: "Single Garden Cottage",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790796590/Single_cottage_Blue_1_1.jpg",
   },
 ];
 

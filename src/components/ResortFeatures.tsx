@@ -166,22 +166,6 @@ export default function ResortFeatures() {
       <div id="gallery" className="absolute top-[45%] left-0" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 space-y-20 sm:space-y-28">
-        {/* Main Section Header */}
-        <div className="text-center space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
-            <Sparkles className="w-3.5 h-3.5 text-[#C99A4A]" />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C99A4A] font-semibold font-sans">
-              Resort Features
-            </span>
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3E2F24] font-medium">
-            Amenities & Visual Moments
-          </h2>
-          <p className="font-sans text-sm sm:text-base text-[#6B5540] max-w-2xl mx-auto font-light leading-relaxed">
-            From premier guest privileges to captured vistas of serenity, explore what makes Nirva a distinguished boutique getaway.
-          </p>
-          <div className="w-20 h-0.5 bg-[#C99A4A] mx-auto mt-3" />
-        </div>
 
         {/* Subcategory 1: Amenities & Privileges */}
         <div className="space-y-8">
