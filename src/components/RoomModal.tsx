@@ -29,11 +29,16 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [fullscreenView, setFullscreenView] = useState<boolean>(false);
 
-  useEffect(() => {
+  const [prevRoomId, setPrevRoomId] = useState(room?.id);
+  const [prevInitialColor, setPrevInitialColor] = useState(initialColor);
+
+  if (room?.id !== prevRoomId || initialColor !== prevInitialColor) {
+    setPrevRoomId(room?.id);
+    setPrevInitialColor(initialColor);
     setSelectedColor(initialColor || room?.colorVariants?.[0]?.name || "Blue");
     setCurrentImageIndex(0);
     setFullscreenView(false);
-  }, [room, initialColor]);
+  }
 
   const hasVariants = Boolean(room?.colorVariants && room.colorVariants.length > 0);
   const activeVariant = hasVariants
@@ -92,8 +97,12 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
           onClose();
         }
       }
-      if (e.key === "ArrowRight") handleNext();
-      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") {
+        if (totalImages > 1) setCurrentImageIndex((prev) => (prev + 1) % totalImages);
+      }
+      if (e.key === "ArrowLeft") {
+        if (totalImages > 1) setCurrentImageIndex((prev) => (prev - 1 + totalImages) % totalImages);
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -147,7 +156,17 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
             {totalImages > 1 && (
               <div className="hidden" aria-hidden="true">
                 {roomImages.map((src) => (
-                  src ? <img key={src} src={src} alt="" loading="eager" decoding="async" /> : null
+                  src ? (
+                    <Image
+                      key={src}
+                      src={src}
+                      alt=""
+                      width={1}
+                      height={1}
+                      unoptimized
+                      priority={false}
+                    />
+                  ) : null
                 ))}
               </div>
             )}

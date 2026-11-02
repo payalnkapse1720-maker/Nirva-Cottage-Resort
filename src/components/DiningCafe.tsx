@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import {
   Utensils,
   Music,
   Waves,
   Users,
   Clock,
-  Sparkles,
   ChevronDown,
   Coffee,
   Info,
@@ -182,13 +182,15 @@ export default function DiningCafe() {
               aria-label="Bliss Cafe dining experience image carousel"
             >
               {/* Actual Photograph filling 100% of the fixed carousel card directly */}
-              <img
+              <Image
                 key={currentBliss.src}
                 src={currentBliss.src}
                 alt={currentBliss.alt}
-                className="w-full h-full object-cover object-center block select-none"
-                loading="eager"
-                decoding="async"
+                fill
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center select-none"
+                priority
               />
 
               {/* Subtle bottom gradient only for caption text legibility */}

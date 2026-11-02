@@ -5,26 +5,26 @@ import Image from "next/image";
 import { RESORT_INFO } from "@/data/resort-data";
 import { Menu, X, Phone, ArrowRight } from "lucide-react";
 
+// Nav links matching the client's 6-section homepage structure
+const NAV_LINKS = [
+  { label: "About", href: "#about", id: "about" },
+  { label: "Stay", href: "#stay", id: "stay" },
+  { label: "Dining", href: "#dining", id: "dining" },
+  { label: "Escapes", href: "#escapes", id: "escapes" },
+  { label: "Features", href: "#features", id: "features" },
+  { label: "Access", href: "#access", id: "access" },
+];
+
 export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Nav links matching the client's 6-section homepage structure
-  const navLinks = [
-    { label: "About", href: "#about", id: "about" },
-    { label: "Stay", href: "#stay", id: "stay" },
-    { label: "Dining", href: "#dining", id: "dining" },
-    { label: "Escapes", href: "#escapes", id: "escapes" },
-    { label: "Features", href: "#features", id: "features" },
-    { label: "Access", href: "#access", id: "access" },
-  ];
 
   // Scroll spy to update active section
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 200;
       let currentSection = "";
-      for (const link of navLinks) {
+      for (const link of NAV_LINKS) {
         const element = document.getElementById(link.id);
         if (element) {
           const top = element.offsetTop;
@@ -91,7 +91,7 @@ export default function Navbar() {
 
           {/* Center Navigation Links (Desktop) */}
           <nav className="hidden lg:flex items-center gap-4 xl:gap-7 2xl:gap-8">
-            {navLinks.map((link) => {
+            {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <a
@@ -178,7 +178,7 @@ export default function Navbar() {
             </div>
 
             <nav className="flex flex-col space-y-2 sm:space-y-3 my-auto py-4">
-              {navLinks.map((link) => (
+              {NAV_LINKS.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}

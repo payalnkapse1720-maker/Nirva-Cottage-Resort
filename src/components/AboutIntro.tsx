@@ -7,9 +7,7 @@ import {
   Utensils,
   Compass,
   Waves,
-  MapPin,
   ArrowRight,
-  ShieldCheck,
   TreePine,
   SunMedium,
 } from "lucide-react";
@@ -55,11 +53,11 @@ export default function AboutIntro() {
     },
     {
       num: "05",
-      title: "Destination & Access",
-      subtitle: "Reach Nirva & Concierge Desk",
-      description: "Convenient travel routes from Mumbai & Pune, official stay schedules, and direct booking assistance.",
+      title: "Reservations & Concierge",
+      subtitle: "Booking & Direct Channels",
+      description: "Direct booking assistance, official stay schedules, and concierge reservation channels.",
       href: "#access",
-      icon: <MapPin className="w-4 h-4 text-[#C99A4A]" />,
+      icon: <Sparkles className="w-4 h-4 text-[#C99A4A]" />,
       actionText: "Plan Your Visit",
     },
   ];
@@ -126,12 +124,14 @@ export default function AboutIntro() {
           {/* Right Column: Visual Showcase Frame */}
           <div className="lg:col-span-5 relative">
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8]">
-              <img
+              <Image
                 src="https://res.cloudinary.com/cx2wca8r/image/upload/v1793133954/Misty_Mountain_Poolside_Retreat.png"
                 alt="Nirva The Cottage & Resort Valley View and Infinity Pool"
-                className="w-full h-full object-cover object-center block"
-                loading="eager"
-                decoding="async"
+                fill
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 42vw"
+                className="object-cover object-center"
+                priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
 
@@ -167,45 +167,45 @@ export default function AboutIntro() {
               Explore Nirva Through Our Five Chapters
             </h3>
             <p className="font-sans text-xs sm:text-sm text-[#6B5540] max-w-xl mx-auto font-light">
-              Follow the journey through our sanctuaries, dining, experiences, features, and travel routes.
+              Follow the journey through our sanctuaries, dining, experiences, features, and reservations.
             </p>
           </div>
 
-          {/* Chapters Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {/* Chapters Grid - 2-column grid on mobile */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-6">
             {guideChapters.map((chapter) => (
               <a
                 key={chapter.num}
                 href={chapter.href}
-                className="group p-5 sm:p-6 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                className="group p-3 sm:p-6 rounded-xl sm:rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
               >
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="font-serif text-2xl font-bold text-[#C99A4A]">
+                    <span className="font-serif text-lg sm:text-2xl font-bold text-[#C99A4A]">
                       {chapter.num}
                     </span>
-                    <div className="w-8 h-8 rounded-full bg-[#F7F3EA] border border-[#D8C6A8] flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#F7F3EA] border border-[#D8C6A8] flex items-center justify-center group-hover:scale-110 transition-transform [&>svg]:w-3.5 [&>svg]:h-3.5 sm:[&>svg]:w-4 sm:[&>svg]:h-4">
                       {chapter.icon}
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-serif text-lg font-bold text-[#3E2F24] group-hover:text-[#C99A4A] transition-colors leading-snug">
+                    <h4 className="font-serif text-xs sm:text-lg font-bold text-[#3E2F24] group-hover:text-[#C99A4A] transition-colors leading-snug">
                       {chapter.title}
                     </h4>
-                    <span className="text-[10px] uppercase tracking-wider text-[#6B5540] font-medium block mt-0.5">
+                    <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#6B5540] font-medium block mt-0.5">
                       {chapter.subtitle}
                     </span>
                   </div>
 
-                  <p className="font-sans text-xs text-[#6B5540] leading-relaxed font-light">
+                  <p className="font-sans text-[11px] sm:text-xs text-[#6B5540] leading-snug sm:leading-relaxed font-light line-clamp-3 sm:line-clamp-none">
                     {chapter.description}
                   </p>
                 </div>
 
-                <div className="pt-4 mt-4 border-t border-[#D8C6A8]/40 flex items-center justify-between text-xs font-semibold text-[#C99A4A] group-hover:text-[#9B7028] transition-colors">
-                  <span>{chapter.actionText}</span>
-                  <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                <div className="pt-2 sm:pt-4 mt-2 sm:mt-4 border-t border-[#D8C6A8]/40 flex items-center justify-between text-[10px] sm:text-xs font-semibold text-[#C99A4A] group-hover:text-[#9B7028] transition-colors">
+                  <span className="truncate pr-1">{chapter.actionText}</span>
+                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0 transform group-hover:translate-x-1 transition-transform" />
                 </div>
               </a>
             ))}

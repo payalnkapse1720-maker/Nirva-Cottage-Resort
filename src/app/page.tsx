@@ -37,7 +37,7 @@ export default function Home() {
       {/* 5. Resort Features (Amenities & Visual Moments Gallery) */}
       <ResortFeatures />
 
-      {/* 6. Destination & Access (How to Reach Nirva & Reservations Concierge) */}
+      {/* 6. Reservations & Concierge (Booking & Inquiries) */}
       <DestinationAccess />
 
       {/* Resort Footer */}

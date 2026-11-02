@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Check, Sparkles, ChevronLeft, ChevronRight } from "lucide-react";
 import { EXPERIENCES_DATA } from "@/data/resort-data";
 
@@ -96,16 +97,18 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
         if (e.key === "ArrowLeft") handlePrev();
         if (e.key === "ArrowRight") handleNext();
       }}
-      aria-label="Weddings and Celebrations image gallery carousel"
+      aria-label={`${title} image gallery carousel`}
     >
       {/* Actual Photograph completely filling the fixed frame with object-cover */}
-      <img
+      <Image
         key={current.src}
         src={current.src}
         alt={current.alt}
-        className="w-full h-full object-cover object-center select-none"
-        loading="eager"
-        decoding="async"
+        fill
+        unoptimized
+        sizes="(max-width: 768px) 100vw, 60vw"
+        className="object-cover object-center select-none"
+        priority
       />
 
       {/* Subtle bottom gradient only for caption text legibility */}
@@ -198,16 +201,18 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
         if (e.key === "ArrowLeft") handlePrev();
         if (e.key === "ArrowRight") handleNext();
       }}
-      aria-label="Nightlife and Wellness image gallery carousel"
+      aria-label={`${title} image gallery carousel`}
     >
       {/* Actual Photograph completely filling the fixed frame with object-cover */}
-      <img
+      <Image
         key={current.src}
         src={current.src}
         alt={current.alt}
-        className="w-full h-full object-cover object-center select-none"
-        loading="eager"
-        decoding="async"
+        fill
+        unoptimized
+        sizes="(max-width: 768px) 100vw, 60vw"
+        className="object-cover object-center select-none"
+        priority
       />
 
       {/* Subtle bottom gradient only for caption text legibility */}
