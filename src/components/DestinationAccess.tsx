@@ -2,13 +2,7 @@
 
 import { useState } from "react";
 import {
-  MapPin,
-  Navigation,
-  Car,
-  Train,
-  ExternalLink,
   Phone,
-  MessageSquare,
   Mail,
   Sparkles,
   Send,
@@ -20,7 +14,6 @@ import {
 import {
   RESORT_INFO,
   ROOMS_DATA,
-  CHECKIN_TIMINGS,
   BOOKING_POLICIES,
 } from "@/data/resort-data";
 
@@ -78,157 +71,39 @@ Sent via Nirva Resort Official Website.`;
       {/* Background ambient lighting */}
       <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-[#C99A4A]/10 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 relative z-10 space-y-20 sm:space-y-28">
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 relative z-10 space-y-12 sm:space-y-16">
         {/* Main Section Header */}
         <div className="text-center space-y-3 sm:space-y-4">
           <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
-            <Navigation className="w-3.5 h-3.5 text-[#C99A4A]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#C99A4A]" />
             <span className="text-xs uppercase tracking-[0.25em] text-[#C99A4A] font-semibold font-sans">
-              Destination & Access
+              Reservations & Concierge
             </span>
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3E2F24] font-medium">
-            How to Reach & Reserve Your Stay
+            Plan Your Escape
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#6B5540] max-w-xl mx-auto font-light leading-relaxed">
-            Conveniently situated in the green tranquil foothills of Badlapur East, easily accessible from Mumbai, Thane, Navi Mumbai, and Pune.
+            Connect with our concierge to book your cottage, sunset suite with optional bathtub,
+            spacious villa retreat, or curated food package.
           </p>
           <div className="w-20 h-0.5 bg-[#C99A4A] mx-auto mt-3" />
         </div>
 
-        {/* Subcategory 1: How to Reach Nirva */}
-        <div className="space-y-8">
-          <div className="text-center space-y-2">
-            <span className="text-xs uppercase tracking-[0.2em] text-[#C99A4A] font-semibold">
-              Travel Routes
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#3E2F24] font-bold">
-              How to Reach Nirva
-            </h3>
-          </div>
+        {/* Reservation & Concierge Grid */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Left Column: Direct Channels & Policies */}
+          <div className="space-y-4 sm:space-y-5">
 
-          <div className="grid lg:grid-cols-12 gap-8 items-stretch pt-2">
-            {/* Location Info Card */}
-            <div className="lg:col-span-5 glass-panel p-6 sm:p-8 rounded-2xl border border-[#D8C6A8] flex flex-col justify-between space-y-8 bg-[#FBF8F1]">
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] shrink-0">
-                    <MapPin className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-serif text-xl text-[#3E2F24] font-bold mb-1">Resort Address</h4>
-                    <p className="font-sans text-xs sm:text-sm text-[#6B5540] leading-relaxed font-light">
-                      {RESORT_INFO.address}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Transit Distances */}
-                <div className="space-y-4 pt-4 border-t border-[#D8C6A8]/40">
-                  <span className="text-xs uppercase tracking-widest text-[#C99A4A] font-semibold block">
-                    Approximate Travel Time
-                  </span>
-
-                  <div className="grid grid-cols-2 gap-3 text-xs">
-                    <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-1">
-                      <div className="flex items-center gap-1.5 text-[#C99A4A]">
-                        <Train className="w-3.5 h-3.5" />
-                        <span className="font-semibold text-[#3E2F24]">Badlapur Station</span>
-                      </div>
-                      <p className="text-[#6B5540]">15 mins (4 km)</p>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-1">
-                      <div className="flex items-center gap-1.5 text-[#C99A4A]">
-                        <Car className="w-3.5 h-3.5" />
-                        <span className="font-semibold text-[#3E2F24]">Navi Mumbai / Vashi</span>
-                      </div>
-                      <p className="text-[#6B5540]">60 mins (45 km)</p>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-1">
-                      <div className="flex items-center gap-1.5 text-[#C99A4A]">
-                        <Car className="w-3.5 h-3.5" />
-                        <span className="font-semibold text-[#3E2F24]">Mumbai (CST)</span>
-                      </div>
-                      <p className="text-[#6B5540]">90 mins (65 km)</p>
-                    </div>
-
-                    <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] space-y-1">
-                      <div className="flex items-center gap-1.5 text-[#C99A4A]">
-                        <Car className="w-3.5 h-3.5" />
-                        <span className="font-semibold text-[#3E2F24]">Pune City</span>
-                      </div>
-                      <p className="text-[#6B5540]">2.5 hrs (110 km)</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Action Link */}
-              <div className="pt-4 border-t border-[#D8C6A8]/40">
-                <a
-                  href={RESORT_INFO.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full bg-[#C99A4A] hover:bg-[#b88939] text-[#2F241C] font-semibold text-xs uppercase tracking-widest py-3.5 rounded-xl flex items-center justify-center gap-2 font-sans transition-colors shadow-md"
-                >
-                  <span>Open In Google Maps</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
-
-            {/* Interactive Google Map Embed */}
-            <div className="lg:col-span-7 rounded-2xl overflow-hidden border border-[#D8C6A8] shadow-xl min-h-[350px] sm:min-h-[420px] relative bg-[#FBF8F1]">
-              <iframe
-                title="Nirva The Cottage & Resort Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.754321098765!2d73.238478!3d19.141512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7f3d2f2d9e6e1%3A0x6b4c3e8e2c8a1b2c!2sNirva%20The%20Cottage%20%26%20Resort!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen={false}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full min-h-[350px] sm:min-h-[420px]"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Subcategory 2: Reservation & Concierge */}
-        <div className="space-y-12 pt-12 border-t border-[#D8C6A8]">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Timings & Direct Channels */}
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
-                  <Sparkles className="w-3.5 h-3.5 text-[#C99A4A]" />
-                  <span className="text-xs uppercase tracking-[0.25em] text-[#C99A4A] font-semibold font-sans">
-                    Reservations & Concierge
-                  </span>
-                </div>
-
-                <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3E2F24] font-medium">
-                  Plan Your Escape
-                </h3>
-
-                <p className="font-sans text-base sm:text-lg text-[#3E2F24] leading-relaxed font-normal">
-                  Connect with our concierge to book your cottage, sunset suite with optional bathtub,
-                  spacious villa retreat, or curated food package.
-                </p>
-              </div>
-
-
-              {/* Direct Contact Cards */}
-              <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8]">
-                  <div className="w-10 h-10 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] shrink-0">
+              {/* Direct Contact Cards & Policies Stack - tightened spacing across all layouts */}
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-3.5 p-3 sm:p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] shadow-sm">
+                  <div className="w-9 h-9 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] shrink-0">
                     <Phone className="w-4 h-4" />
                   </div>
                   <div>
                     <h5 className="font-serif text-sm text-[#3E2F24] font-bold">Call Concierge</h5>
-                    <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1 text-xs text-[#6B5540]">
+                    <div className="flex flex-wrap gap-x-4 gap-y-0.5 mt-0.5 text-xs text-[#6B5540]">
                       <a href={`tel:${RESORT_INFO.phonePrimaryRaw}`} className="hover:text-[#C99A4A] font-medium">
                         {RESORT_INFO.phonePrimary} (Primary)
                       </a>
@@ -239,8 +114,8 @@ Sent via Nirva Resort Official Website.`;
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8]">
-                  <div className="w-10 h-10 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] shrink-0">
+                <div className="flex items-center gap-3.5 p-3 sm:p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] shadow-sm">
+                  <div className="w-9 h-9 rounded-lg bg-[#F1E9DA] border border-[#D8C6A8] flex items-center justify-center text-[#C99A4A] shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
@@ -250,34 +125,34 @@ Sent via Nirva Resort Official Website.`;
                     </a>
                   </div>
                 </div>
-              </div>
 
-              {/* Resort Booking Policies Accordion */}
-              <div className="border border-[#D8C6A8] rounded-xl bg-[#FBF8F1] overflow-hidden">
-                <button
-                  type="button"
-                  onClick={() => setPoliciesOpen(!policiesOpen)}
-                  className="w-full px-5 py-3.5 flex items-center justify-between text-left text-xs uppercase tracking-wider text-[#3E2F24] font-semibold hover:bg-[#F7F3EA] transition-colors"
-                >
-                  <span className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-[#C99A4A]" />
-                    Resort Policies & Guidelines
-                  </span>
-                  <ChevronDown className={`w-4 h-4 text-[#C99A4A] transition-transform duration-300 ${policiesOpen ? "rotate-180" : ""}`} />
-                </button>
-                {policiesOpen && (
-                  <div className="px-5 pb-5 pt-2 border-t border-[#D8C6A8]/40 space-y-2.5 text-xs text-[#6B5540] leading-relaxed">
-                    {BOOKING_POLICIES.map((policy) => (
-                      <div key={policy.title} className="flex items-start gap-2">
-                        <span className="text-[#C99A4A] font-bold mt-0.5">•</span>
-                        <p>
-                          <strong className="text-[#3E2F24] font-semibold">{policy.title}: </strong>
-                          <span>{policy.rule}</span>
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                {/* Resort Booking Policies Accordion */}
+                <div className="border border-[#D8C6A8] rounded-xl bg-[#FBF8F1] overflow-hidden shadow-sm">
+                  <button
+                    type="button"
+                    onClick={() => setPoliciesOpen(!policiesOpen)}
+                    className="w-full px-4 py-3 sm:py-3.5 flex items-center justify-between text-left text-xs uppercase tracking-wider text-[#3E2F24] font-semibold hover:bg-[#F7F3EA] transition-colors"
+                  >
+                    <span className="flex items-center gap-2">
+                      <ShieldCheck className="w-4 h-4 text-[#C99A4A]" />
+                      Resort Policies & Guidelines
+                    </span>
+                    <ChevronDown className={`w-4 h-4 text-[#C99A4A] transition-transform duration-300 ${policiesOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {policiesOpen && (
+                    <div className="px-4 pb-4 pt-2 border-t border-[#D8C6A8]/40 space-y-2 text-xs text-[#6B5540] leading-relaxed">
+                      {BOOKING_POLICIES.map((policy) => (
+                        <div key={policy.title} className="flex items-start gap-2">
+                          <span className="text-[#C99A4A] font-bold mt-0.5">•</span>
+                          <p>
+                            <strong className="text-[#3E2F24] font-semibold">{policy.title}: </strong>
+                            <span>{policy.rule}</span>
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
 
@@ -400,7 +275,7 @@ Sent via Nirva Resort Official Website.`;
                         <Bath className="w-3.5 h-3.5 text-[#C99A4A]" /> Include Sunset Suite Bathtub
                       </span>
                     </label>
-                    <span className="text-[11px] font-bold text-[#C99A4A]">+₹500 / night</span>
+                    <span className="text-[11px] font-bold text-[#C99A4A]">+₹500 (Day / Night)</span>
                   </div>
                 )}
 
@@ -433,7 +308,6 @@ Sent via Nirva Resort Official Website.`;
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </section>
+    );
+  }

@@ -108,15 +108,17 @@ function WeddingCarousel({ badge, title }: { badge: string; title: string }) {
         if (e.key === "ArrowLeft") handlePrev();
         if (e.key === "ArrowRight") handleNext();
       }}
-      aria-label="Weddings and Celebrations image gallery carousel"
+      aria-label={`${title} image gallery carousel`}
     >
-      <img
+      <Image
         key={current.src}
         src={current.src}
         alt={current.alt}
-        className="w-full h-full object-cover object-center block select-none"
-        loading="eager"
-        decoding="async"
+        fill
+        unoptimized
+        sizes="(max-width: 768px) 100vw, 60vw"
+        className="object-cover object-center select-none"
+        priority
       />
 
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
@@ -208,15 +210,17 @@ function WellnessCarousel({ badge, title }: { badge: string; title: string }) {
         if (e.key === "ArrowLeft") handlePrev();
         if (e.key === "ArrowRight") handleNext();
       }}
-      aria-label="Nightlife and wellness ambiance image carousel"
+      aria-label={`${title} image gallery carousel`}
     >
-      <img
+      <Image
         key={current.src}
         src={current.src}
         alt={current.alt}
-        className="w-full h-full object-cover object-center block select-none"
-        loading="eager"
-        decoding="async"
+        fill
+        unoptimized
+        sizes="(max-width: 768px) 100vw, 60vw"
+        className="object-cover object-center select-none"
+        priority
       />
 
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 via-black/30 to-transparent pointer-events-none" />
@@ -412,50 +416,50 @@ export default function CuratedEscapes() {
             </a>
           </div>
 
-          {/* Trail Cards Grid */}
-          <div className="grid md:grid-cols-2 gap-4 sm:gap-8 pt-4">
+          {/* Trail Cards Grid - 2-column grid on mobile */}
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-8 pt-4">
             {TRAILS_DATA.map((trail) => (
               <div
                 key={trail.id}
-                className="bg-[#FBF8F1] border border-[#D8C6A8] rounded-2xl p-3.5 sm:p-6 flex flex-col gap-3.5 sm:gap-5 group hover:border-[#C99A4A] transition-all duration-300 shadow-lg sm:shadow-xl"
+                className="bg-[#FBF8F1] border border-[#D8C6A8] rounded-xl sm:rounded-2xl p-2.5 sm:p-6 flex flex-col gap-2 sm:gap-5 group hover:border-[#C99A4A] transition-all duration-300 shadow-md sm:shadow-xl"
               >
                 {/* Image with Duration Overlay */}
-                <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden">
+                <div className="relative w-full aspect-[16/10] rounded-lg sm:rounded-xl overflow-hidden">
                   <Image
                     src={trail.image}
                     alt={trail.title}
                     fill
                     unoptimized
-                    sizes="(max-width: 768px) 100vw, 50vw"
+                    sizes="(max-width: 768px) 50vw, 50vw"
                     className="object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
 
-                  <div className="absolute top-2.5 sm:top-4 left-2.5 sm:left-4 bg-[#FBF8F1]/90 backdrop-blur-md px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full border border-[#D8C6A8] flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs text-[#3E2F24]">
-                    <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C99A4A]" />
+                  <div className="absolute top-1.5 sm:top-4 left-1.5 sm:left-4 bg-[#FBF8F1]/90 backdrop-blur-md px-1.5 sm:px-3 py-0.5 sm:py-1.5 rounded-full border border-[#D8C6A8] flex items-center gap-1 sm:gap-1.5 text-[9px] sm:text-xs text-[#3E2F24]">
+                    <Clock className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-[#C99A4A]" />
                     <span className="font-medium">{trail.duration}</span>
-                    <span className="text-[#6B5540]/40">•</span>
-                    <span className="text-[#C99A4A] font-semibold">{trail.difficulty}</span>
+                    <span className="text-[#6B5540]/40 hidden sm:inline">•</span>
+                    <span className="text-[#C99A4A] font-semibold hidden sm:inline">{trail.difficulty}</span>
                   </div>
                 </div>
 
                 {/* Trail Info */}
-                <div className="space-y-2 sm:space-y-3">
-                  <h4 className="font-serif text-lg sm:text-2xl text-[#3E2F24] font-bold group-hover:text-[#C99A4A] transition-colors leading-tight">
+                <div className="space-y-1.5 sm:space-y-3">
+                  <h4 className="font-serif text-xs sm:text-2xl text-[#3E2F24] font-bold group-hover:text-[#C99A4A] transition-colors leading-tight">
                     {trail.title}
                   </h4>
-                  <p className="font-sans text-xs sm:text-sm text-[#6B5540] font-light leading-snug sm:leading-relaxed">
+                  <p className="font-sans text-[10.5px] sm:text-sm text-[#6B5540] font-light leading-snug sm:leading-relaxed line-clamp-2 sm:line-clamp-none">
                     {trail.description}
                   </p>
 
                   {/* Highlights tags */}
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 pt-0.5 sm:pt-1">
                     {trail.highlights.map((h) => (
                       <span
                         key={h}
-                        className="inline-flex items-center gap-1 text-[10px] sm:text-[11px] px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F7F3EA] border border-[#D8C6A8] text-[#6B5540]"
+                        className="inline-flex items-center gap-1 text-[8.5px] sm:text-[11px] px-1.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#F7F3EA] border border-[#D8C6A8] text-[#6B5540]"
                       >
-                        <Mountain className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#C99A4A]" /> {h}
+                        <Mountain className="w-2 h-2 sm:w-3 sm:h-3 text-[#C99A4A]" /> {h}
                       </span>
                     ))}
                   </div>

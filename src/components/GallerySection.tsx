@@ -38,22 +38,6 @@ const ALL_EXCLUSIVE_ITEMS: GalleryItem[] = [
     image:
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134999/Garden-Framed_Cottage_Entrance.png",
   },
-  {
-    id: "g-all-5",
-    title: "Sunset Wedding by the Infinity Pool",
-    category: "all",
-    categoryLabel: "Poolside Wedding",
-    image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134998/Sunset_Wedding_by_the_Infinity_Pool.png",
-  },
-  {
-    id: "g-all-6",
-    title: "Illuminated Tropical Wedding Entrance",
-    category: "all",
-    categoryLabel: "Celebration Gateway",
-    image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134994/Illuminated_Tropical_Wedding_Entrance.png",
-  },
 ];
 
 export default function GallerySection() {
@@ -122,9 +106,13 @@ export default function GallerySection() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxIndex === null) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") nextImage();
-      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight" && filteredItems.length > 0) {
+        setLightboxIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : null));
+      }
+      if (e.key === "ArrowLeft" && filteredItems.length > 0) {
+        setLightboxIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null));
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);

@@ -535,11 +535,11 @@ export const TRAILS_DATA: Trail[] = [
 export const GALLERY_DATA: GalleryItem[] = [
   {
     id: "g-1",
-    title: "Infinity Pool",
+    title: "Sunlit Infinity Pool & Forest Deck",
     category: "pool",
     categoryLabel: "Infinity Pool",
     image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789504644/Infinity_pool_gal.jpg",
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793649731/file_00000000cb2482109fbea734876755b5_i8uqun.png",
     span: "md:col-span-2 md:row-span-2",
   },
   {
@@ -556,7 +556,7 @@ export const GALLERY_DATA: GalleryItem[] = [
     category: "rooms",
     categoryLabel: "Rooms & Villas",
     image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789504687/Sunset_suite_gal.png",
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793109771/Gemini_Generated_Image_2ccufy2ccufy2ccu_h2gpmr.png",
   },
   {
     id: "g-4",
@@ -604,7 +604,7 @@ export const GALLERY_DATA: GalleryItem[] = [
     category: "nature",
     categoryLabel: "Nature & Views",
     image:
-      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792933447/Copy_of_DSC02332_ak5ogp.jpg",
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793651991/Gemini_Generated_Image_bj7mwebj7mwebj7m_fo4mh9.png",
   },
   {
     id: "g-11",
@@ -638,14 +638,7 @@ export const GALLERY_DATA: GalleryItem[] = [
     image:
       "https://res.cloudinary.com/dduwzy2tf/image/upload/v1792934012/Copy_of_DSC03244_c0nsoo.jpg",
   },
-  {
-    id: "g-15",
-    title: "Valley View Infinity Pool",
-    category: "pool",
-    categoryLabel: "Infinity Pool",
-    image:
-      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793379090/Copy_of_DSC08906_alydv6.jpg",
-  },
+
   {
     id: "g-16",
     title: "Poolside Horizon Deck",
@@ -735,6 +728,46 @@ export const GALLERY_DATA: GalleryItem[] = [
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185315/Festive_Floral_Wedding_Entrance.png",
   },
   {
+    id: "g-event-arch-sign",
+    title: "Tropical Wedding Arch & Welcome Sign",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188189/Tropical_Wedding_Arch_and_Welcome_Sign.png",
+  },
+  {
+    id: "g-event-night-lights",
+    title: "Tropical Wedding Entrance Under Night Lights",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188191/Tropical_Wedding_Entrance_Under_Night_Lights.png",
+  },
+  {
+    id: "g-event-garden-arch",
+    title: "Garden Wedding Entrance with Floral Arch",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185549/Garden_Wedding_Entrance_with_Floral_Arch.png",
+  },
+  {
+    id: "g-event-stage-decor",
+    title: "Mountain Garden Wedding Stage Decor",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793188191/Mountain_Garden_Wedding_Stage_Decor.png",
+  },
+  {
+    id: "g-event-sunset-pool",
+    title: "Sunset Wedding by the Infinity Pool",
+    category: "events",
+    categoryLabel: "Events & Lawns",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134998/Sunset_Wedding_by_the_Infinity_Pool.png",
+  },
+  {
     id: "g-27",
     title: "Luxury Sunset Suite",
     category: "rooms",
@@ -749,6 +782,94 @@ export const GALLERY_DATA: GalleryItem[] = [
     categoryLabel: "Rooms & Villas",
     image:
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1790796590/Single_cottage_Blue_1_1.jpg",
+  },
+  {
+    id: "g-room-duplex",
+    title: "Duplex Cottage",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789058334/Duplex_Room_2.jpg",
+  },
+  {
+    id: "g-room-suite",
+    title: "Suite Cottage",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790800263/Suite_2_1.jpg",
+  },
+  {
+    id: "g-room-bunk",
+    title: "Bunk Bed Cottage",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789047618/Bunk-Bed_1.jpg",
+  },
+  {
+    id: "g-room-villa",
+    title: "Villa",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789057325/Villa_1.jpg",
+  },
+  {
+    id: "g-room-dorm",
+    title: "Dormitory Rooms",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1789055028/Dormitory_Room_2.jpg",
+  },
+  {
+    id: "g-room-single-lilac",
+    title: "Single Cottage (Lilac)",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790797557/Single_cottage_Lilac_1_1.jpg",
+  },
+  {
+    id: "g-room-single-orange",
+    title: "Single Cottage (Orange)",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798098/Single_cottage_Orange_1_1.jpg",
+  },
+  {
+    id: "g-room-single-yellow",
+    title: "Single Cottage (Yellow)",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1790798784/Single_cottage_Yellow_1_1.jpg",
+  },
+  {
+    id: "g-room-sunset-bathtub",
+    title: "Sunset Suite with Bathtub",
+    category: "rooms",
+    categoryLabel: "Rooms & Villas",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793112745/Gemini_Generated_Image_h2l6d5h2l6d5h2l6_vpqrtg.png",
+  },
+  {
+    id: "g-29",
+    title: "Golden Hour Poolside Horizon",
+    category: "pool",
+    categoryLabel: "Infinity Pool",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793649732/file_00000000c56c81f4a5e6a643b619c8c0_omupje.png",
+  },
+  {
+    id: "g-30",
+    title: "Valley & Waterfall Infinity Pool",
+    category: "pool",
+    categoryLabel: "Infinity Pool",
+    image:
+      "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793649733/file_00000000680081f4b00fa296f9ab128b_su32yv.png",
   },
 ];
 
