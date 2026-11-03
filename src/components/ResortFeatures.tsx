@@ -82,6 +82,14 @@ const ALL_EXCLUSIVE_ITEMS: GalleryItem[] = [
     image:
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134994/Illuminated_Tropical_Wedding_Entrance.png",
   },
+  {
+    id: "g-all-7",
+    title: "8-Ball Pool & Games",
+    category: "all",
+    categoryLabel: "Recreation & Games",
+    image:
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793642623/8_ball_pool.jpg.jpg",
+  },
 ];
 
 export default function ResortFeatures() {

@@ -517,7 +517,7 @@ export const TRAILS_DATA: Trail[] = [
     difficulty: "Moderate",
     description:
       "A scenic trek through ancient forested hills and seasonal streams, culminating at the revered Kondeshwar temple and breathtaking cascade pools.",
-    image: "/kondeshwar-waterfall.jpg",
+    image: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793642618/kondeshwar.jpg.jpg",
     highlights: ["Misty Forest Canopy", "Natural Waterfall Pool", "Historical Heritage Site"],
   },
   {
@@ -684,7 +684,7 @@ export const GALLERY_DATA: GalleryItem[] = [
     category: "pool",
     categoryLabel: "Infinity Pool",
     image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793547349/9_20261101_170613_0003.jpg.jpg",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793643155/Gemini_Generated_Image_i1snsmi1snsmi1sn.png",
   },
   {
     id: "g-21",
