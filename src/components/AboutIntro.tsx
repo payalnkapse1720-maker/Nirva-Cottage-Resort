@@ -125,14 +125,13 @@ export default function AboutIntro() {
 
           {/* Right Column: Visual Showcase Frame */}
           <div className="lg:col-span-5 relative">
-            <div className="absolute -inset-3 sm:-inset-4 border border-[#D8C6A8] rounded-2xl transform translate-x-2 translate-y-2 sm:translate-x-3 sm:translate-y-3 pointer-events-none -z-10" />
             <div className="relative w-full aspect-[4/3] sm:aspect-[16/11] rounded-2xl overflow-hidden shadow-2xl border border-[#D8C6A8]">
-              <Image
+              <img
                 src="https://res.cloudinary.com/cx2wca8r/image/upload/v1793133954/Misty_Mountain_Poolside_Retreat.png"
                 alt="Nirva The Cottage & Resort Valley View and Infinity Pool"
-                fill
-                sizes="(max-width: 1024px) 100vw, 45vw"
-                className="object-cover object-center"
+                className="w-full h-full object-cover object-center block"
+                loading="eager"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
 

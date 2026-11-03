@@ -23,10 +23,10 @@ export default function Hero() {
       </div>
 
       {/* Hero Content - Left Aligned */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-20 sm:pt-28 pb-12 sm:pb-16">
         <div className="max-w-2xl text-left flex flex-col items-start">
           {/* Subtle Luxury Badge / Eyebrow */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md mb-4 sm:mb-6 shadow-md animate-fade-in">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md mb-3 sm:mb-6 shadow-md animate-fade-in">
             <div className="relative w-4 h-4 shrink-0">
               <Image
                 src="/nirva-emblem.png"
@@ -42,13 +42,13 @@ export default function Hero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 drop-shadow-md">
+          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.1] sm:leading-[1.08] mb-3 sm:mb-6 drop-shadow-md">
             Escape to<br />
             <span className="text-[#E0B86C] italic font-normal">Infinite Serenity</span>
           </h1>
 
           {/* Supporting Paragraph */}
-          <p className="font-sans text-sm sm:text-lg md:text-xl text-[#F3EDE2]/90 max-w-xl mb-6 sm:mb-8 font-medium leading-relaxed drop-shadow-sm">
+          <p className="font-sans text-sm sm:text-lg md:text-xl text-[#F3EDE2]/90 max-w-xl mb-7 sm:mb-8 font-medium leading-relaxed drop-shadow-sm">
             Experience peaceful luxury surrounded by the natural beauty of Kondeshwar Valley.
           </p>
 
@@ -64,7 +64,7 @@ export default function Hero() {
           </div>
 
           {/* Floating Highlights Strip - Clean 2x2 on mobile, 4-col on tablet/desktop */}
-          <div className="mt-8 sm:mt-16 py-3.5 sm:py-5 px-4 sm:px-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 text-left w-full max-w-2xl">
+          <div className="mt-11 sm:mt-16 py-3.5 sm:py-5 px-4 sm:px-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 text-left w-full max-w-2xl">
             <div className="flex flex-col">
               <span className="font-serif text-xl sm:text-2xl md:text-3xl text-[#E0B86C] font-bold">20</span>
               <span className="text-[10px] sm:text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold leading-tight">
