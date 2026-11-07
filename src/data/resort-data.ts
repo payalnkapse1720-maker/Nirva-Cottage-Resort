@@ -341,11 +341,9 @@ export const STAY_WITH_FOOD_PACKAGES: FoodPackage[] = [
     priceDisplay: "₹1,900",
     period: "per person / day",
     includes: [
-      "01 Meal",
-      "01 Breakfast",
-      "Lunch",
-      "High Tea (or) Snacks",
-      "Veg & Non-Veg Multi-Cuisine Options",
+      "Stay in Chosen Category",
+      "01 Meal (Lunch or Dinner)",
+      "Breakfast or Snacks",
     ],
   },
   {
@@ -408,7 +406,7 @@ export const BUFFET_TIMINGS: BuffetMeal[] = [
       "Chicken Gravy (Non-Veg Specialty)",
       "Vegetable Sabji",
       "Dal Fry & Steamed Rice",
-      "Fresh Tawa Roti",
+      "Fresh Tandoor Roti",
       "Green Salad, Crispy Papad & Pickle",
       "Traditional Sweet Dish",
     ],
@@ -432,7 +430,7 @@ export const BUFFET_TIMINGS: BuffetMeal[] = [
       "Chicken Gravy (Non-Veg Specialty)",
       "Vegetable Sabji",
       "Dal Fry & Steamed Rice",
-      "Fresh Tawa Roti",
+      "Fresh Tandoor Roti",
       "Green Salad, Crispy Papad & Pickle",
       "Traditional Sweet Dish",
     ],
@@ -471,6 +469,14 @@ export const BOOKING_POLICIES = [
   {
     title: "Taxes & GST",
     rule: "All prices mentioned across accommodations and packages are exclusive of GST.",
+  },
+  {
+    title: "Room & Property Damage",
+    rule: "Any damage to room premises, furniture, fittings, or resort property will be strictly chargeable under resort management policies.",
+  },
+  {
+    title: "Lost Material & Belongings",
+    rule: "Guests are advised to safeguard their personal belongings and materials; resort management is not responsible for any lost, misplaced, or stolen items.",
   },
 ];
 

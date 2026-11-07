@@ -11,6 +11,7 @@ import {
   Tag,
   Bath,
   Info,
+  ShieldCheck,
   ChevronLeft,
   ChevronRight,
   Maximize2,
@@ -391,6 +392,15 @@ export default function RoomModal({ room, initialColor = "Blue", onClose }: Room
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Guest Advisory & Policies Note */}
+          <div className="p-3 rounded-xl bg-[#F7F3EA] border border-[#D8C6A8] flex items-start gap-2.5 text-xs text-[#6B5540]">
+            <ShieldCheck className="w-4 h-4 text-[#C99A4A] shrink-0 mt-0.5" />
+            <p className="leading-snug text-[11px]">
+              <strong className="text-[#3E2F24] font-semibold">Resort Policy Advisory: </strong>
+              Any damage to room premises or property will be strictly chargeable under resort policies. Guests are requested to safeguard their personal belongings and materials; management is not responsible for any lost or misplaced items.
+            </p>
           </div>
         </div>
 

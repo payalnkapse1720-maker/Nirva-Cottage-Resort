@@ -149,18 +149,18 @@ export default function WeddingPackages() {
         {/* 1. ALL-INCLUSIVE WEDDING PACKAGES (24H & 36H)                 */}
         {/* ------------------------------------------------------------- */}
         <div id="pkg-bundles" className="space-y-6 pt-2 scroll-mt-24 sm:scroll-mt-28">
-          {/* Subsection Title & Duration Switcher */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-[#D8C6A8] pb-4">
-            <div>
-              <span className="text-[11px] uppercase tracking-wider text-[#C99A4A] font-bold block">
-                All-Inclusive Bundles
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl text-[#3E2F24] font-medium">
-                Curated Wedding Packages
-              </h3>
-            </div>
+          {/* Subsection Title & Header (Centered) */}
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-[11px] uppercase tracking-wider text-[#C99A4A] font-bold block">
+              All-Inclusive Bundles
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl text-[#3E2F24] font-medium">
+              Curated Wedding Packages
+            </h3>
+          </div>
 
-            {/* Duration Switcher */}
+          {/* Duration Switcher (Centered) */}
+          <div className="flex justify-center border-b border-[#D8C6A8] pb-4">
             <div className="inline-flex p-1 rounded-full bg-[#F1E9DA] border border-[#D8C6A8] shadow-inner">
               <button
                 type="button"
@@ -193,8 +193,8 @@ export default function WeddingPackages() {
             </div>
           </div>
 
-          {/* Compact 3-Column Package Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
+          {/* Compact Package Grid (2x2 on tablet/mobile where applicable, 3-col on desktop) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {packagesToDisplay.map((pkg, idx) => {
               const packageId = `${pkg.duration}-${pkg.guests}`;
               const isExpanded = expandedPackage === packageId;
@@ -357,7 +357,7 @@ export default function WeddingPackages() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {WEDDING_VENUES.map((venue) => {
               const isExpanded = expandedVenue === venue.id;
 
@@ -571,17 +571,17 @@ export default function WeddingPackages() {
                 </div>
               </div>
 
-              {/* Package Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {/* Package Grid (2x2 on mobile, 4-col on desktop) */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
                 {filteredFoodPackages.map((pkg) => (
                   <div
                     key={`${pkg.name}-${pkg.type}`}
-                    className="p-5 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] transition-all flex flex-col justify-between space-y-3 shadow-2xs"
+                    className="p-3 sm:p-5 rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] hover:border-[#C99A4A] transition-all flex flex-col justify-between space-y-2.5 sm:space-y-3 shadow-2xs"
                   >
-                    <div className="space-y-2.5">
-                      <div className="flex items-center justify-between">
+                    <div className="space-y-2 sm:space-y-2.5">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2">
                         <span
-                          className={`px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wider uppercase border ${
+                          className={`self-start px-2 py-0.5 rounded-full text-[8px] sm:text-[9px] font-bold tracking-wider uppercase border ${
                             pkg.type === "Veg"
                               ? "bg-emerald-50 text-emerald-800 border-emerald-200"
                               : "bg-red-50 text-red-800 border-red-200"
@@ -589,28 +589,33 @@ export default function WeddingPackages() {
                         >
                           {pkg.type}
                         </span>
-                        <span className="font-serif text-xl font-bold text-[#3E2F24]">
+                        <span className="font-serif text-base sm:text-xl font-bold text-[#3E2F24]">
                           ₹{pkg.price}{" "}
-                          <span className="text-[11px] font-sans text-[#6B5540] font-normal">
+                          <span className="text-[10px] sm:text-[11px] font-sans text-[#6B5540] font-normal block sm:inline">
                             / person
                           </span>
                         </span>
                       </div>
 
-                      <h4 className="font-serif text-base font-bold text-[#3E2F24]">{pkg.name}</h4>
+                      <h4 className="font-serif text-sm sm:text-base font-bold text-[#3E2F24] leading-tight">
+                        {pkg.name}
+                      </h4>
 
-                      <ul className="space-y-1.5 pt-2 border-t border-[#D8C6A8]/50">
+                      <ul className="space-y-1 sm:space-y-1.5 pt-1.5 sm:pt-2 border-t border-[#D8C6A8]/50">
                         {pkg.menuInclusions.map((item) => (
-                          <li key={item} className="flex items-center gap-2 text-xs text-[#6B5540]">
-                            <UtensilsCrossed className="w-3 h-3 text-[#C99A4A] shrink-0" />
-                            <span>{item}</span>
+                          <li
+                            key={item}
+                            className="flex items-start gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-[#6B5540] leading-tight"
+                          >
+                            <UtensilsCrossed className="w-3 h-3 text-[#C99A4A] shrink-0 mt-0.5" />
+                            <span className="break-words">{item}</span>
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="pt-2.5 border-t border-[#D8C6A8]/50 text-[10px] text-[#A89887] font-light">
-                      * Min. 35 guests for buffet service. 18% GST extra.
+                    <div className="pt-2 sm:pt-2.5 border-t border-[#D8C6A8]/50 text-[9px] sm:text-[10px] text-[#A89887] font-light leading-snug">
+                      * Min. 35 guests. 18% GST extra.
                     </div>
                   </div>
                 ))}
@@ -630,7 +635,8 @@ export default function WeddingPackages() {
                 Click any course below to preview all chef-prepared dishes available in your custom banquet menu.
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+              {/* Menu Categories Grid (2x2 on mobile, 3-col on desktop) */}
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
                 {BUFFET_MENU_CHOICES.map((cat: BuffetCategory) => {
                   const isExpanded = expandedBuffetCategory === cat.category;
 
@@ -644,22 +650,23 @@ export default function WeddingPackages() {
                         onClick={() =>
                           setExpandedBuffetCategory(isExpanded ? null : cat.category)
                         }
-                        className="w-full p-3.5 flex items-center justify-between text-left cursor-pointer hover:bg-[#F7F3EA] transition-colors"
+                        className="w-full p-2.5 sm:p-3.5 flex items-center justify-between text-left cursor-pointer hover:bg-[#F7F3EA] transition-colors gap-1.5"
                         aria-expanded={isExpanded}
                       >
-                        <div>
-                          <h5 className="font-serif text-sm font-bold text-[#3E2F24]">
+                        <div className="min-w-0 pr-1">
+                          <h5 className="font-serif text-xs sm:text-sm font-bold text-[#3E2F24] leading-tight truncate">
                             {cat.category}
                           </h5>
-                          <span className="text-[10px] text-[#6B5540]">
-                            {cat.items.length} choices available
+                          <span className="text-[9px] sm:text-[10px] text-[#6B5540] block mt-0.5">
+                            {cat.items.length} choices
                           </span>
                         </div>
                         <motion.span
                           animate={{ rotate: isExpanded ? 180 : 0 }}
                           transition={{ duration: 0.2 }}
+                          className="shrink-0"
                         >
-                          <ChevronDown className="w-3.5 h-3.5 text-[#C99A4A]" />
+                          <ChevronDown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#C99A4A]" />
                         </motion.span>
                       </button>
 
@@ -670,15 +677,15 @@ export default function WeddingPackages() {
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="px-3.5 pb-3 border-t border-[#D8C6A8]/50 pt-2 space-y-1 overflow-hidden"
+                            className="px-2.5 sm:px-3.5 pb-2.5 sm:pb-3 border-t border-[#D8C6A8]/50 pt-2 space-y-1 overflow-hidden"
                           >
                             {cat.items.map((item: string) => (
                               <div
                                 key={item}
-                                className="flex items-center gap-2 text-xs text-[#6B5540] font-light"
+                                className="flex items-start gap-1.5 text-[11px] sm:text-xs text-[#6B5540] font-light leading-tight"
                               >
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#C99A4A]" />
-                                <span>{item}</span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#C99A4A] shrink-0 mt-1" />
+                                <span className="break-words">{item}</span>
                               </div>
                             ))}
                           </motion.div>
@@ -747,15 +754,15 @@ export default function WeddingPackages() {
                           transition={{ duration: 0.2 }}
                           className="px-4 sm:px-5 pb-4 pt-2 border-t border-[#D8C6A8]/60 space-y-2 overflow-hidden"
                         >
-                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                          <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
                             {sec.items.map((it: { name: string; price?: string; note?: string }) => (
                               <div
                                 key={it.name}
-                                className="p-2 rounded-lg bg-[#F7F3EA] border border-[#D8C6A8]/50 flex items-center justify-between text-xs"
+                                className="p-1.5 sm:p-2 rounded-lg bg-[#F7F3EA] border border-[#D8C6A8]/50 flex flex-col sm:flex-row sm:items-center justify-between text-[11px] sm:text-xs gap-0.5 sm:gap-2"
                               >
-                                <span className="text-[#3E2F24] font-medium">{it.name}</span>
+                                <span className="text-[#3E2F24] font-medium leading-tight">{it.name}</span>
                                 {it.price && (
-                                  <span className="font-bold text-[#C99A4A] shrink-0 ml-2">
+                                  <span className="font-bold text-[#C99A4A] shrink-0 text-[10px] sm:text-xs">
                                     {it.price}
                                   </span>
                                 )}
@@ -789,18 +796,18 @@ export default function WeddingPackages() {
           </div>
 
           <div className="max-w-4xl mx-auto rounded-2xl bg-[#FBF8F1] border border-[#D8C6A8] overflow-hidden shadow-2xs">
-            {/* 3 Metric Cards Header */}
-            <div className="p-4 sm:p-5 bg-[#F1E9DA] border-b border-[#D8C6A8] grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
-              <div className="p-2.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center gap-2 text-xs font-semibold text-[#3E2F24]">
-                <Building className="w-4 h-4 text-[#C99A4A]" />
-                <span>20 Total Units / Rooms</span>
+            {/* 3 Metric Cards Header (2-col grid on mobile) */}
+            <div className="p-3 sm:p-5 bg-[#F1E9DA] border-b border-[#D8C6A8] grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 text-center">
+              <div className="p-2 sm:p-2.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-[#3E2F24]">
+                <Building className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A] shrink-0" />
+                <span>20 Units / Rooms</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center gap-2 text-xs font-semibold text-[#3E2F24]">
-                <Users className="w-4 h-4 text-[#C99A4A]" />
-                <span>Max Occupancy: 120 Guests</span>
+              <div className="p-2 sm:p-2.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-[#3E2F24]">
+                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A] shrink-0" />
+                <span>120 Guests Capacity</span>
               </div>
-              <div className="p-2.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center gap-2 text-xs font-semibold text-[#3E2F24]">
-                <Bed className="w-4 h-4 text-[#C99A4A]" />
+              <div className="col-span-2 sm:col-span-1 p-2 sm:p-2.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] flex items-center justify-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs font-semibold text-[#3E2F24]">
+                <Bed className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C99A4A] shrink-0" />
                 <span>26 Extra Mattresses Allocated</span>
               </div>
             </div>
@@ -883,29 +890,29 @@ export default function WeddingPackages() {
             </p>
           </div>
 
-          {/* 3 Quick Highlight Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-4xl mx-auto">
-            <div className="p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-1">
-              <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
+          {/* 3 Quick Highlight Cards (2-col grid on mobile) */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3.5 max-w-4xl mx-auto">
+            <div className="p-2.5 sm:p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-1">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
                 Advance Deposit
               </span>
-              <p className="text-xs text-[#3E2F24] font-medium leading-snug">
+              <p className="text-[11px] sm:text-xs text-[#3E2F24] font-medium leading-snug">
                 50% advance to confirm booking. Remaining balance settled on check-in. Non-refundable.
               </p>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-1">
-              <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
+            <div className="p-2.5 sm:p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-1">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
                 Food Timings
               </span>
-              <p className="text-xs text-[#3E2F24] font-medium leading-snug">
+              <p className="text-[11px] sm:text-xs text-[#3E2F24] font-medium leading-snug">
                 Breakfast: 8:30–10:30 AM | Lunch: 1–3 PM | High Tea: 5–6:30 PM | Dinner: 8:30–11 PM.
               </p>
             </div>
-            <div className="p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-1">
-              <span className="text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
+            <div className="col-span-2 sm:col-span-1 p-2.5 sm:p-3.5 rounded-xl bg-[#FBF8F1] border border-[#D8C6A8] space-y-1">
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wider text-[#C99A4A] font-bold block">
                 Decor Authorization
               </span>
-              <p className="text-xs text-[#3E2F24] font-medium leading-snug">
+              <p className="text-[11px] sm:text-xs text-[#3E2F24] font-medium leading-snug">
                 Decorations require prior management approval. Unauthorized decor attracts a ₹10,000 fine.
               </p>
             </div>

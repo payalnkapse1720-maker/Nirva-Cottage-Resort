@@ -225,8 +225,8 @@ Sent via Nirva Resort Official Website.`;
                       <option>One Night (12:00 PM – 10:00 AM)</option>
                       <option>Evening Stay (06:00 PM – 04:00 PM)</option>
                       <option>Day Outing (09:00 AM – 07:00 PM)</option>
-                      <option>Stay + Food Package (One Night ₹2,200/p)</option>
-                      <option>Stay + Food Package (Day Outing ₹1,500/p)</option>
+                      <option>Stay + Food Package (Day Outing ₹1,900/p)</option>
+                      <option>Stay + Food Package (One Night ₹2,800/p)</option>
                     </select>
                   </div>
 

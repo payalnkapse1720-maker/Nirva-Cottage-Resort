@@ -9,17 +9,16 @@ export default function Hero() {
       {/* Background Image with Ken Burns animation */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="https://res.cloudinary.com/cx2wca8r/image/upload/v1789246056/Nirvaa_Hero_Bg_2.png"
-          alt="Nirva The Cottage & Resort Infinity Pool and Sunset Hills Aerial View"
+          src="/images/nirva-hero.jpg"
+          alt="Nirva The Cottage & Resort Meditative Sculpture and Serene Nature Landscape"
           fill
           priority
-          unoptimized
           sizes="100vw"
-          className="object-cover ken-burns"
+          className="object-cover object-center ken-burns"
         />
-        {/* Subtle localized dark cinematic gradient behind left-side Hero content */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent sm:via-black/45 md:to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35 pointer-events-none" />
+        {/* Subtle, soft cinematic gradient to preserve text legibility while keeping the photograph bright and clear */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-black/15 pointer-events-none" />
       </div>
 
       {/* Hero Content - Stretched between Top Text Section and Bottom Action/Highlights */}

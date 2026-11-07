@@ -190,7 +190,7 @@ export const WEDDING_VENUES: WeddingVenue[] = [
     specialPrice: "₹2.75 Lakhs",
     capacity: "300–600 guests",
     timing: "5:00 PM – 11:00 PM",
-    image: "https://res.cloudinary.com/cx2wca8r/image/upload/v1793185549/Garden_Wedding_Entrance_with_Floral_Arch.png",
+    image: "/images/wedding/royal-meadows.jpg",
     features: [
       "Expansive Celebration Lawns",
       "Grand Stage & VIP Lounges",
@@ -903,7 +903,8 @@ export const WEDDING_TERMS = [
 ];
 
 export const DECORATION_LINKS = {
-  brochurePdf: "/documents/Nirva wedding brochure.pdf",
+  brochurePdf: "/documents/nirva-wedding-decorations.pdf",
+  fullBrochurePdf: "/documents/Nirva wedding brochure.pdf",
   instagramDecor: "https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MTIxMDQwMDU5Mzk5NjE1?story_media_id=3499639046584949362_47537667816&igsh=MWszazE0b2VwYTFyMA==",
 };
 

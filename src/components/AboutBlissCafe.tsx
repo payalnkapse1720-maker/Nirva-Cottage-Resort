@@ -295,7 +295,7 @@ export default function AboutBlissCafe() {
                 </ul>
               </div>
               <div className="pt-3 border-t border-[#D8C6A8]/40 text-[10px] text-[#6B5540] flex items-center justify-between">
-                <span>Stay + 1 Meal + Breakfast + Snacks</span>
+                <span>Stay + 1 Meal + Breakfast or Snacks</span>
                 <span className="text-[#C99A4A] font-semibold">Excl. GST</span>
               </div>
             </div>
