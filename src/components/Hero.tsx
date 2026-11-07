@@ -5,7 +5,7 @@ import { ArrowDown, MapPin } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen w-full flex items-center overflow-hidden bg-[#1A1612]">
+    <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#1A1612]">
       {/* Background Image with Ken Burns animation */}
       <div className="absolute inset-0 w-full h-full">
         <Image
@@ -19,14 +19,15 @@ export default function Hero() {
         />
         {/* Subtle localized dark cinematic gradient behind left-side Hero content */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent sm:via-black/45 md:to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 md:hidden pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/35 pointer-events-none" />
       </div>
 
-      {/* Hero Content - Left Aligned */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 pb-12 sm:pb-16">
+      {/* Hero Content - Stretched between Top Text Section and Bottom Action/Highlights */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen flex flex-col justify-between pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 md:pb-10">
+        {/* Top Section: Eyebrow Badge, Main Headline & Supporting Paragraph */}
         <div className="max-w-2xl text-left flex flex-col items-start">
           {/* Subtle Luxury Badge / Eyebrow */}
-          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md mb-4 sm:mb-6 shadow-md animate-fade-in">
+          <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-black/40 border border-white/20 backdrop-blur-md mb-3 sm:mb-6 shadow-md animate-fade-in">
             <div className="relative w-4 h-4 shrink-0">
               <Image
                 src="/nirva-emblem.png"
@@ -42,16 +43,19 @@ export default function Hero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.1] sm:leading-[1.08] mb-4 sm:mb-6 drop-shadow-md">
+          <h1 className="font-serif text-[2.5rem] min-[390px]:text-[2.75rem] sm:text-6xl md:text-7xl text-white font-bold tracking-tight leading-[1.12] sm:leading-[1.08] mb-4 sm:mb-6 drop-shadow-md">
             Escape to<br />
             <span className="text-[#E0B86C] italic font-normal">Infinite Serenity</span>
           </h1>
 
           {/* Supporting Paragraph */}
-          <p className="font-sans text-sm sm:text-lg md:text-xl text-[#F3EDE2]/90 max-w-xl mb-6 sm:mb-8 font-medium leading-relaxed drop-shadow-sm">
+          <p className="font-sans text-sm min-[390px]:text-base sm:text-lg md:text-xl text-[#F3EDE2]/90 max-w-xl font-medium leading-relaxed drop-shadow-sm">
             Experience peaceful luxury surrounded by the natural beauty of Kondeshwar Valley.
           </p>
+        </div>
 
+        {/* Bottom Section: Explore Resort CTA & Floating Highlights Strip */}
+        <div className="max-w-2xl text-left flex flex-col items-start w-full space-y-4 sm:space-y-6 pt-8 sm:pt-12">
           {/* CTA - Explore Resort only */}
           <div className="flex items-center w-full sm:w-auto">
             <a
@@ -64,7 +68,7 @@ export default function Hero() {
           </div>
 
           {/* Floating Highlights Strip - Clean 2x2 on mobile, 4-col on tablet/desktop */}
-          <div className="mt-8 sm:mt-16 py-3.5 sm:py-5 px-4 sm:px-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 text-left w-full max-w-2xl">
+          <div className="py-3.5 sm:py-5 px-4 sm:px-6 rounded-2xl bg-black/40 backdrop-blur-md border border-white/15 shadow-xl grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-6 text-left w-full">
             <div className="flex flex-col">
               <span className="font-serif text-xl sm:text-2xl md:text-3xl text-[#E0B86C] font-bold">20</span>
               <span className="text-[10px] sm:text-xs text-white/90 uppercase tracking-wider font-sans mt-0.5 font-semibold leading-tight">

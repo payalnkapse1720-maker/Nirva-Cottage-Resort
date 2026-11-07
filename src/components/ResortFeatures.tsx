@@ -67,20 +67,12 @@ const ALL_EXCLUSIVE_ITEMS: GalleryItem[] = [
       "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134999/Garden-Framed_Cottage_Entrance.png",
   },
   {
-    id: "g-all-5",
-    title: "Sunset Wedding by the Infinity Pool",
+    id: "g-all-7",
+    title: "8-Ball Pool & Games",
     category: "all",
-    categoryLabel: "Poolside Wedding",
+    categoryLabel: "Recreation & Games",
     image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134998/Sunset_Wedding_by_the_Infinity_Pool.png",
-  },
-  {
-    id: "g-all-6",
-    title: "Illuminated Tropical Wedding Entrance",
-    category: "all",
-    categoryLabel: "Celebration Gateway",
-    image:
-      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793134994/Illuminated_Tropical_Wedding_Entrance.png",
+      "https://res.cloudinary.com/cx2wca8r/image/upload/v1793642623/8_ball_pool.jpg.jpg",
   },
 ];
 
@@ -150,9 +142,13 @@ export default function ResortFeatures() {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (lightboxIndex === null) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowRight") nextImage();
-      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowRight" && filteredItems.length > 0) {
+        setLightboxIndex((prev) => (prev !== null ? (prev + 1) % filteredItems.length : null));
+      }
+      if (e.key === "ArrowLeft" && filteredItems.length > 0) {
+        setLightboxIndex((prev) => (prev !== null ? (prev - 1 + filteredItems.length) % filteredItems.length : null));
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -166,22 +162,6 @@ export default function ResortFeatures() {
       <div id="gallery" className="absolute top-[45%] left-0" />
 
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-8 space-y-20 sm:space-y-28">
-        {/* Main Section Header */}
-        <div className="text-center space-y-3 sm:space-y-4">
-          <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
-            <Sparkles className="w-3.5 h-3.5 text-[#C99A4A]" />
-            <span className="text-xs uppercase tracking-[0.25em] text-[#C99A4A] font-semibold font-sans">
-              Resort Features
-            </span>
-          </div>
-          <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#3E2F24] font-medium">
-            Amenities & Visual Moments
-          </h2>
-          <p className="font-sans text-sm sm:text-base text-[#6B5540] max-w-2xl mx-auto font-light leading-relaxed">
-            From premier guest privileges to captured vistas of serenity, explore what makes Nirva a distinguished boutique getaway.
-          </p>
-          <div className="w-20 h-0.5 bg-[#C99A4A] mx-auto mt-3" />
-        </div>
 
         {/* Subcategory 1: Amenities & Privileges */}
         <div className="space-y-8">

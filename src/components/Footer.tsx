@@ -6,9 +6,9 @@ export default function Footer() {
   return (
     <footer className="w-full bg-[#F7F3EA] border-t border-[#D8C6A8] pt-20 pb-12 relative">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-16">
           {/* Col 1: Brand & Bio */}
-          <div className="space-y-4">
+          <div className="col-span-2 md:col-span-1 lg:col-span-1 space-y-4">
             <div className="flex items-center gap-3.5">
               <div className="relative w-12 h-12 shrink-0 flex items-center justify-center">
                 <Image
@@ -67,8 +67,8 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
-          <div className="space-y-4">
+          {/* Col 2: Navigation - side by side on mobile */}
+          <div className="col-span-1 space-y-4">
             <h4 className="font-serif text-base text-[#3E2F24] font-semibold tracking-wide">
               Quick Navigation
             </h4>
@@ -100,14 +100,14 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#access" className="hover:text-[#C99A4A] transition-colors">
-                  Destination & Concierge
+                  Reservations & Concierge
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Col 3: Accommodation Types */}
-          <div className="space-y-4">
+          {/* Col 3: Accommodation Types - side by side on mobile */}
+          <div className="col-span-1 space-y-4">
             <h4 className="font-serif text-base text-[#3E2F24] font-semibold tracking-wide">
               Stay Categories
             </h4>
@@ -122,13 +122,13 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 4: Contact Recap */}
-          <div className="space-y-4">
+          {/* Col 4: Contact Recap - centered at middle below both on mobile */}
+          <div className="col-span-2 md:col-span-1 lg:col-span-1 space-y-4 flex flex-col items-center md:items-start text-center md:text-left pt-4 md:pt-0 border-t md:border-t-0 border-[#D8C6A8]/50">
             <h4 className="font-serif text-base text-[#3E2F24] font-semibold tracking-wide">
               Concierge Desk
             </h4>
-            <div className="space-y-3 text-xs text-[#6B5540] font-sans">
-              <div className="flex items-start gap-2.5">
+            <div className="space-y-3 text-xs text-[#6B5540] font-sans flex flex-col items-center md:items-start">
+              <div className="flex items-start gap-2.5 max-w-sm justify-center md:justify-start">
                 <MapPin className="w-4 h-4 text-[#C99A4A] shrink-0 mt-0.5" />
                 <a
                   href={RESORT_INFO.mapsUrl}
@@ -139,13 +139,13 @@ export default function Footer() {
                   Near Dahiwali Gaon Bridge, Kondeshwar Road, Badlapur East
                 </a>
               </div>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 justify-center md:justify-start">
                 <Phone className="w-4 h-4 text-[#C99A4A] shrink-0" />
                 <a href={`tel:${RESORT_INFO.phonePrimaryRaw}`} className="hover:text-[#C99A4A] transition-colors">
                   {RESORT_INFO.phonePrimary} / {RESORT_INFO.phoneSecondary}
                 </a>
               </div>
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 justify-center md:justify-start">
                 <Mail className="w-4 h-4 text-[#C99A4A] shrink-0" />
                 <a href={`mailto:${RESORT_INFO.email}`} className="hover:text-[#C99A4A] transition-colors">
                   {RESORT_INFO.email}

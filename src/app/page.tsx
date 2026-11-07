@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import StaySchedules from "@/components/StaySchedules";
 import Accommodations from "@/components/Accommodations";
 import DiningCafe from "@/components/DiningCafe";
 import CuratedEscapes from "@/components/CuratedEscapes";
@@ -18,6 +19,9 @@ export default function Home() {
       {/* Hero Showcase */}
       <Hero />
 
+      {/* Official Stay Schedules (Check-in & Check-out Timings) */}
+      <StaySchedules />
+
       {/* Accommodations – Sanctuaries of Comfort (Framed by Sliding Discover & Explore Cards) */}
       <Accommodations />
 
@@ -33,7 +37,7 @@ export default function Home() {
       {/* 5. Resort Features (Amenities & Visual Moments Gallery) */}
       <ResortFeatures />
 
-      {/* 6. Destination & Access (How to Reach Nirva & Reservations Concierge) */}
+      {/* 6. Reservations & Concierge (Booking & Inquiries) */}
       <DestinationAccess />
 
       {/* Resort Footer */}

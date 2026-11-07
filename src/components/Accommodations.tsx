@@ -119,7 +119,17 @@ function RoomCard({
         {totalImages > 1 && (
           <div className="hidden" aria-hidden="true">
             {roomImages.map((src) => (
-              src ? <img key={src} src={src} alt="" loading="eager" decoding="async" /> : null
+              src ? (
+                <Image
+                  key={src}
+                  src={src}
+                  alt=""
+                  width={1}
+                  height={1}
+                  unoptimized
+                  priority={false}
+                />
+              ) : null
             ))}
           </div>
         )}
