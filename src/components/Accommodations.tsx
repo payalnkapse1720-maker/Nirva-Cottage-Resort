@@ -14,6 +14,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Check,
+  Compass,
 } from "lucide-react";
 import {
   ROOMS_DATA,
@@ -23,6 +24,8 @@ import {
   FLOATING_BREAKFAST,
 } from "@/data/resort-data";
 import RoomModal from "./RoomModal";
+import SlidingIntroCard from "./SlidingIntroCard";
+import SlidingNavCard from "./SlidingNavCard";
 
 function RoomCard({
   room,
@@ -304,7 +307,16 @@ export default function Accommodations() {
 
   return (
     <section id="stay" className="py-24 md:py-32 bg-[#F1E9DA] relative">
-      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8">
+      {/* Anchor for About routes */}
+      <div id="about" className="absolute -top-24 left-0" />
+
+      {/* Sliding Luxury Introduction Card (Left: Discover Nirva) */}
+      <SlidingIntroCard />
+
+      {/* Sliding Luxury Curated Navigation Card (Right: Explore Nirva) */}
+      <SlidingNavCard />
+
+      <div className="max-w-[1240px] mx-auto px-4 sm:px-6 md:px-8 min-[1200px]:px-14 min-[1366px]:px-8">
         {/* Section Header */}
         <div className="text-center mb-8 sm:mb-10 space-y-4">
           <div className="inline-flex items-center gap-2 border-b border-[#C99A4A] pb-1">
@@ -320,6 +332,43 @@ export default function Accommodations() {
             From colourful cottages and spacious villas to our Sunset Suite and group-friendly
             accommodations, choose the stay that fits your escape.
           </p>
+
+          {/* Dedicated Discovery & Navigation Controls (Active on screens < 1200px where side bars would overlap) */}
+          <div className="min-[1200px]:hidden flex flex-col items-center justify-center gap-3 pt-3 pb-1">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("nirva-open-intro"))}
+              className="group inline-flex items-center justify-between w-[250px] sm:w-[270px] px-5 py-2.5 rounded-full bg-[#FBF8F1]/90 hover:bg-[#FBF8F1] active:scale-95 backdrop-blur-md border border-[#C99A4A]/40 hover:border-[#C99A4A] shadow-[0_4px_16px_rgba(62,47,36,0.08)] hover:shadow-[0_6px_20px_rgba(62,47,36,0.12)] transition-all cursor-pointer text-[#3E2F24]"
+              aria-label="Discover Nirva - Open Introduction Card"
+            >
+              <div className="relative w-4 h-4 shrink-0">
+                <Image
+                  src="/nirva-emblem.png"
+                  alt="Nirva Emblem"
+                  fill
+                  sizes="16px"
+                  className="object-contain"
+                />
+              </div>
+              <span className="font-serif text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#3E2F24] group-hover:text-[#C99A4A] transition-colors flex-1 text-center pl-1">
+                Discover Nirva
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-[#C99A4A] group-hover:translate-x-0.5 transition-transform shrink-0" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("nirva-open-nav"))}
+              className="group inline-flex items-center justify-between w-[250px] sm:w-[270px] px-5 py-2.5 rounded-full bg-[#FBF8F1]/90 hover:bg-[#FBF8F1] active:scale-95 backdrop-blur-md border border-[#C99A4A]/40 hover:border-[#C99A4A] shadow-[0_4px_16px_rgba(62,47,36,0.08)] hover:shadow-[0_6px_20px_rgba(62,47,36,0.12)] transition-all cursor-pointer text-[#3E2F24]"
+              aria-label="Explore Nirva - Open Navigation Card"
+            >
+              <Compass className="w-4 h-4 text-[#C99A4A] shrink-0" strokeWidth={2.2} />
+              <span className="font-serif text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-[#3E2F24] group-hover:text-[#C99A4A] transition-colors flex-1 text-center pl-1">
+                Explore Nirva
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-[#C99A4A] group-hover:translate-x-0.5 transition-transform shrink-0" />
+            </button>
+          </div>
         </div>
 
         {/* Category Quick Selector */}

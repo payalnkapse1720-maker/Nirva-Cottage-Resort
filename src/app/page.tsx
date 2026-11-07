@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import AboutIntro from "@/components/AboutIntro";
 import Accommodations from "@/components/Accommodations";
 import DiningCafe from "@/components/DiningCafe";
 import CuratedEscapes from "@/components/CuratedEscapes";
+import WeddingPackages from "@/components/WeddingPackages";
 import ResortFeatures from "@/components/ResortFeatures";
 import DestinationAccess from "@/components/DestinationAccess";
 import Footer from "@/components/Footer";
@@ -18,10 +18,7 @@ export default function Home() {
       {/* Hero Showcase */}
       <Hero />
 
-      {/* 1. Introduction / About */}
-      <AboutIntro />
-
-      {/* 2. Accommodations – Sanctuaries of Comfort (Includes Rooms & Curated Packages) */}
+      {/* Accommodations – Sanctuaries of Comfort (Framed by Sliding Discover & Explore Cards) */}
       <Accommodations />
 
       {/* 3. Café & Restaurant (Bliss Cafe Dining Experience & Daily Schedule) */}
@@ -29,6 +26,9 @@ export default function Home() {
 
       {/* 4. Curated Escapes (Weddings, Nightlife & Nature Trails) */}
       <CuratedEscapes />
+
+      {/* 4b. Wedding Packages & Venues (Comprehensive Destination Weddings) */}
+      <WeddingPackages />
 
       {/* 5. Resort Features (Amenities & Visual Moments Gallery) */}
       <ResortFeatures />

@@ -330,7 +330,16 @@ export default function CuratedEscapes() {
 
               <div className="pt-2">
                 <a
-                  href="#contact"
+                  href="#wedding-packages"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const elem = document.getElementById("wedding-packages");
+                    if (elem) {
+                      const topOffset =
+                        elem.getBoundingClientRect().top + window.scrollY - 90;
+                      window.scrollTo({ top: topOffset, behavior: "smooth" });
+                    }
+                  }}
                   className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.15em] text-[#C99A4A] hover:text-[#9B7028] font-semibold border-b border-[#C99A4A] pb-1 transition-colors"
                 >
                   Plan An Event With Us →
