@@ -6,15 +6,25 @@ import { ArrowDown, MapPin } from "lucide-react";
 export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#1A1612]">
-      {/* Background Image with Ken Burns animation */}
+      {/* Background Image with Ken Burns animation (Responsive: Portrait on mobile, Landscape on tablet/desktop) */}
       <div className="absolute inset-0 w-full h-full">
+        {/* Desktop & Tablet View (Landscape, >= 768px) */}
         <Image
           src="/images/nirva-hero.jpg"
           alt="Nirva The Cottage & Resort Meditative Sculpture and Serene Nature Landscape"
           fill
           priority
-          sizes="100vw"
-          className="object-cover object-center ken-burns"
+          sizes="(min-width: 768px) 100vw, 0vw"
+          className="object-cover object-center ken-burns hidden md:block"
+        />
+        {/* Mobile View (Portrait, < 768px below tablet size) */}
+        <Image
+          src="/images/nirva-hero-mobile.jpg"
+          alt="Nirva The Cottage & Resort Meditative Sculpture Mobile View"
+          fill
+          priority
+          sizes="(max-width: 767px) 100vw, 0vw"
+          className="object-cover object-center ken-burns block md:hidden"
         />
         {/* Subtle, soft cinematic gradient to preserve text legibility while keeping the photograph bright and clear */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-transparent pointer-events-none" />

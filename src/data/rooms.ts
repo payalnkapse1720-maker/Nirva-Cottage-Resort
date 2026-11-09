@@ -43,6 +43,7 @@ export const ROOM_IMAGES = {
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1790799562/Duplex_1_1.jpg",
     "https://res.cloudinary.com/cx2wca8r/image/upload/v1790800393/Duplex_3.png",
     "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793088810/Copy_of_DSC02321_fttnuc.jpg",
+    "https://res.cloudinary.com/dduwzy2tf/image/upload/v1793651991/Gemini_Generated_Image_bj7mwebj7mwebj7m_fo4mh9.png",
   ],
 
   "suite-cottage": [
